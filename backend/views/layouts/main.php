@@ -32,7 +32,7 @@ AppAsset::register($this);
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar-inverse',
         ],
     ]);
     $menuItems = [
@@ -59,11 +59,54 @@ AppAsset::register($this);
 
     <div class="page-container">
         <div class="page-content">
-          <?= Breadcrumbs::widget([
-              'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-          ]) ?>
-          <?= Alert::widget() ?>
-          <?= $content ?>
+
+            <?php if (!Yii::$app->user->isGuest) : ?>
+                <!-- Main sidebar -->
+                <div class="sidebar sidebar-main sidebar-default">
+                    <div class="sidebar-content">
+
+                        <!-- User menu -->
+                        <div class="sidebar-user-material">
+                            <div class="category-content">
+                                <div class="sidebar-user-material-content">
+                                    <a class="legitRipple">
+                                        <?= Html::img(Yii::getAlias('@web') . '/images/geknology-white.png', ['class' => 'img-circle img-responsive']) ?>
+                                    </a>
+                                    <h6>Geknology</h6>
+                                    <span class="text-size-small">Techno Services</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /user menu -->
+
+                        <!-- Main navigation -->
+                        <div class="sidebar-category sidebar-category-visible">
+                            <div class="category-content no-padding">
+                                <ul class="navigation navigation-main navigation-accordion">
+
+                                    <!-- Main -->
+                                    <li class="navigation-header">
+                                        <span>Main</span> <i class="icon-menu" title="Main pages"></i>
+                                    </li>
+                                    <li class="<?= (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') ? 'active' : '' ?>">
+                                        <?= Html::a('<i class="icon-home4"></i> <span>Dashboard</span>', ['//site/index']) ?>
+                                    </li>
+                                    <!-- /Main -->
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /main navigation -->
+
+                    </div>
+                </div>
+                <!-- /main sidebar -->
+            <?php endif; ?>
+
+            <?= Breadcrumbs::widget([
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
+            <?= Alert::widget() ?>
+            <?= $content ?>
         </div>
     </div>
 </div>

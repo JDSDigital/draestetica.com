@@ -12,8 +12,6 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
-        'css/master.css',
         'https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900',
         'css/icons/icomoon/styles.css',
         'css/icons/fontawesome/styles.min.css',
@@ -21,6 +19,8 @@ class AppAsset extends AssetBundle
         YII_ENV_DEV ? 'css/core.css' : 'css/core.min.css',
         YII_ENV_DEV ? 'css/components.css' : 'css/components.min.css',
         YII_ENV_DEV ? 'css/colors.css' : 'css/colors.min.css',
+        YII_ENV_DEV ? 'css/master.css' : 'css/master.min.css',
+        'css/site.css',
     ];
     public $js = [
         // 'https://www.google.com/jsapi',

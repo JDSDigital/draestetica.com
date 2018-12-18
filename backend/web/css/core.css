@@ -20,8 +20,8 @@
  * ---------------------------------------------------------------------------- */
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('../../../../../../global_assets/css/icons/glyphicons/glyphicons-halflings-regular.eot');
-  src: url('../../../../../../global_assets/css/icons/glyphicons/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../../../../../../global_assets/css/icons/glyphicons/glyphicons-halflings-regular.woff2') format('woff2'), url('../../../../../../global_assets/css/icons/glyphicons/glyphicons-halflings-regular.woff') format('woff'), url('../../../../../../global_assets/css/icons/glyphicons/glyphicons-halflings-regular.ttf') format('truetype'), url('../../../../../../global_assets/css/icons/glyphicons/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('../../../css/icons/glyphicons/glyphicons-halflings-regular.eot');
+  src: url('../../../css/icons/glyphicons/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../../../css/icons/glyphicons/glyphicons-halflings-regular.woff2') format('woff2'), url('../../../css/icons/glyphicons/glyphicons-halflings-regular.woff') format('woff'), url('../../../css/icons/glyphicons/glyphicons-halflings-regular.ttf') format('truetype'), url('../../../css/icons/glyphicons/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   font-size: 16px;
@@ -434,7 +434,7 @@ a.bg-danger:focus {
   box-shadow: 0 1px 0 #fff;
 }
 .page-header-inverse.has-cover {
-  background: url("../../../../../../global_assets/images/backgrounds/login_cover.jpg");
+  background: url("../images/backgrounds/login_cover.jpg");
   background-size: cover;
 }
 .page-header-default {
@@ -444,7 +444,7 @@ a.bg-danger:focus {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 .page-header-default.has-cover {
-  background: url("../../../../../../global_assets/images/backgrounds/seamless.png");
+  background: url("../images/backgrounds/seamless.png");
 }
 .page-title {
   padding: 32px 36px 32px 0;
@@ -4233,7 +4233,7 @@ select[multiple].input-group-xs > .input-group-btn > .btn {
   .navbar-inverse .btn-flat:hover,
   .navbar-inverse .btn-flat:focus {
     border-color: #fff;
-    color: #fff!important;
+    color: #fff !important;
   }
 }
 .navbar-nav-material > li > a {
@@ -6438,7 +6438,7 @@ a.list-group-item-danger:focus {
   overflow-x: auto;
 }
 .panel.has-bg-image {
-  background-image: url("../../../../../../global_assets/images/backgrounds/panel_bg.png");
+  background-image: url("../images/backgrounds/panel_bg.png");
 }
 .panel-flat > .panel-heading + .table,
 .panel-flat > .panel-heading + .table-responsive {
