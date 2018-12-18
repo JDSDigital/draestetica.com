@@ -36,7 +36,7 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+        // ['label' => 'Home', 'url' => ['/site/index']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
@@ -44,7 +44,7 @@ AppAsset::register($this);
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
+                'Logout (' . Yii::$app->user->identity->email . ')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()
@@ -57,22 +57,16 @@ AppAsset::register($this);
     NavBar::end();
     ?>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
+    <div class="page-container">
+        <div class="page-content">
+          <?= Breadcrumbs::widget([
+              'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+          ]) ?>
+          <?= Alert::widget() ?>
+          <?= $content ?>
+        </div>
     </div>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
 
 <?php $this->endBody() ?>
 </body>
