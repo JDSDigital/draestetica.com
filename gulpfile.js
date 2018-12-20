@@ -4,6 +4,7 @@ var gulp = require('gulp');
 // Include our plugins
 var jshint = require('gulp-jshint');
 var less = require('gulp-less');
+var sass = require('gulp-sass');
 var minifyCss = require('gulp-clean-css');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
@@ -18,7 +19,7 @@ gulp.task('lint', function() {
 });
 
 // Compile less files of a full version
-gulp.task('less_full', function() {
+gulp.task('backend', function() {
     return gulp
         .src('backend/less/_main_full/*.less')
         .pipe(less())
@@ -32,20 +33,20 @@ gulp.task('less_full', function() {
         .pipe(gulp.dest('backend/web/css'));
 });
 
+gulp.task('frontend', function() {
+    return gulp
+        .src('frontend/scss/**/*.scss')
+        .pipe(sass({outputStyle: 'expanded'}))
+        .pipe(gulp.dest('frontend/web/css'))
+        .pipe(sass({outputStyle: 'compressed'}))
+        .pipe(rename({
+            suffix: ".min"
+        }))
+        .pipe(gulp.dest('frontend/web/css'));
+});
+
 
 // Watch task
 gulp.task('watch', function() {
     gulp.watch('backend/less/**/*.less', ['less_full']);
 });
-
-// Default task
-// gulp.task('default', [
-//     'lint',
-//     'less_full',
-//     'watch'
-// ]);
-
-// Compile LESS files only task
-// gulp.task('compile', [
-//     'less_full',
-// ]);
