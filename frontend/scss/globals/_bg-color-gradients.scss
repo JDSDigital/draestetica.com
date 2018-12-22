@@ -3,6 +3,15 @@
 ------------------------------------*/
 /* Simple Linear Gradients
 ------------------------------------*/
+/* Theme gradient */
+.bg-theme-gradient {
+  background: linear-gradient(to right, $theme-color-1, $theme-color-2);
+}
+
+.bg-theme-gradient-v1 {
+  background: linear-gradient(150deg, $theme-color-1, $theme-color-2);
+}
+
 /* Gray Light v1 */
 .g-bg-gray-light-gradient-v1 {
   &--after::after {

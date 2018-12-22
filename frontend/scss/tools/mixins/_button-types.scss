@@ -74,6 +74,21 @@
   }
 }
 
+// e.g. @include u-button-gradient-v1 ($g-color-primary, $g-color-red);
+@mixin u-button-gradient-v1 ($btn-left, $btn-right){
+  color: $g-color-white;
+  background: linear-gradient(150deg, $btn-left 0%, $btn-right 100%) !important;
+  border-image: linear-gradient(150deg, $btn-left 0%, $btn-right 100%);
+  border-image-slice: 1;
+
+  &:hover,
+  &:focus,
+  &.active {
+    opacity: .9;
+    color: $g-color-white;
+  }
+}
+
 
 
 //

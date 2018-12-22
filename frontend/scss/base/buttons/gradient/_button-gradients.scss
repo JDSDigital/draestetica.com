@@ -7,3 +7,12 @@
 .u-btn-gradient-v2 {
   @include u-button-gradient (#E040FB, #00BCD4);
 }
+
+/* Gradient Style theme */
+.u-btn-gradient-theme {
+  @include u-button-gradient ($theme-color-1, $theme-color-2);
+}
+
+.u-btn-gradient-theme-v1 {
+  @include u-button-gradient-v1 ($theme-color-1, $theme-color-2);
+}

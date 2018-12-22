@@ -45,8 +45,7 @@ gulp.task('frontend', function() {
         .pipe(gulp.dest('frontend/web/css'));
 });
 
-
-// Watch task
-gulp.task('watch', function() {
-    gulp.watch('backend/less/**/*.less', ['less_full']);
+gulp.task('default', function () {
+  gulp.watch('frontend/scss/**/*.scss', gulp.parallel('frontend'));
+  gulp.watch('backend/less/_main_full/*.less', gulp.parallel('backend'));
 });

@@ -42,7 +42,8 @@ $theme-color-2: #629bf9 !default;
 
 
 // Primary Color
-$g-color-primary: #72c02c !default;
+// $g-color-primary: #72c02c !default;
+$g-color-primary: $theme-color-2 !default;
 $g-color-primary-dark-v1: darken($g-color-primary, 2%) !default;
 $g-color-primary-dark-v2: darken($g-color-primary, 5%) !default;
 $g-color-primary-dark-v3: darken($g-color-primary, 10%) !default;
