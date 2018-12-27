@@ -154,6 +154,8 @@ AppAsset::register($this);
     </div>
 </div>
 
+<div id="instafeed"></div>
+
 <!-- Footer -->
 <footer class="bg-theme-gradient-v1 g-color-white g-py-60">
   <div class="container">
@@ -176,7 +178,7 @@ AppAsset::register($this);
         <h2 class="h6 g-color-white text-uppercase g-font-weight-700 g-mb-20">Últimos Posts</h2>
         <article class="media">
           <a class="d-flex g-mt-4 mr-3" href="#">
-            <img class="g-width-80 g-height-80" src="./img-temp/100x100/img8.jpg" alt="Image Description">
+            <?= Html::img('@web/img-temp/100x100/img8.jpg', ['class' => 'g-width-80 g-height-80']) ?>
           </a>
 
           <div class="media-body align-self-center">
@@ -194,7 +196,7 @@ AppAsset::register($this);
 
         <article class="media">
           <a class="d-flex g-mt-4 mr-3" href="#">
-            <img class="g-width-80 g-height-80" src="./img-temp/100x100/img9.jpg" alt="Image Description">
+            <?= Html::img('@web/img-temp/100x100/img9.jpg', ['class' => 'g-width-80 g-height-80']) ?>
           </a>
 
           <div class="media-body align-self-center">
@@ -241,32 +243,32 @@ AppAsset::register($this);
         <ul class="u-list-inline d-flex flex-wrap g-mr-minus-15">
           <li class="list-inline-item g-mr-10 g-mb-10">
             <a class="u-block-hover" href="#">
-              <img class="u-block-hover__main--grayscale g-width-80 g-height-80" src="./img-temp/100x100/img10.jpg" alt="Image Description">
+              <?= Html::img('@web/img-temp/100x100/img10.jpg', ['class' => 'u-block-hover__main--grayscale g-width-80 g-height-80']) ?>
             </a>
           </li>
           <li class="list-inline-item g-mr-10 g-mb-10">
             <a class="u-block-hover" href="#">
-              <img class="u-block-hover__main--grayscale g-width-80 g-height-80" src="./img-temp/100x100/img12.jpg" alt="Image Description">
+              <?= Html::img('@web/img-temp/100x100/img12.jpg', ['class' => 'u-block-hover__main--grayscale g-width-80 g-height-80']) ?>
             </a>
           </li>
           <li class="list-inline-item g-mr-10 g-mb-10">
             <a class="u-block-hover" href="#">
-              <img class="u-block-hover__main--grayscale g-width-80 g-height-80" src="./img-temp/100x100/img13.jpg" alt="Image Description">
+              <?= Html::img('@web/img-temp/100x100/img13.jpg', ['class' => 'u-block-hover__main--grayscale g-width-80 g-height-80']) ?>
             </a>
           </li>
           <li class="list-inline-item g-mr-10 g-mb-10">
             <a class="u-block-hover" href="#">
-              <img class="u-block-hover__main--grayscale g-width-80 g-height-80" src="./img-temp/100x100/img14.jpg" alt="Image Description">
+              <?= Html::img('@web/img-temp/100x100/img14.jpg', ['class' => 'u-block-hover__main--grayscale g-width-80 g-height-80']) ?>
             </a>
           </li>
           <li class="list-inline-item g-mr-10 g-mb-10">
             <a class="u-block-hover" href="#">
-              <img class="u-block-hover__main--grayscale g-width-80 g-height-80" src="./img-temp/100x100/img15.jpg" alt="Image Description">
+              <?= Html::img('@web/img-temp/100x100/img15.jpg', ['class' => 'u-block-hover__main--grayscale g-width-80 g-height-80']) ?>
             </a>
           </li>
           <li class="list-inline-item g-mr-10 g-mb-10">
             <a class="u-block-hover" href="#">
-              <img class="u-block-hover__main--grayscale g-width-80 g-height-80" src="./img-temp/100x100/img16.jpg" alt="Image Description">
+              <?= Html::img('@web/img-temp/100x100/img16.jpg', ['class' => 'u-block-hover__main--grayscale g-width-80 g-height-80']) ?>
             </a>
           </li>
         </ul>

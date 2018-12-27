@@ -43,7 +43,7 @@ class ThemeAsset extends AssetBundle
       YII_ENV_DEV ? 'css/custom.css' : 'css/custom.min.css',
     ];
     public $js = [
-        // 'vendor/jquery/jquery.min.js',
+        'vendor/jquery/jquery.min.js',
         'vendor/jquery-migrate/jquery-migrate.min.js',
         'vendor/jquery.easing/js/jquery.easing.js',
         'vendor/popper.min.js',
