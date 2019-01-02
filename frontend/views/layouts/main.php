@@ -6,7 +6,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
+use frontend\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 
@@ -163,7 +163,7 @@ AppAsset::register($this);
       <!-- Footer Content -->
       <div class="col-lg-3 g-mb-40 g-mb-0--lg">
         <a class="d-block g-mb-20" href="#">
-          <?= Html::img('@web/img/logo/logo-black-nomargin.png', ['class' => 'img-fluid g-mb-5']) ?>
+          <?= Html::img('@web/img/logo/logo-transparent-nomargin-1.png', ['class' => 'img-fluid g-mb-5']) ?>
         </a>
 
         <div class="g-mb-20">

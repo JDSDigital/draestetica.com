@@ -12,6 +12,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
+    'language' => 'es_ES',
     'name' => 'Dra. Estetica',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],

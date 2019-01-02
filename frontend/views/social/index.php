@@ -4,7 +4,7 @@
 
 use yii\helpers\Html;
 
-$this->title = 'About';
+$this->title = 'Social';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <!-- Blog Masonry Blocks -->
@@ -114,15 +114,6 @@ $this->params['breadcrumbs'][] = $this->title;
           <!-- End Article -->
         </div>
 
-        <div class="masonry-grid-item col-sm-6 col-lg-6 g-mb-30">
-          <!-- Article -->
-          <article class="g-bg-teal g-pa-30">
-            <h3 class="h4 g-color-white g-font-weight-600 text-capitalize mb-0">
-                <a class="g-color-white g-color-white--hover" href="#">10 Typography Tips Every Business Should Know</a>
-              </h3>
-          </article>
-          <!-- End Article -->
-        </div>
       </div>
 
     </div>
