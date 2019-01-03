@@ -6,7 +6,11 @@ a:hover {
 .home-banner {
   .divimage {
     height: 120%;
-    background-image: url('../img/bg/02.jpg');
+    background-image: url('../img/bg/05.jpg');
+  }
+  img {
+    width: 70% !important;
+    height: auto !important;
   }
 }
 

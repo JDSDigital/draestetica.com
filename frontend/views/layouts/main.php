@@ -91,10 +91,10 @@ AppAsset::register($this);
               <div class="collapse navbar-collapse align-items-center flex-sm-row w-100 g-mt-20 g-mt-0--lg g-mb-40" id="navBar">
                 <ul class="navbar-nav ml-auto text-uppercase g-font-weight-600 u-sub-menu-v1">
                   <li class="nav-item g-my-5">
-                    <a href="#" class="nav-link <?= (Yii::$app->controller->id == 'site') ? 'active' : '' ?>">Inicio</a>
+                    <?= Html::a('Inicio', ['site/index'], ['class' => (Yii::$app->controller->id == 'site') ? 'nav-link active' : 'nav-link']) ?>
                   </li>
                   <li class="nav-item g-my-5">
-                    <a href="#" class="nav-link <?= (Yii::$app->controller->id == 'social') ? 'active' : '' ?>">Social</a>
+                    <?= Html::a('Social', ['social/index'], ['class' => (Yii::$app->controller->id == 'social') ? 'nav-link active' : 'nav-link']) ?>
                   </li>
                   <li class="nav-item g-my-5">
                     <a href="#" class="nav-link <?= (Yii::$app->controller->id == 'blog') ? 'active' : '' ?>">Blog</a>
@@ -218,11 +218,11 @@ AppAsset::register($this);
         <ul class="list-unstyled mb-0">
           <li class="d-flex align-items-baseline g-mb-12">
             <i class="fa fa-angle-double-right g-mr-8"></i>
-            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">Inicio</a>
+            <?= Html::a('Inicio', ['site/index'], ['class' => 'g-color-white-opacity-0_8 g-color-white--hover']) ?>
           </li>
           <li class="d-flex align-items-baseline g-mb-12">
             <i class="fa fa-angle-double-right g-mr-8"></i>
-            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">Social</a>
+            <?= Html::a('Social', ['social/index'], ['class' => 'g-color-white-opacity-0_8 g-color-white--hover']) ?>
           </li>
           <li class="d-flex align-items-baseline g-mb-12">
             <i class="fa fa-angle-double-right g-mr-8"></i>

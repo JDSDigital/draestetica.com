@@ -50,7 +50,7 @@ class Breadcrumbs extends OldBreadcrumbs
       if (isset($link['url'])) {
           $options = $link;
           unset($options['template'], $options['label'], $options['url']);
-          $link = Html::a($label, $link['url'], ['class' => 'g-color-white g-color-primary--hover']);
+          $link = Html::a($label, $link['url'], ['class' => 'g-color-white-opacity-0_8 g-color-white--hover']);
       } else {
           $link = $label;
       }
