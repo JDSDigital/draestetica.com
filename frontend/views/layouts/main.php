@@ -55,9 +55,9 @@ AppAsset::register($this);
   <!-- Header Toggle Button -->
     <button class="btn u-btn-white u-header-toggler u-header-toggler--top-right g-pa-0" id="header-toggler" aria-haspopup="true" aria-expanded="false" aria-controls="js-header" aria-label="Toggle Header" data-target="#js-header">
       <span class="hamburger hamburger--collapse">
-    <span class="hamburger-box">
-      <span class="hamburger-inner"></span>
-      </span>
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
       </span>
     </button>
     <!-- End Header Toggle Button -->
@@ -71,9 +71,9 @@ AppAsset::register($this);
               <!-- Responsive Toggle Button -->
               <button class="navbar-toggler navbar-toggler-right btn g-line-height-1 g-brd-none g-pa-0 g-pos-abs g-right-0" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
                 <span class="hamburger hamburger--slider">
-              <span class="hamburger-box">
-                <span class="hamburger-inner"></span>
-                </span>
+                  <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                  </span>
                 </span>
               </button>
               <!-- End Responsive Toggle Button -->
