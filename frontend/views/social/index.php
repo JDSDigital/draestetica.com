@@ -19,13 +19,13 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="g-pa-30">
               <div class="mb-4">
                 <h3 class="h4 g-color-black g-font-weight-600 text-capitalize mb-3">
-                    <a class="g-color-black g-color-primary--hover g-text-underline--none--hover" href="#">Lorem Ipsum</a>
+                    <?= Html::a('Lorem Ipsum', ['social/view'], ['class' => 'g-color-black g-color-primary--hover g-text-underline--none--hover']) ?>
                   </h3>
                 <p class="g-color-gray-dark-v5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac sapien justo.</p>
               </div>
               <div class="d-flex justify-content-start">
                 <a class="align-self-center g-color-gray-dark-v5 g-color-black--hover g-text-underline--none--hover" href="#">Noticias</a>
-                <a class="align-self-center ml-auto" href="#">Ver más</a>
+                <?= Html::a('Ver más', ['social/view'], ['class' => 'align-self-center ml-auto']) ?>
               </div>
             </div>
           </article>
@@ -38,13 +38,13 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="g-pa-30">
               <div class="mb-4">
                 <h3 class="h4 g-color-black g-font-weight-600 text-capitalize mb-3">
-                    <a class="g-color-black g-color-primary--hover g-text-underline--none--hover" href="#">Lorem Ipsum</a>
+                    <?= Html::a('Lorem Ipsum', ['social/view'], ['class' => 'g-color-black g-color-primary--hover g-text-underline--none--hover']) ?>
                   </h3>
                 <p class="g-color-gray-dark-v5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac sapien justo.</p>
               </div>
               <div class="d-flex justify-content-start">
                 <a class="align-self-center g-color-gray-dark-v5 g-color-black--hover g-text-underline--none--hover" href="#">Notas de prensa</a>
-                <a class="align-self-center ml-auto" href="#">Ver más</a>
+                <?= Html::a('Ver más', ['social/view'], ['class' => 'align-self-center ml-auto']) ?>
               </div>
             </div>
           </article>
@@ -58,13 +58,13 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="g-pa-30">
               <div class="mb-4">
                 <h3 class="h4 g-color-black g-font-weight-600 text-capitalize mb-3">
-                    <a class="g-color-black g-color-primary--hover g-text-underline--none--hover" href="#">Lorem Ipsum</a>
+                    <?= Html::a('Lorem Ipsum', ['social/view'], ['class' => 'g-color-black g-color-primary--hover g-text-underline--none--hover']) ?>
                   </h3>
                 <p class="g-color-gray-dark-v5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac sapien justo.</p>
               </div>
               <div class="d-flex justify-content-start">
                 <a class="align-self-center g-color-gray-dark-v5 g-color-black--hover g-text-underline--none--hover" href="#">Noticias</a>
-                <a class="align-self-center ml-auto" href="#">Ver más</a>
+                <?= Html::a('Ver más', ['social/view'], ['class' => 'align-self-center ml-auto']) ?>
               </div>
             </div>
           </article>
@@ -78,13 +78,13 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="g-pa-30">
               <div class="mb-4">
                 <h3 class="h4 g-color-black g-font-weight-600 text-capitalize mb-3">
-                    <a class="g-color-black g-color-primary--hover g-text-underline--none--hover" href="#">Lorem Ipsum</a>
+                    <?= Html::a('Lorem Ipsum', ['social/view'], ['class' => 'g-color-black g-color-primary--hover g-text-underline--none--hover']) ?>
                   </h3>
                 <p class="g-color-gray-dark-v5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac sapien justo.</p>
               </div>
               <div class="d-flex justify-content-start">
                 <a class="align-self-center g-color-gray-dark-v5 g-color-black--hover g-text-underline--none--hover" href="#">Galería</a>
-                <a class="align-self-center ml-auto" href="#">Ver más</a>
+                <?= Html::a('Ver más', ['social/view'], ['class' => 'align-self-center ml-auto']) ?>
               </div>
             </div>
           </article>
@@ -98,13 +98,13 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="g-pa-30">
               <div class="mb-4">
                 <h3 class="h4 g-color-black g-font-weight-600 text-capitalize mb-3">
-                    <a class="g-color-black g-color-primary--hover g-text-underline--none--hover" href="#">Lorem Ipsum</a>
+                    <?= Html::a('Lorem Ipsum', ['social/view'], ['class' => 'g-color-black g-color-primary--hover g-text-underline--none--hover']) ?>
                   </h3>
                 <p class="g-color-gray-dark-v5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac sapien justo.</p>
               </div>
               <div class="d-flex justify-content-start">
                 <a class="align-self-center g-color-gray-dark-v5 g-color-black--hover g-text-underline--none--hover" href="#">Galería</a>
-                <a class="align-self-center ml-auto" href="#">Ver más</a>
+                <?= Html::a('Ver más', ['social/view'], ['class' => 'align-self-center ml-auto']) ?>
               </div>
             </div>
           </article>
@@ -117,13 +117,13 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="g-pa-30">
               <div class="mb-4">
                 <h3 class="h4 g-color-black g-font-weight-600 text-capitalize mb-3">
-                    <a class="g-color-black g-color-primary--hover g-text-underline--none--hover" href="#">Lorem Ipsum</a>
+                    <?= Html::a('Lorem Ipsum', ['social/view'], ['class' => 'g-color-black g-color-primary--hover g-text-underline--none--hover']) ?>
                   </h3>
                 <p class="g-color-gray-dark-v5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac sapien justo.</p>
               </div>
               <div class="d-flex justify-content-start">
                 <a class="align-self-center g-color-gray-dark-v5 g-color-black--hover g-text-underline--none--hover" href="#">Galería</a>
-                <a class="align-self-center ml-auto" href="#">Ver más</a>
+                <?= Html::a('Ver más', ['social/view'], ['class' => 'align-self-center ml-auto']) ?>
               </div>
             </div>
           </article>
@@ -137,13 +137,13 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="g-pa-30">
               <div class="mb-4">
                 <h3 class="h4 g-color-black g-font-weight-600 text-capitalize mb-3">
-                    <a class="g-color-black g-color-primary--hover g-text-underline--none--hover" href="#">Lorem Ipsum</a>
+                    <?= Html::a('Lorem Ipsum', ['social/view'], ['class' => 'g-color-black g-color-primary--hover g-text-underline--none--hover']) ?>
                   </h3>
                 <p class="g-color-gray-dark-v5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac sapien justo.</p>
               </div>
               <div class="d-flex justify-content-start">
                 <a class="align-self-center g-color-gray-dark-v5 g-color-black--hover g-text-underline--none--hover" href="#">Noticias</a>
-                <a class="align-self-center ml-auto" href="#">Ver más</a>
+                <?= Html::a('Ver más', ['social/view'], ['class' => 'align-self-center ml-auto']) ?>
               </div>
             </div>
           </article>

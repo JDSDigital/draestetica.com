@@ -80,7 +80,7 @@ AppAsset::register($this);
               <!-- Logo -->
                 <?=
                 Html::a(
-                  Html::img('@web/img/logo/logo-nomargin-2.png', ['class' => 'img-responsive']),
+                  Html::img('@web/img/logo/logo-2.png', ['class' => 'img-responsive']),
                   ['site/index'],
                   ['class' => 'navbar-brand g-mb-20--lg']
                   )
@@ -163,7 +163,7 @@ AppAsset::register($this);
       <!-- Footer Content -->
       <div class="col-lg-3 g-mb-40 g-mb-0--lg">
         <a class="d-block g-mb-20" href="#">
-          <?= Html::img('@web/img/logo/logo-transparent-nomargin-1.png', ['class' => 'img-fluid g-mb-5']) ?>
+          <?= Html::img('@web/img/logo/logo-transparent-1.png', ['class' => 'img-fluid g-mb-5']) ?>
         </a>
 
         <div class="g-mb-20">
@@ -177,9 +177,7 @@ AppAsset::register($this);
       <div class="col-lg-4 g-mb-40 g-mb-0--lg">
         <h2 class="h6 g-color-white text-uppercase g-font-weight-700 g-mb-20">Últimos Posts</h2>
         <article class="media">
-          <a class="d-flex g-mt-4 mr-3" href="#">
-            <?= Html::img('@web/img-temp/100x100/img8.jpg', ['class' => 'g-width-80 g-height-80']) ?>
-          </a>
+            <?= Html::a(Html::img('@web/img-temp/100x100/img8.jpg', ['class' => 'g-width-80 g-height-80']), ['social/view'], ['class' => 'd-flex g-mt-4 mr-3']) ?>
 
           <div class="media-body align-self-center">
             <ul class="list-inline g-font-size-12 g-mb-10">
@@ -187,7 +185,7 @@ AppAsset::register($this);
             </ul>
 
             <h3 class="h6 mb-0">
-              <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">Top 7 luxury places to visit around Victoria, BC</a>
+              <?= Html::a('Top 7 luxury places to visit around Victoria, BC', ['social/view'], ['class' => 'g-color-white-opacity-0_8 g-color-white--hover']) ?>
             </h3>
           </div>
         </article>
@@ -195,9 +193,7 @@ AppAsset::register($this);
         <hr class="g-brd-white-opacity-0_1 g-mt-15 g-mb-10">
 
         <article class="media">
-          <a class="d-flex g-mt-4 mr-3" href="#">
-            <?= Html::img('@web/img-temp/100x100/img9.jpg', ['class' => 'g-width-80 g-height-80']) ?>
-          </a>
+            <?= Html::a(Html::img('@web/img-temp/100x100/img9.jpg', ['class' => 'g-width-80 g-height-80']), ['social/view'], ['class' => 'd-flex g-mt-4 mr-3']) ?>
 
           <div class="media-body align-self-center">
             <ul class="list-inline g-font-size-12 g-mb-10">
@@ -205,7 +201,7 @@ AppAsset::register($this);
             </ul>
 
             <h3 class="h6 mb-0">
-              <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">Coding week, 10 best premium templates</a>
+              <?= Html::a('Coding week, 10 best premium templates', ['social/view'], ['class' => 'g-color-white-opacity-0_8 g-color-white--hover']) ?>
             </h3>
           </div>
         </article>
