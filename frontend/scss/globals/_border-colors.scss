@@ -111,6 +111,157 @@
   }
 }
 
+/* Secondary Colors */
+.g-brd-secondary {
+  border-color: $g-color-secondary !important;
+
+  &--before {
+    &::before {
+      border-color: $g-color-secondary !important;
+    }
+
+    &--active.active {
+      &::before {
+        border-color: $g-color-secondary !important;
+      }
+    }
+  }
+
+  &--hover:hover,
+  &--active.active {
+    border-color: $g-color-secondary !important;
+  }
+
+  // Active
+  &--active {
+    &.active,
+    .active & {
+      border-color: $g-color-secondary !important;
+    }
+  }
+
+  &--hover-parent {
+    *:hover > & {
+      border-color: $g-color-secondary !important;
+    }
+  }
+
+  // Opacity
+  &-opacity {
+    &-0_3 {
+      border-color: rgba($g-color-secondary, .3) !important;
+
+      &--hover:hover,
+      &--active.active {
+        border-color: rgba($g-color-secondary, .3) !important;
+      }
+
+      &--hover-parent {
+        *:hover > & {
+          border-color: rgba($g-color-secondary, .3) !important;
+        }
+      }
+    }
+  }
+
+  // Primary dark
+  &-dark {
+    &-dark-v1 {
+      border-color: $g-color-secondary-dark-v1 !important;
+
+      &--hover:hover,
+      &--active.active {
+        border-color: $g-color-secondary-dark-v1 !important;
+      }
+
+      &--hover-parent {
+        *:hover > & {
+          border-color: $g-color-secondary-dark-v1 !important;
+        }
+      }
+    }
+
+    &-dark-v2 {
+      border-color: $g-color-secondary-dark-v2 !important;
+
+      &--hover:hover,
+      &--active.active {
+        border-color: $g-color-secondary-dark-v2 !important;
+      }
+
+      &--hover-parent {
+        *:hover > & {
+          border-color: $g-color-secondary-dark-v2 !important;
+        }
+      }
+    }
+
+    &-dark-v3 {
+      border-color: $g-color-secondary-dark-v3 !important;
+
+      &--hover:hover,
+      &--active.active {
+        border-color: $g-color-secondary-dark-v3 !important;
+      }
+
+      &--hover-parent {
+        *:hover > & {
+          border-color: $g-color-secondary-dark-v3 !important;
+        }
+      }
+    }
+  }
+}
+
+.g-brd-bottom-secondary {
+  &--hover:hover {
+    border-bottom-color: $g-color-secondary !important;
+  }
+}
+
+/* Secondary Colors */
+.g-brd-theme {
+  border-color: $g-color-theme !important;
+
+  &--before {
+    &::before {
+      border-color: $g-color-theme !important;
+    }
+
+    &--active.active {
+      &::before {
+        border-color: $g-color-theme !important;
+      }
+    }
+  }
+
+  &--hover:hover,
+  &--active.active {
+    border-color: $g-color-theme !important;
+  }
+
+  // Active
+  &--active {
+    &.active,
+    .active & {
+      border-color: $g-color-theme !important;
+    }
+  }
+
+  &--hover-parent {
+    *:hover > & {
+      border-color: $g-color-theme !important;
+    }
+  }
+
+}
+
+.g-brd-bottom-theme {
+  &--hover:hover {
+    border-bottom-color: $g-color-theme !important;
+  }
+}
+
 /* Main Colors */
 .g-brd-main {
   border-color: $g-color-main !important;

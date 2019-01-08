@@ -97,7 +97,7 @@ AppAsset::register($this);
                     <?= Html::a('Social', ['social/index'], ['class' => (Yii::$app->controller->id == 'social') ? 'nav-link active' : 'nav-link']) ?>
                   </li>
                   <li class="nav-item g-my-5">
-                    <a href="#" class="nav-link <?= (Yii::$app->controller->id == 'blog') ? 'active' : '' ?>">Blog</a>
+                    <?= Html::a('Blog', ['blog/index'], ['class' => (Yii::$app->controller->id == 'blog') ? 'nav-link active' : 'nav-link']) ?>
                   </li>
                   <li class="nav-item g-my-5">
                     <a href="#" class="nav-link <?= (Yii::$app->controller->id == 'contacto') ? 'active' : '' ?>">Contacto</a>

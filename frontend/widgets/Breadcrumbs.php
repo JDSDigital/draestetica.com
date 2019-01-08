@@ -18,7 +18,7 @@ class Breadcrumbs extends OldBreadcrumbs
     if (empty($this->links)) {
         return;
     }
-    echo '<section class="g-hidden-md-down bg-theme-gradient-v1 g-color-white g-py-50 g-mb-20"><div class="container g-bg-cover__inner">';
+    echo '<section class="g-hidden-md-down bg-theme-gradient-v1 g-color-white g-py-30 g-mb-20"><div class="container g-bg-cover__inner">';
     $this->renderHeader();
     parent::run();
     echo '</div></section>';
@@ -26,7 +26,7 @@ class Breadcrumbs extends OldBreadcrumbs
 
   public function renderHeader()
   {
-    echo '<header class="g-mb-20">';
+    echo '<header class="g-mb-10">';
     echo '<h2 class="h1 g-font-weight-300 text-uppercase">' . strtoupper(Yii::$app->controller->id) . '</h2>';
     echo '</header>';
   }

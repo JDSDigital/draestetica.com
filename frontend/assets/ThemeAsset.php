@@ -25,16 +25,9 @@ class ThemeAsset extends AssetBundle
       'vendor/dzsparallaxer/advancedscroller/plugin.css',
       'vendor/animate.css',
       'vendor/hamburgers/hamburgers.min.css',
-      'vendor/hs-megamenu/src/hs.megamenu.css',
       'vendor/malihu-scrollbar/jquery.mCustomScrollbar.min.css',
       'vendor/slick-carousel/slick/slick.css',
       'vendor/fancybox/jquery.fancybox.css',
-
-      'css/unify-core.css',
-      'css/unify-components.css',
-      'css/unify-globals.css',
-
-      'css/custom.css',
 
       YII_ENV_DEV ? 'css/unify-core.css' : 'css/unify-core.min.css',
       YII_ENV_DEV ? 'css/unify-components.css' : 'css/unify-components.min.css',
@@ -50,7 +43,6 @@ class ThemeAsset extends AssetBundle
         'vendor/bootstrap/bootstrap.min.js',
         'vendor/bootstrap/offcanvas.js',
 
-        'vendor/hs-megamenu/src/hs.megamenu.js',
         'vendor/dzsparallaxer/dzsparallaxer.js',
         'vendor/dzsparallaxer/dzsscroller/scroller.js',
         'vendor/dzsparallaxer/advancedscroller/plugin.js',
@@ -59,7 +51,6 @@ class ThemeAsset extends AssetBundle
         'vendor/malihu-scrollbar/jquery.mCustomScrollbar.concat.min.js',
         'vendor/slick-carousel/slick/slick.js',
         'vendor/fancybox/jquery.fancybox.min.js',
-        'vendor/gmaps/gmaps.min.js',
 
         'js/hs.core.js',
 
@@ -71,9 +62,7 @@ class ThemeAsset extends AssetBundle
         'js/components/hs.popup.js',
         'js/components/hs.carousel.js',
 
-        'js/components/gmap/hs.map.js',
-
-        'js/components/hs.go-to.js',
+        'js/components/hs.sticky-block.js',
 
         'js/custom.js',
     ];

@@ -39,6 +39,7 @@ $g-xl: 1200px !default; // Extra large devices (large desktops, >=1200)
 
 $theme-color-1: #d416f2 !default;
 $theme-color-2: #629bf9 !default;
+$theme-gradient: linear-gradient(to right, $theme-color-1, $theme-color-2) !default;
 
 
 // Primary Color
@@ -49,6 +50,19 @@ $g-color-primary-dark-v2: darken($g-color-primary, 5%) !default;
 $g-color-primary-dark-v3: darken($g-color-primary, 10%) !default;
 $g-color-primary-light-v1: rgba($g-color-primary, .2) !default;
 $g-color-primary-light-v2: rgba($g-color-primary, .8) !default; // R
+
+// Secondary Color
+// $g-color-primary: #72c02c !default;
+$g-color-secondary: $theme-color-1 !default;
+$g-color-secondary-dark-v1: darken($g-color-secondary, 2%) !default;
+$g-color-secondary-dark-v2: darken($g-color-secondary, 5%) !default;
+$g-color-secondary-dark-v3: darken($g-color-secondary, 10%) !default;
+$g-color-secondary-light-v1: rgba($g-color-secondary, .2) !default;
+$g-color-secondary-light-v2: rgba($g-color-secondary, .8) !default; // R
+
+// Theme Color
+// $g-color-primary: #72c02c !default;
+$g-color-theme: $theme-gradient !default;
 
 // Main Colors
 $g-color-main: #555 !default;

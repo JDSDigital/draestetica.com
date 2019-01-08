@@ -1,27 +1,7 @@
-// initialization of google map
-function initMap() {
-  $.HSCore.components.HSGMap.init('.js-g-map');
-}
-
 $(document).on('ready', function () {
-  
-  // initialization of go to
-  $.HSCore.components.HSGoTo.init('.js-go-to');
 
   // initialization of carousel
   $.HSCore.components.HSCarousel.init('.js-carousel');
-
-  $('#we-provide').slick('setOption', 'responsive', [{
-    breakpoint: 992,
-    settings: {
-      slidesToShow: 2
-    }
-  }, {
-    breakpoint: 576,
-    settings: {
-      slidesToShow: 1
-    }
-  }], true);
 
   // initialization of HSDropdown component
   $.HSCore.components.HSDropdown.init($('[data-dropdown-target]'), {
@@ -41,6 +21,7 @@ $(document).on('ready', function () {
 
   // initialization of popups
   $.HSCore.components.HSPopup.init('.js-fancybox');
+
 });
 
 $(window).on('load', function () {
@@ -48,10 +29,6 @@ $(window).on('load', function () {
   $.HSCore.components.HSHeaderSide.init($('#js-header'));
   $.HSCore.helpers.HSHamburgers.init('.hamburger');
 
-  // initialization of HSMegaMenu component
-  $('.js-mega-menu').HSMegaMenu({
-    event: 'hover',
-    direction: 'vertical',
-    breakpoint: 991
-  });
+  // initialization of sticky blocks
+  $.HSCore.components.HSStickyBlock.init('.js-sticky-block');
 });

@@ -58,7 +58,15 @@
   background: linear-gradient(to right, #d416f2, #629bf9);
 }
 
+.bg-theme-gradient--hover:hover {
+  background: linear-gradient(to right, #d416f2, #629bf9);
+}
+
 .bg-theme-gradient-v1 {
+  background: linear-gradient(150deg, #d416f2, #629bf9);
+}
+
+.bg-theme-gradient-v1--hover:hover {
   background: linear-gradient(150deg, #d416f2, #629bf9);
 }
 
@@ -2231,6 +2239,114 @@
 
 .g-brd-bottom-primary--hover:hover {
   border-bottom-color: #629bf9 !important;
+}
+
+/* Secondary Colors */
+.g-brd-secondary {
+  border-color: #d416f2 !important;
+}
+
+.g-brd-secondary--before::before {
+  border-color: #d416f2 !important;
+}
+
+.g-brd-secondary--before--active.active::before {
+  border-color: #d416f2 !important;
+}
+
+.g-brd-secondary--hover:hover, .g-brd-secondary--active.active {
+  border-color: #d416f2 !important;
+}
+
+.g-brd-secondary--active.active,
+.active .g-brd-secondary--active {
+  border-color: #d416f2 !important;
+}
+
+*:hover > .g-brd-secondary--hover-parent {
+  border-color: #d416f2 !important;
+}
+
+.g-brd-secondary-opacity-0_3 {
+  border-color: rgba(212, 22, 242, 0.3) !important;
+}
+
+.g-brd-secondary-opacity-0_3--hover:hover, .g-brd-secondary-opacity-0_3--active.active {
+  border-color: rgba(212, 22, 242, 0.3) !important;
+}
+
+*:hover > .g-brd-secondary-opacity-0_3--hover-parent {
+  border-color: rgba(212, 22, 242, 0.3) !important;
+}
+
+.g-brd-secondary-dark-dark-v1 {
+  border-color: #d10df0 !important;
+}
+
+.g-brd-secondary-dark-dark-v1--hover:hover, .g-brd-secondary-dark-dark-v1--active.active {
+  border-color: #d10df0 !important;
+}
+
+*:hover > .g-brd-secondary-dark-dark-v1--hover-parent {
+  border-color: #d10df0 !important;
+}
+
+.g-brd-secondary-dark-dark-v2 {
+  border-color: #c50de2 !important;
+}
+
+.g-brd-secondary-dark-dark-v2--hover:hover, .g-brd-secondary-dark-dark-v2--active.active {
+  border-color: #c50de2 !important;
+}
+
+*:hover > .g-brd-secondary-dark-dark-v2--hover-parent {
+  border-color: #c50de2 !important;
+}
+
+.g-brd-secondary-dark-dark-v3 {
+  border-color: #b00bca !important;
+}
+
+.g-brd-secondary-dark-dark-v3--hover:hover, .g-brd-secondary-dark-dark-v3--active.active {
+  border-color: #b00bca !important;
+}
+
+*:hover > .g-brd-secondary-dark-dark-v3--hover-parent {
+  border-color: #b00bca !important;
+}
+
+.g-brd-bottom-secondary--hover:hover {
+  border-bottom-color: #d416f2 !important;
+}
+
+/* Secondary Colors */
+.g-brd-theme {
+  border-color: linear-gradient(to right, #d416f2, #629bf9) !important;
+}
+
+.g-brd-theme--before::before {
+  border-color: linear-gradient(to right, #d416f2, #629bf9) !important;
+}
+
+.g-brd-theme--before--active.active::before {
+  border-color: linear-gradient(to right, #d416f2, #629bf9) !important;
+}
+
+.g-brd-theme--hover:hover, .g-brd-theme--active.active {
+  border-color: linear-gradient(to right, #d416f2, #629bf9) !important;
+}
+
+.g-brd-theme--active.active,
+.active .g-brd-theme--active {
+  border-color: linear-gradient(to right, #d416f2, #629bf9) !important;
+}
+
+*:hover > .g-brd-theme--hover-parent {
+  border-color: linear-gradient(to right, #d416f2, #629bf9) !important;
+}
+
+.g-brd-bottom-theme--hover:hover {
+  border-bottom-color: linear-gradient(to right, #d416f2, #629bf9) !important;
 }
 
 /* Main Colors */

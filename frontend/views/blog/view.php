@@ -5,7 +5,7 @@
 use yii\helpers\Html;
 
 $this->title = 'Exclusive interview with Geknology\'s CEO';
-$this->params['breadcrumbs'][] = ['label' => 'Social', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Blog', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
       <!-- Articles Content -->
       <div class="col-lg-9 g-mb-50 g-mb-0--lg">
-        <article class="g-mb-60">
+        <article class="g-mb-60 g-pr-30">
           <header class="g-mb-30">
             <h2 class="h1 g-mb-15">Exclusive interview with Geknology's CEO</h2>
 
@@ -90,9 +90,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
           <!-- Related Articles -->
           <div class="g-mb-40">
-            <div class="u-heading-v3-1 g-mb-30">
-              <h2 class="h5 u-heading-v3__title g-color-gray-dark-v1 text-uppercase g-brd-secondary-opacity-0_3">Noticias relacionadas</h2>
-            </div>
+            <h3 class="h5 g-color-black g-font-weight-600 g-mb-30">Noticias Relacionadas</h3>
 
             <div class="row">
               <!-- Article Video -->
@@ -188,133 +186,137 @@ $this->params['breadcrumbs'][] = $this->title;
       <!-- End Articles Content -->
 
       <!-- Sidebar -->
-      <div class="g-hidden-xs-down col-lg-3">
+      <div class="col-lg-3 g-brd-left--lg g-brd-secondary-opacity-0_3 g-mb-80 g-hidden-md-down">
+          <div class="g-pl-20--lg">
+            <div class="js-sticky-block g-sticky-block--lg g-pt-50" data-start-point="#stickyblock-start" data-end-point="#stickyblock-end">
+            <!-- Search -->
+            <div class="g-mb-50">
+              <h3 class="h5 g-color-black g-font-weight-600 mb-4">Buscar</h3>
+              <div class="input-group">
+                <input class="form-control g-brd-secondary-opacity-0_3 g-placeholder-gray-dark-v5 border-right-0 g-rounded-left-50 g-px-15" type="test" placeholder="Escribe aquí...">
+                <span class="input-group-btn">
+                  <button class="btn u-btn-gradient-theme-v1 g-rounded-right-50 g-py-13 g-px-20 border-0">
+                    <i class="icon-magnifier g-pos-rel g-top-1"></i>
+                  </button>
+                </span>
+              </div>
+            </div>
+            <!-- End Search -->
 
-        <!-- Recent Posts -->
-        <div class="g-mb-30">
-          <div class="u-heading-v3-1 g-mb-30">
-            <h2 class="h5 u-heading-v3__title g-color-gray-dark-v1 text-uppercase g-brd-secondary-opacity-0_3">Últimas noticias</h2>
+            <hr class="g-brd-gray-light-v4 g-my-50">
+
+            <!-- Search -->
+            <div class="g-mb-50">
+              <h3 class="h5 g-color-black g-font-weight-600 g-mb-30">Últimas Noticias</h3>
+
+              <!-- Article -->
+              <article class="media g-mb-30">
+                <a class="d-flex u-shadow-v25 mr-3" href="#">
+                  <img class="g-width-60 g-height-60" src="../img-temp/100x100/img4.jpg" alt="Image Description">
+                </a>
+
+                <div class="media-body">
+                  <h3 class="h6">
+                    <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#">Best dessert recipes for breakfast which will..</a>
+                  </h3>
+
+                  <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
+                    <li class="list-inline-item">
+                      July 20, 2017
+                    </li>
+                  </ul>
+                </div>
+              </article>
+              <!-- End Article -->
+
+              <!-- Article -->
+              <article class="media g-mb-30">
+                <a class="d-flex u-shadow-v25 mr-3" href="#">
+                  <img class="g-width-60 g-height-60" src="../img-temp/100x100/img5.jpg" alt="Image Description">
+                </a>
+
+                <div class="media-body">
+                  <h3 class="h6">
+                    <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#">Stylish things to do, see and purchase..</a>
+                  </h3>
+
+                  <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
+                    <li class="list-inline-item">
+                      July 16, 2017
+                    </li>
+                  </ul>
+                </div>
+              </article>
+              <!-- End Article -->
+
+              <!-- Article -->
+              <article class="media g-mb-30">
+                <a class="d-flex u-shadow-v25 mr-3" href="#">
+                  <img class="g-width-60 g-height-60" src="../img-temp/100x100/img6.jpg" alt="Image Description">
+                </a>
+
+                <div class="media-body">
+                  <h3 class="h6">
+                    <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#">Government plans to test new primary school..</a>
+                  </h3>
+
+                  <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
+                    <li class="list-inline-item">
+                      July 07, 2017
+                    </li>
+                  </ul>
+                </div>
+              </article>
+              <!-- End Article -->
+
+              <!-- Article -->
+              <article class="media">
+                <a class="d-flex u-shadow-v25 mr-3" href="#">
+                  <img class="g-width-60 g-height-60" src="../img-temp/100x100/img7.jpg" alt="Image Description">
+                </a>
+
+                <div class="media-body">
+                  <h3 class="h6">
+                    <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#">Top 10 Luxury Hotels - 5 Star Best Luxury Hotels</a>
+                  </h3>
+
+                  <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
+                    <li class="list-inline-item">
+                      July 11, 2017
+                    </li>
+                  </ul>
+                </div>
+              </article>
+              <!-- End Article -->
+            </div>
+            <!-- End Search -->
+
+            <hr class="g-brd-gray-light-v4 g-my-50">
+
+            <!-- Tags -->
+            <div class="g-mb-40">
+              <h3 class="h5 g-color-black g-font-weight-600 g-mb-30">Temas</h3>
+              <ul class="u-list-inline mb-0">
+                <li class="list-inline-item g-mb-10">
+                  <a class="u-tags-v1 g-color-gray-dark-v4 g-color-white--hover g-bg-gray-light-v5 bg-theme-gradient-v1--hover g-font-size-12 g-rounded-50 g-py-4 g-px-15" href="#">Medicina</a>
+                </li>
+                <li class="list-inline-item g-mb-10">
+                  <a class="u-tags-v1 g-color-gray-dark-v4 g-color-white--hover g-bg-gray-light-v5 bg-theme-gradient-v1--hover g-font-size-12 g-rounded-50 g-py-4 g-px-15" href="#">Estética</a>
+                </li>
+                <li class="list-inline-item g-mb-10">
+                  <a class="u-tags-v1 g-color-gray-dark-v4 g-color-white--hover g-bg-gray-light-v5 bg-theme-gradient-v1--hover g-font-size-12 g-rounded-50 g-py-4 g-px-15" href="#">Salud</a>
+                </li>
+                <li class="list-inline-item g-mb-10">
+                  <a class="u-tags-v1 g-color-gray-dark-v4 g-color-white--hover g-bg-gray-light-v5 bg-theme-gradient-v1--hover g-font-size-12 g-rounded-50 g-py-4 g-px-15" href="#">Prevención</a>
+                </li>
+                <li class="list-inline-item g-mb-10">
+                  <a class="u-tags-v1 g-color-gray-dark-v4 g-color-white--hover g-bg-gray-light-v5 bg-theme-gradient-v1--hover g-font-size-12 g-rounded-50 g-py-4 g-px-15" href="#">Novedades</a>
+                </li>
+              </ul>
+            </div>
+            <!-- End Tags -->
+
           </div>
-
-          <!-- Article -->
-          <article class="media g-mb-30">
-            <a class="d-flex u-shadow-v25 mr-3" href="#">
-              <img class="g-width-60 g-height-60" src="../img-temp/100x100/img4.jpg" alt="Image Description">
-            </a>
-
-            <div class="media-body">
-              <h3 class="h6">
-                <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#">Best dessert recipes for breakfast which will..</a>
-              </h3>
-
-              <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                <li class="list-inline-item">
-                  July 20, 2017
-                </li>
-              </ul>
-            </div>
-          </article>
-          <!-- End Article -->
-
-          <!-- Article -->
-          <article class="media g-mb-30">
-            <a class="d-flex u-shadow-v25 mr-3" href="#">
-              <img class="g-width-60 g-height-60" src="../img-temp/100x100/img5.jpg" alt="Image Description">
-            </a>
-
-            <div class="media-body">
-              <h3 class="h6">
-                <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#">Stylish things to do, see and purchase..</a>
-              </h3>
-
-              <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                <li class="list-inline-item">
-                  July 16, 2017
-                </li>
-              </ul>
-            </div>
-          </article>
-          <!-- End Article -->
-
-          <!-- Article -->
-          <article class="media g-mb-30">
-            <a class="d-flex u-shadow-v25 mr-3" href="#">
-              <img class="g-width-60 g-height-60" src="../img-temp/100x100/img6.jpg" alt="Image Description">
-            </a>
-
-            <div class="media-body">
-              <h3 class="h6">
-                <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#">Government plans to test new primary school..</a>
-              </h3>
-
-              <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                <li class="list-inline-item">
-                  July 07, 2017
-                </li>
-              </ul>
-            </div>
-          </article>
-          <!-- End Article -->
-
-          <!-- Article -->
-          <article class="media">
-            <a class="d-flex u-shadow-v25 mr-3" href="#">
-              <img class="g-width-60 g-height-60" src="../img-temp/100x100/img7.jpg" alt="Image Description">
-            </a>
-
-            <div class="media-body">
-              <h3 class="h6">
-                <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#">Top 10 Luxury Hotels - 5 Star Best Luxury Hotels</a>
-              </h3>
-
-              <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                <li class="list-inline-item">
-                  July 11, 2017
-                </li>
-              </ul>
-            </div>
-          </article>
-          <!-- End Article -->
-        </div>
-        <!-- End Recent Posts -->
-
-        <div id="stickyblock-start" class="js-sticky-block g-sticky-block--lg g-pt-20" data-start-point="#stickyblock-start" data-end-point="#stickyblock-end">
-          <!-- News Feed -->
-          <div class="g-mb-40">
-            <div class="u-heading-v3-1 g-mb-30">
-              <h2 class="h5 u-heading-v3__title g-color-gray-dark-v1 text-uppercase g-brd-secondary-opacity-0_3">Notas de prensa</h2>
-            </div>
-
-            <!-- Article -->
-            <article>
-              <h3 class="h6">
-                <a class="g-color-gray-dark-v1" href="#">Architects plan to stop skyscrapers from blocking out sunlight</a>
-              </h3>
-            </article>
-            <!-- End Article -->
-
-            <hr class="g-brd-gray-light-v4 g-mt-15 g-mb-10">
-
-            <!-- Article -->
-            <article>
-              <h3 class="h6">
-                <a class="g-color-gray-dark-v1" href="#">Cooltex is one of the best technology company of our age and future</a>
-              </h3>
-            </article>
-            <!-- End Article -->
-
-            <hr class="g-brd-gray-light-v4 g-mt-15 g-mb-10">
-
-            <!-- Article -->
-            <article>
-              <h3 class="h6">
-                <a class="g-color-gray-dark-v1" href="#">Some text goes here with plain English and much more other texts go there..</a>
-              </h3>
-            </article>
-            <!-- End Article -->
-          </div>
-          <!-- End News Feed -->
-
         </div>
       </div>
       <!-- End Sidebar -->

@@ -6,10 +6,20 @@
 /* Theme gradient */
 .bg-theme-gradient {
   background: linear-gradient(to right, $theme-color-1, $theme-color-2);
+
+  // Hover
+  &--hover:hover {
+    background: linear-gradient(to right, $theme-color-1, $theme-color-2);
+  }
 }
 
 .bg-theme-gradient-v1 {
   background: linear-gradient(150deg, $theme-color-1, $theme-color-2);
+
+  // Hover
+  &--hover:hover {
+    background: linear-gradient(150deg, $theme-color-1, $theme-color-2);
+  }
 }
 
 /* Gray Light v1 */
