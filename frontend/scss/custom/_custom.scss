@@ -4,13 +4,25 @@ a:hover {
 }
 
 .home-banner {
-  .divimage {
-    height: 120%;
-    background-image: url('../img/bg/05.jpg');
-  }
+  background-size: cover;
+  background-image: url('../img/bg/04.jpg');
+
   img {
     width: 70% !important;
     height: auto !important;
+  }
+}
+
+.breadcrumbs {
+  .breadcrumbs-logo {
+    display: inline-table;
+    img {
+      max-height: 120px;
+      margin-right: 30px;
+    }
+  }
+  .breadcrumbs-header {
+    display: inline-table;
   }
 }
 

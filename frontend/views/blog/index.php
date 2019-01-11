@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
               <li class="list-inline-item">1 Enero 2019</li>
             </ul>
             <h2 class="h2 g-color-black g-font-weight-600 mb-4">
-                <a class="u-link-v5 g-color-black g-color-primary--hover" href="#">Talking Why Her?</a>
+              <?= Html::a('Talking Why Her?', ['blog/view'], ['class' => 'u-link-v5 g-color-black g-color-primary--hover']) ?>
               </h2>
           </div>
           <div class="g-overflow-hidden">
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="mb-4">
               <p class="g-font-size-18 g-line-height-2 mb-0">Working together on the daily requires each individual to let the greater good of the team’s work surface above their own ego. It’s important to stay detail oriented with every project we tackle.</p>
             </div>
-            <a class="g-color-gray-dark-v2 g-color-primary--hover g-font-weight-600 g-font-size-12 g-text-underline--none--hover text-uppercase" href="#">Ver más</a>
+            <?= Html::a('Ver más', ['blog/view'], ['class' => 'g-color-gray-dark-v2 g-color-primary--hover g-font-weight-600 g-font-size-12 g-text-underline--none--hover text-uppercase']) ?>
           </div>
         </article>
         <!-- End Blog Minimal Blocks -->
@@ -50,9 +50,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <li class="list-inline-item">1 Enero 2019</li>
               </ul>
               <h2 class="h3 g-color-black g-font-weight-600 mb-4">
-                  <a class="u-link-v5 g-color-black g-color-primary--hover" href="#">Exclusive interview with InVision's CEO</a>
+                <?= Html::a('Exclusive interview with InVision\'s CEO', ['blog/view'], ['class' => 'u-link-v5 g-color-black g-color-primary--hover']) ?>
                 </h2>
-              <a class="g-color-gray-dark-v2 g-color-primary--hover g-font-weight-600 g-font-size-12 g-text-underline--none--hover text-uppercase" href="#">Ver más</a>
+                <?= Html::a('Ver más', ['blog/view'], ['class' => 'g-color-gray-dark-v2 g-color-primary--hover g-font-weight-600 g-font-size-12 g-text-underline--none--hover text-uppercase']) ?>
             </div>
           </div>
         </article>
@@ -73,9 +73,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <li class="list-inline-item">1 Enero 2019</li>
               </ul>
               <h2 class="h3 g-color-black g-font-weight-600 mb-4">
-                  <a class="u-link-v5 g-color-black g-color-primary--hover" href="#">Announcing a free plan for small teams</a>
+                <?= Html::a('Announcing a free plan for small teams', ['blog/view'], ['class' => 'u-link-v5 g-color-black g-color-primary--hover']) ?>
                 </h2>
-              <a class="g-color-gray-dark-v2 g-color-primary--hover g-font-weight-600 g-font-size-12 g-text-underline--none--hover text-uppercase" href="#">Ver más</a>
+                <?= Html::a('Ver más', ['blog/view'], ['class' => 'g-color-gray-dark-v2 g-color-primary--hover g-font-weight-600 g-font-size-12 g-text-underline--none--hover text-uppercase']) ?>
             </div>
           </div>
         </article>
@@ -90,7 +90,7 @@ $this->params['breadcrumbs'][] = $this->title;
               <li class="list-inline-item">1 Enero 2019</li>
             </ul>
             <h2 class="h2 g-color-black g-font-weight-600 mb-4">
-                <a class="u-link-v5 g-color-black g-color-primary--hover" href="#">Exclusive interview with InVision's CEO</a>
+              <?= Html::a('Exclusive interview with InVision\'s CEO', ['blog/view'], ['class' => 'u-link-v5 g-color-black g-color-primary--hover']) ?>
               </h2>
           </div>
           <div class="g-overflow-hidden">
@@ -100,7 +100,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="mb-4">
               <p class="g-font-size-18 g-line-height-2 mb-0">Working together on the daily requires each individual to let the greater good of the team’s work surface above their own ego. It’s important to stay detail oriented with every project we tackle.</p>
             </div>
-            <a class="g-color-gray-dark-v2 g-color-primary--hover g-font-weight-600 g-font-size-12 g-text-underline--none--hover text-uppercase" href="#">Ver más</a>
+            <?= Html::a('Ver más', ['blog/view'], ['class' => 'g-color-gray-dark-v2 g-color-primary--hover g-font-weight-600 g-font-size-12 g-text-underline--none--hover text-uppercase']) ?>
           </div>
         </article>
         <!-- End Blog Minimal Blocks -->
@@ -120,9 +120,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <li class="list-inline-item">1 Enero 2019</li>
               </ul>
               <h2 class="h3 g-color-black g-font-weight-600 mb-4">
-                  <a class="u-link-v5 g-color-black g-color-primary--hover" href="#">In the future, design principles won’t be about design</a>
+                <?= Html::a('In the future, design principles won’t be about design', ['blog/view'], ['class' => 'u-link-v5 g-color-black g-color-primary--hover']) ?>
                 </h2>
-              <a class="g-color-gray-dark-v2 g-color-primary--hover g-font-weight-600 g-font-size-12 g-text-underline--none--hover text-uppercase" href="#">Ver más</a>
+                <?= Html::a('Ver más', ['blog/view'], ['class' => 'g-color-gray-dark-v2 g-color-primary--hover g-font-weight-600 g-font-size-12 g-text-underline--none--hover text-uppercase']) ?>
             </div>
           </div>
         </article>
@@ -143,9 +143,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <li class="list-inline-item">1 Enero 2019</li>
               </ul>
               <h2 class="h3 g-color-black g-font-weight-600 mb-4">
-                  <a class="u-link-v5 g-color-black g-color-primary--hover" href="#">#c0ffee is the color</a>
+                <?= Html::a('#c0ffee is the color', ['blog/view'], ['class' => 'u-link-v5 g-color-black g-color-primary--hover']) ?>
                 </h2>
-              <a class="g-color-gray-dark-v2 g-color-primary--hover g-font-weight-600 g-font-size-12 g-text-underline--none--hover text-uppercase" href="#">Ver más</a>
+                <?= Html::a('Ver más', ['blog/view'], ['class' => 'g-color-gray-dark-v2 g-color-primary--hover g-font-weight-600 g-font-size-12 g-text-underline--none--hover text-uppercase']) ?>
             </div>
           </div>
         </article>

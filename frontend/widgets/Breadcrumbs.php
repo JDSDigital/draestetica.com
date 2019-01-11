@@ -18,9 +18,11 @@ class Breadcrumbs extends OldBreadcrumbs
     if (empty($this->links)) {
         return;
     }
-    echo '<section class="g-hidden-md-down bg-theme-gradient-v1 g-color-white g-py-30 g-mb-20"><div class="container g-bg-cover__inner">';
+    echo '<section class="breadcrumbs g-hidden-md-down bg-theme-gradient-v1 g-color-white g-py-20 g-mb-20"><div class="container">';
+    echo '<div class="breadcrumbs-logo">' . Html::a(Html::img('@web/img/logo/logo-transparent-1.png', ['class' => 'img-fluid']), ['site/index']) . '</div><div class="breadcrumbs-header">';
     $this->renderHeader();
     parent::run();
+    echo '</div>';
     echo '</div></section>';
   }
 

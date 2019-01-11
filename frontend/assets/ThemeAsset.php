@@ -33,7 +33,7 @@ class ThemeAsset extends AssetBundle
       YII_ENV_DEV ? 'css/unify-components.css' : 'css/unify-components.min.css',
       YII_ENV_DEV ? 'css/unify-globals.css' : 'css/unify-globals.min.css',
       // YII_ENV_DEV ? 'css/unify.css' : 'css/unify.min.css',
-      YII_ENV_DEV ? 'css/custom.css' : 'css/custom.min.css',
+      // YII_ENV_DEV ? 'css/custom.css' : 'css/custom.min.css',
     ];
     public $js = [
         'vendor/jquery/jquery.min.js',

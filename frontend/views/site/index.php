@@ -9,9 +9,7 @@ $this->title = 'Dra. Estética';
 <div class="home-banner">
 
     <!-- Promo Block -->
-    <section class="dzsparallaxer auto-init height-is-based-on-content use-loading mode-scroll loaded dzsprx-readyall" data-options='{direction: "reverse", settings_mode_oneelement_max_offset: "150"}'>
-      <div class="divimage dzsparallaxer--target w-100 g-bg-pos-top-center"></div>
-
+    <section>
       <div class="container g-pb-170 g-pt-50">
         <div class="row">
           <div class="col-md-6 text-center">
