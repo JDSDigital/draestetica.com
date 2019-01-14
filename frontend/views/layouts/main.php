@@ -100,6 +100,9 @@ AppAsset::register($this);
                     <?= Html::a('Blog', ['blog/index'], ['class' => (Yii::$app->controller->id == 'blog') ? 'nav-link active' : 'nav-link']) ?>
                   </li>
                   <li class="nav-item g-my-5">
+                    <?= Html::a('Partners', ['partners/index'], ['class' => (Yii::$app->controller->id == 'partners') ? 'nav-link active' : 'nav-link']) ?>
+                  </li>
+                  <li class="nav-item g-my-5">
                     <a href="#" class="nav-link <?= (Yii::$app->controller->id == 'contacto') ? 'active' : '' ?>">Contacto</a>
                   </li>
                 </ul>
@@ -222,7 +225,11 @@ AppAsset::register($this);
           </li>
           <li class="d-flex align-items-baseline g-mb-12">
             <i class="fa fa-angle-double-right g-mr-8"></i>
-            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">Blog</a>
+            <?= Html::a('Blog', ['blog/index'], ['class' => 'g-color-white-opacity-0_8 g-color-white--hover']) ?>
+          </li>
+          <li class="d-flex align-items-baseline g-mb-12">
+            <i class="fa fa-angle-double-right g-mr-8"></i>
+            <?= Html::a('Partners', ['partners/index'], ['class' => 'g-color-white-opacity-0_8 g-color-white--hover']) ?>
           </li>
           <li class="d-flex align-items-baseline g-mb-12">
             <i class="fa fa-angle-double-right g-mr-8"></i>

@@ -176,6 +176,33 @@ $this->params['breadcrumbs'][] = $this->title;
           <!-- Search -->
           <div class="g-mb-50">
             <h3 class="h5 g-color-black g-font-weight-600 g-mb-30">Instagram</h3>
+            <div class="row">
+              <div class="col-md-12 g-mb-30">
+                <a class="js-fancybox" data-fancybox-gallery="lightbox-gallery--col2" href="../img-temp/500x450/img3.jpg" title="Lightbox Gallery">
+                  <img class="img-fluid" src="../img-temp/500x450/img3.jpg" alt="Image Description">
+                </a>
+              </div>
+              <div class="col-md-12 g-mb-30">
+                <a class="js-fancybox" data-fancybox-gallery="lightbox-gallery--col2" href="../img-temp/500x450/img4.jpg" title="Lightbox Gallery">
+                  <img class="img-fluid" src="../img-temp/500x450/img4.jpg" alt="Image Description">
+                </a>
+              </div>
+              <div class="col-md-12 g-mb-30">
+                <a class="js-fancybox" data-fancybox-gallery="lightbox-gallery--col2" href="../img-temp/500x450/img5.jpg" title="Lightbox Gallery">
+                  <img class="img-fluid" src="../img-temp/500x450/img5.jpg" alt="Image Description">
+                </a>
+              </div>
+              <div class="col-md-12 g-mb-30">
+                <a class="js-fancybox" data-fancybox-gallery="lightbox-gallery--col2" href="../img-temp/500x450/img6.jpg" title="Lightbox Gallery">
+                  <img class="img-fluid" src="../img-temp/500x450/img6.jpg" alt="Image Description">
+                </a>
+              </div>
+              <div class="col-md-12 g-mb-30">
+                <a class="js-fancybox" data-fancybox-gallery="lightbox-gallery--col2" href="../img-temp/500x450/img6.jpg" title="Lightbox Gallery">
+                  <img class="img-fluid" src="../img-temp/500x450/img7.jpg" alt="Image Description">
+                </a>
+              </div>
+            </div>
 
           </div>
           <!-- End Search -->
