@@ -74,6 +74,22 @@ a:hover {
     }
 }
 
+.tooltip {
+  .arrow:before {
+    border-top-color: #ccc !important;
+  }  
+  .tooltip-inner {
+    text-align: left;
+    color: #222;
+    background-image: -moz-linear-gradient(top, #f8f8f8, #cccccc) !important;
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f8f8f8),color-stop(1, #cccccc)) !important;
+    background-image: -webkit-linear-gradient(top, #f8f8f8, #cccccc) !important;
+    background-image: -moz-linear-gradient(top, #f8f8f8, #cccccc) !important;
+    background-image: -ms-linear-gradient(top, #f8f8f8, #cccccc) !important;
+    background-image: -o-linear-gradient(top, #f8f8f8, #cccccc) !important;
+  }
+}
+
 footer {
   text-shadow: 1px 1px 5px black;
 }

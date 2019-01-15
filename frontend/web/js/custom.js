@@ -3,6 +3,9 @@ $(document).on('ready', function () {
   // initialization of carousel
   $.HSCore.components.HSCarousel.init('.js-carousel');
 
+  // initialization of popovers
+  $('[data-toggle="popover"]').popover();
+
   // initialization of HSDropdown component
   $.HSCore.components.HSDropdown.init($('[data-dropdown-target]'), {
     afterOpen: function(){
