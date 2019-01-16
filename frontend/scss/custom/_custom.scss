@@ -11,6 +11,7 @@ a:hover {
 .home-banner {
   background-size: cover;
   background-image: url('../img/bg/04.jpg');
+  background-attachment: fixed;
 
   img {
     width: 70% !important;
@@ -77,7 +78,7 @@ a:hover {
 .tooltip {
   .arrow:before {
     border-top-color: #ccc !important;
-  }  
+  }
   .tooltip-inner {
     text-align: left;
     color: #222;

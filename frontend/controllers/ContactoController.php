@@ -76,7 +76,7 @@ class ContactoController extends Controller
 
             return $this->refresh();
         } else {
-            return $this->render('contact', [
+            return $this->render('index', [
                 'model' => $model,
             ]);
         }
