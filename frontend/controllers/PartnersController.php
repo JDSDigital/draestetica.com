@@ -5,6 +5,7 @@ use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use common\models\Partners;
 
 /**
  * Social controller
@@ -65,7 +66,11 @@ class PartnersController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $partners = Partners::find()->active()->all();
+
+        return $this->render('index', [
+            'partners' => $partners,
+        ]);
     }
 
 }
