@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
               <li class="list-inline-item">1 Enero 2019</li>
             </ul>
             <h2 class="h2 g-color-black g-font-weight-600 mb-4">
-              <?= Html::a('Talking Why Her?', ['blog/view'], ['class' => 'u-link-v5 g-color-black g-color-primary--hover']) ?>
+              <?= Html::a('La piel, un mundo de sorpresas.', ['blog/view'], ['class' => 'u-link-v5 g-color-black g-color-primary--hover']) ?>
               </h2>
           </div>
           <div class="g-overflow-hidden">
@@ -28,7 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
           </div>
           <div class="g-px-100--md g-py-30--md">
             <div class="mb-4">
-              <p class="g-font-size-18 g-line-height-2 mb-0">Working together on the daily requires each individual to let the greater good of the team’s work surface above their own ego. It’s important to stay detail oriented with every project we tackle.</p>
+              <p class="g-font-size-18 g-line-height-2 mb-0">Hola hoy te hablaré de la piel, pero... ¿Qué es la piel?, ¿Cuántos tipos de piel
+                existen?, ¿Qué podemos hacer para mantenerla linda?, y ¿Cómo reconozco mi tipo de
+                piel?, pues te contare esto y más.</p>
             </div>
             <?= Html::a('Ver más', ['blog/view'], ['class' => 'g-color-gray-dark-v2 g-color-primary--hover g-font-weight-600 g-font-size-12 g-text-underline--none--hover text-uppercase']) ?>
           </div>

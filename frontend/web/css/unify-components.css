@@ -24651,6 +24651,20 @@ a:hover {
   height: auto !important;
 }
 
+/* If the screen size is 601px or more, set the font-size of <div> to 80px */
+@media only screen and (min-width: 601px) {
+  .home-banner {
+    background-image: url("../img/bg/04.jpg");
+  }
+}
+
+/* If the screen size is 600px or less, set the font-size of <div> to 30px */
+@media only screen and (max-width: 600px) {
+  .home-banner {
+    background-image: url("../img/bg/06.jpg");
+  }
+}
+
 .breadcrumbs .breadcrumbs-logo {
   display: inline-table;
 }
@@ -24686,7 +24700,7 @@ a:hover {
 }
 
 .partners .logo-box a img {
-  opacity: 0.5;
+  opacity: 1;
   -webkit-transition: all 0.2s ease !important;
   -moz-transition: all 0.2s ease !important;
   -o-transition: all 0.2s ease !important;
@@ -24698,7 +24712,7 @@ a:hover {
 }
 
 .partners .logo-box:hover a img {
-  opacity: 1;
+  opacity: 0.5;
   -webkit-transition: all 0.2s ease !important;
   -moz-transition: all 0.2s ease !important;
   -o-transition: all 0.2s ease !important;
@@ -24708,6 +24722,7 @@ a:hover {
 
 .tooltip .arrow:before {
   border-top-color: #ccc !important;
+  border-bottom-color: #f8f8f8 !important;
 }
 
 .tooltip .tooltip-inner {

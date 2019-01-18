@@ -115,38 +115,6 @@ AppAsset::register($this);
       </div>
     </div>
     <!-- End Sidebar Navigation -->
-    <?php /*
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end(); */
-    ?>
 
     <div class="">
         <?= Breadcrumbs::widget([
@@ -157,12 +125,11 @@ AppAsset::register($this);
     </div>
 </div>
 
-<div id="instafeed"></div>
-
 <!-- Footer -->
 <footer class="bg-theme-gradient-v1 g-color-white g-py-60">
   <div class="container">
     <div class="row">
+
       <!-- Footer Content -->
       <div class="col-lg-3 g-mb-40 g-mb-0--lg">
         <a class="d-block g-mb-20" href="#">
@@ -170,7 +137,7 @@ AppAsset::register($this);
         </a>
 
         <div class="g-mb-20">
-          <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Maecenas eget nisl id libero tincidunt.</p>
+          <p><em>"Una mezcla perfecta<br />entre salud y belleza"</em></p>
         </div>
 
       </div>
