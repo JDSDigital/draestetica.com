@@ -64,7 +64,7 @@ AppAsset::register($this);
 
     <!-- Sidebar Navigation -->
     <div id="js-header" class="u-header u-header--side" aria-labelledby="header-toggler" data-header-behavior="overlay" data-header-position="left" data-header-breakpoint="lg" data-header-classes="g-transition-0_5" data-header-overlay-classes="g-bg-black-opacity-0_8 g-transition-0_5">
-      <div class="u-header__sections-container g-bg-white g-brd-right--lg g-brd-gray-light-v5 g-py-10 g-py-40--lg g-px-14--lg">
+      <div class="u-header__sections-container g-bg-white g-brd-right--lg g-brd-gray-light-v5 g-py-40--lg g-px-14--lg">
         <div class="u-header__section u-header__section--light">
           <nav class="navbar navbar-expand-lg">
             <div class="js-mega-menu container">
