@@ -26,6 +26,9 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
 
+    public $password;
+    public $repassword;
+
 
     /**
      * {@inheritdoc}
@@ -34,6 +37,23 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return '{{%xsystem_users}}';
     }
+
+    public function beforeSave($insert)
+    {
+    		// Verifico si se ha cambiado el password
+    		if ($this->password != '') {
+      			$this->password_hash = Yii::$app->security->generatePasswordHash($this->password);
+      			$this->auth_key = Yii::$app->security->generateRandomString();
+    		}
+
+    		if ($this->created_at == null) {
+            $this->created_at = date('U');
+        }
+
+        $this->updated_at = date('U');
+
+        return true;
+  	}
 
     /**
      * {@inheritdoc}
@@ -51,9 +71,37 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            [['password', 'repassword'], 'required', 'on' => ['create']],
+            [
+              'repassword',
+              'compare',
+              'compareAttribute' => 'password',
+              'message' => Yii::t('app', 'Las contraseñas deben coincidir.'),
+            ],
+
+      			[['email'], 'required'],
+            [['email'], 'email'],
+      			[['email'], 'unique'],
+      			[['email', 'password', 'repassword', 'password_reset_token'], 'string', 'max' => 255],
+
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            [['created_at', 'updated_at'], 'integer'],
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+      return [
+        'id' => 'ID',
+        'status' => 'Estado',
+        'email' => 'Correo',
+        'created_at' => 'Creado En',
+        'updated_at' => 'Actualizado En',
+      ];
     }
 
     /**

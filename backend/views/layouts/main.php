@@ -7,7 +7,7 @@ use backend\assets\AppAsset;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
+use backend\widgets\Breadcrumbs;
 use common\widgets\Alert;
 
 AppAsset::register($this);
@@ -90,6 +90,9 @@ AppAsset::register($this);
                                     </li>
                                     <li class="<?= (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') ? 'active' : '' ?>">
                                         <?= Html::a('<i class="icon-home4"></i> <span>Dashboard</span>', ['//site/index']) ?>
+                                    </li>
+                                    <li class="<?= (Yii::$app->controller->module->id == 'Usuarios') ? 'active' : '' ?>">
+                                        <?= Html::a('<i class="icon-users"></i> <span>Usuarios</span>', ['//Usuarios']) ?>
                                     </li>
                                     <!-- /Main -->
                                 </ul>
