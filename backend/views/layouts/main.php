@@ -94,6 +94,9 @@ AppAsset::register($this);
                                     <li class="<?= (Yii::$app->controller->module->id == 'Usuarios') ? 'active' : '' ?>">
                                         <?= Html::a('<i class="icon-users"></i> <span>Usuarios</span>', ['//Usuarios']) ?>
                                     </li>
+                                    <li class="<?= (Yii::$app->controller->module->id == 'Partners') ? 'active' : '' ?>">
+                                        <?= Html::a('<i class="icon-store"></i> <span>Partners</span>', ['//Partners']) ?>
+                                    </li>
                                     <!-- /Main -->
                                 </ul>
                             </div>

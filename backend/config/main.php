@@ -22,6 +22,10 @@ return [
             'class' => 'backend\modules\Usuarios\Module',
             'defaultRoute' => 'usuarios',
         ],
+        'Partners' => [
+            'class' => 'backend\modules\Partners\Module',
+            'defaultRoute' => 'partners',
+        ],
     ],
     'components' => [
         'request' => [
