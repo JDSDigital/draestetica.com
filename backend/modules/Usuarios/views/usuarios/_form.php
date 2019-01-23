@@ -11,10 +11,21 @@ use yii\widgets\ActiveForm;
 <div class="user-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'email')->textInput() ?>
-    <?= $form->field($model, 'password')->passwordInput() ?>
-    <?= $form->field($model, 'repassword')->passwordInput() ?>
+    <div class="row">
+      <div class="col-md-6">
+        <?= $form->field($model, 'email')->textInput() ?>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <?= $form->field($model, 'password')->passwordInput() ?>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <?= $form->field($model, 'repassword')->passwordInput() ?>
+      </div>
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

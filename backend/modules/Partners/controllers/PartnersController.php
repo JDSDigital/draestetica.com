@@ -124,7 +124,7 @@ class PartnersController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->deleteimage($id)) {
+        if ($this->actionDeleteimage($id)) {
             $model->delete();
         }
 
@@ -138,14 +138,7 @@ class PartnersController extends Controller
      */
     public function actionDeleteimage($id){
 
-        $partner = Partners::findOne($id);
-
-        $image = $partner->getImagefolder() . $partner->file;
-
-        if (unlink($image))
-            return true;
-        else
-            return false;
+        return $this->findModel($id)->deleteImage();
     }
 
     /**

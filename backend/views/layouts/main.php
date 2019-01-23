@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use backend\assets\AppAsset;
+use backend\assets\SweetAlertAsset;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -11,6 +12,7 @@ use backend\widgets\Breadcrumbs;
 use common\widgets\Alert;
 
 AppAsset::register($this);
+SweetAlertAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

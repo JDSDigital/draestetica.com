@@ -142,4 +142,11 @@ class Partners extends \yii\db\ActiveRecord
         return false;
 
     }
+
+    public function deleteImage()
+    {
+        $image = $this->getImagefolder() . $this->file;
+
+        return (unlink($image)) ? true : false;
+    }
 }

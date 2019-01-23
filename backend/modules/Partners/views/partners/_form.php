@@ -13,30 +13,42 @@ use kartik\widgets\FileInput;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+      <div class="col-md-6">
+        <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+      </div>
+      <div class="col-md-6">
+        <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+      </div>
+    </div>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'image')->widget(FileInput::classname(), [
-        'language' => 'es',
-        'pluginOptions' => [
-          'previewFileType' => 'image',
-          'showCancel' => false,
-          'showUpload' => false,
-          'showDelete' => true,
-          'allowedFileTypes' => ['image'],
-          'allowedFileExtensions' => ['jpg', 'png'],
-          'maxFileSize' => 2800,
-          'maxFileCount' => 9,
-          'overwriteInitial' => false,
-          'initialPreview' => isset($previews) ? $previews : false,
-          'initialPreviewAsData' => true,
-          'initialPreviewShowDelete' => true,
-          'initialPreviewConfig' => isset($previewsConfig) ? $previewsConfig : false,
-        ]
-    ]); ?>
+    <div class="row">
+      <div class="col-md-12">
+        <?= $form->field($model, 'image')->widget(FileInput::classname(), [
+          'language' => 'es',
+          'pluginOptions' => [
+            'previewFileType' => 'image',
+            'showCancel' => false,
+            'showUpload' => false,
+            'showDelete' => true,
+            'allowedFileTypes' => ['image'],
+            'allowedFileExtensions' => ['jpg', 'png'],
+            'maxFileSize' => 2800,
+            'maxFileCount' => 9,
+            'overwriteInitial' => false,
+            'initialPreview' => isset($previews) ? $previews : false,
+            'initialPreviewAsData' => true,
+            'initialPreviewShowDelete' => true,
+            'initialPreviewConfig' => isset($previewsConfig) ? $previewsConfig : false,
+          ]
+        ]); ?>
+      </div>
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
