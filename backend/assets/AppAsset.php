@@ -27,6 +27,7 @@ class AppAsset extends AssetBundle
         'js/yii/yii_overrides.js',
         'js/plugins/loaders/pace.min.js',
         'js/core/libraries/bootstrap.min.js',
+        'js/app.js',
         'js/yii/script.js',
     ];
     public $depends = [

@@ -9,7 +9,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     // Setup
-    CKEDITOR.replace('editor-full', {
+    CKEDITOR.replace('blog-article', {
         height: 400,
         extraPlugins: 'forms'
     });
@@ -20,10 +20,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // ------------------------------
 
     // Setup
-    var editorReadOnly = CKEDITOR.replace('editor-readonly', {
-        height: 400,
-        extraPlugins: 'forms'
-    });
+    // var editorReadOnly = CKEDITOR.replace('editor-readonly', {
+    //     height: 400,
+    //     extraPlugins: 'forms'
+    // });
 
     // The instanceReady event is fired when an instance of CKEditor has finished
     // its initialization.
@@ -111,5 +111,5 @@ document.addEventListener('DOMContentLoaded', function() {
         extraAllowedContent: 'a(documentation);abbr[title];code',
         removePlugins: 'stylescombo'
     });
-    
+
 });

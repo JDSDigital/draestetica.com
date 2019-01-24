@@ -24,7 +24,7 @@ class m190116_125018_create_partners_table extends Migration
             'updated_at' => $this->integer()->notNull()->defaultValue(0),
         ]);
 
-        $this->batchInsert('xpartners_logos', ['name', 'description', 'url', 'file'], [
+        /*$this->batchInsert('xpartners_logos', ['name', 'description', 'url', 'file'], [
           ['Geknology', 'Descripción para Geknology', 'https://www.geknology.com', 'geknology.png'],
           ['Edbarq Arquitectura', 'Descripción para Edbarq Arquitectura', 'https://www.edbarqarquitectura.cl', 'edbarq-arquitectura.jpg'],
           ['E. Loren', 'Descripción para E. Loren', 'https://www.eloren.cl', 'eloren.jpg'],
@@ -34,7 +34,7 @@ class m190116_125018_create_partners_table extends Migration
           ['Ven Fit', 'Descripción para Ven Fit', 'https://www.venfit.cl', 'venfit.jpg'],
           ['Leo Style', 'Descripción para Leo Style', 'https://www.leostyle.cl', 'leostyle.png'],
           ['Aili Castro', 'Descripción para Aili Castro', 'https://www.ailicastro.cl', 'ailicastro.png'],
-        ]);
+        ]);*/
     }
 
     /**

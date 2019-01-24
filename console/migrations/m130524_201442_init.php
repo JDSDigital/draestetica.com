@@ -21,14 +21,14 @@ class m130524_201442_init extends Migration
             'email' => $this->string()->notNull()->unique(),
 
             'status' => $this->smallInteger()->notNull()->defaultValue(10),
-            'created_at' => $this->integer()->notNull(),
-            'updated_at' => $this->integer()->notNull(),
+            'created_at' => $this->integer()->notNull()->defaultValue(0),
+            'updated_at' => $this->integer()->notNull()->defaultValue(0),
         ], $tableOptions);
 
         $this->insert('{{%xsystem_users}}', [
             // 'username'      => 'admin',
-            'auth_key'      => 'wYOHMP04ZS-UaWCLgZqdDOvuOMWUlids',
-            'password_hash' => '$2y$13$FD2J8Gr0YCaw5s3L3QZQzOsNwAE9VM37u.9sJPIk8Ts4WhSVmR7aW',
+            'auth_key'      => '6-Oj7UlbBzGErKAjXidC-QNhtATWbctw',
+            'password_hash' => '$2y$13$GbyLKMHbbu/dWxnafz9znudqQUKdcwpqhlePxhD1xoJloE2./EqBC',
             'email'         => 'jdsosa@gmail.com',
 
             'status'     => 10,

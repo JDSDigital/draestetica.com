@@ -26,6 +26,9 @@ return [
             'class' => 'backend\modules\Partners\Module',
             'defaultRoute' => 'partners',
         ],
+        'Blog' => [
+            'class' => 'backend\modules\Blog\Module',
+        ],
     ],
     'components' => [
         'request' => [

@@ -35,4 +35,5 @@ phpunit.phar
 /.vagrant
 
 /node_modules
+/frontend/web/img/blog
 /frontend/web/img/logos

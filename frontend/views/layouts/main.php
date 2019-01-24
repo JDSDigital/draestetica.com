@@ -53,10 +53,10 @@ AppAsset::register($this);
 <div class="wrap">
 
   <!-- Header Toggle Button -->
-    <button class="btn u-btn-white u-header-toggler u-header-toggler--top-right g-pa-0" id="header-toggler" aria-haspopup="true" aria-expanded="false" aria-controls="js-header" aria-label="Toggle Header" data-target="#js-header">
+    <button class="btn u-header-toggler g-pa-0 <?= (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') ? 'u-header-toggler--top-left u-btn-gradient-theme-v1' : 'u-header-toggler--top-right u-btn-white' ?>" id="header-toggler" aria-haspopup="true" aria-expanded="false" aria-controls="js-header" aria-label="Toggle Header" data-target="#js-header">
       <span class="hamburger hamburger--collapse">
         <span class="hamburger-box">
-          <span class="hamburger-inner"></span>
+          <span class="hamburger-inner <?= (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') ? 'g-bg-white' : '' ?>"></span>
         </span>
       </span>
     </button>
@@ -69,7 +69,7 @@ AppAsset::register($this);
           <nav class="navbar navbar-expand-lg">
             <div class="js-mega-menu container">
               <!-- Responsive Toggle Button -->
-              <button class="navbar-toggler navbar-toggler-right btn g-line-height-1 g-brd-none g-pa-0 g-pos-abs g-right-0" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
+              <button class="navbar-toggler navbar-toggler-left btn g-line-height-1 g-brd-none g-pa-0 g-pos-abs g-right-0" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
                 <span class="hamburger hamburger--slider">
                   <span class="hamburger-box">
                     <span class="hamburger-inner"></span>
