@@ -49,6 +49,12 @@ return [
             'rules' => [
             ],
         ],
+        'formatter' => [
+            'dateFormat' => 'dd MM yyyy',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => ' ',
+            'currencyCode' => 'CLP',
+        ],
         'assetManager' => [
             'bundles' => [
                 // 'yii\web\JqueryAsset' => [

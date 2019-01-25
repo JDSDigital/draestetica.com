@@ -53,7 +53,7 @@ AppAsset::register($this);
 <div class="wrap">
 
   <!-- Header Toggle Button -->
-    <button class="btn u-header-toggler g-pa-0 <?= (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') ? 'u-header-toggler--top-left u-btn-gradient-theme-v1' : 'u-header-toggler--top-right u-btn-white' ?>" id="header-toggler" aria-haspopup="true" aria-expanded="false" aria-controls="js-header" aria-label="Toggle Header" data-target="#js-header">
+    <button class="btn u-header-toggler g-pa-0 u-header-toggler--top-right <?= (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') ? 'u-btn-gradient-theme-v1' : 'u-btn-white' ?>" id="header-toggler" aria-haspopup="true" aria-expanded="false" aria-controls="js-header" aria-label="Toggle Header" data-target="#js-header">
       <span class="hamburger hamburger--collapse">
         <span class="hamburger-box">
           <span class="hamburger-inner <?= (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') ? 'g-bg-white' : '' ?>"></span>

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use common\models\Blog;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Blog */
@@ -11,38 +12,71 @@ $this->params['breadcrumbs'][] = ['label' => 'Blogs', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="blog-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
+<div class="row">
+  <div class="col-lg-12">
+    <section class="panel ml10 mr10">
+      <header class="panel-heading">
+        <?= Html::a('<i class="icon-pencil5 mr5"></i>Modificar', ['update', 'id' => $model->id], ['class' => 'btn bg-success btn-xs']) ?>
+        <?= Html::a('<i class="fa fa-remove mr5"></i>Borrar', ['delete', 'id' => $model->id], [
+            'class' => 'btn bg-danger btn-xs',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => '¿Seguro deseas borrar esta entrada?',
                 'method' => 'post',
             ],
         ]) ?>
-    </p>
+      </header>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'tag_id',
-            'title',
-            'summary',
-            'article:ntext',
-            'file',
-            'author',
-            'source',
-            'views',
-            'featured',
-            'status',
-            'created_at',
-            'updated_at',
-        ],
-    ]) ?>
+      <div class="row">
+        <div class="col-lg-4">
+          <?= Html::img($model->getThumb(), ['class' => 'img-responsive p20']) ?>
+        </div>
+      </div>
 
+      <?= DetailView::widget([
+          'model' => $model,
+          'attributes' => [
+              [
+                  'attribute' => 'status',
+                  'value' => function ($model) {
+                      return ($model->status == Blog::STATUS_ACTIVE) ? 'Activo' : 'Inactivo';
+                  },
+              ],
+              [
+                  'attribute' => 'featured',
+                  'value' => function ($model) {
+                      return ($model->featured == Blog::STATUS_ACTIVE) ? 'Activo' : 'Inactivo';
+                  },
+              ],
+              [
+                  'attribute' => 'tag_id',
+                  'value' => function ($model) {
+                      return $model->tag->name;
+                  },
+              ],
+              'title',
+              'summary',
+              [
+                  'attribute' => 'article',
+                  'format' => 'html',
+              ],
+              'file',
+              'author',
+              'source',
+              'views',
+              [
+                'attribute' => 'created_at',
+                'value' => function ($model) {
+                    return date('d-m-Y', $model->created_at);
+                },
+              ],
+              [
+                'attribute' => 'updated_at',
+                'value' => function ($model) {
+                    return date('d-m-Y', $model->updated_at);
+                },
+              ],
+          ],
+      ]) ?>
+    </section>
+  </div>
 </div>

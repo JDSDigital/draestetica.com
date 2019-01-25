@@ -63,7 +63,7 @@ class Blog extends \yii\db\ActiveRecord
     {
         return [
             [['tag_id', 'views', 'featured', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['title', 'summary', 'file'], 'required'],
+            [['title', 'summary'], 'required'],
             [['article'], 'string'],
             [['title', 'summary', 'file', 'author', 'source'], 'string', 'max' => 255],
         ];
@@ -96,6 +96,11 @@ class Blog extends \yii\db\ActiveRecord
         return Yii::getAlias('@frontend/web/img/blog/');
     }
 
+    public static function getImagethumbfolder()
+    {
+        return Yii::getAlias('@frontend/web/img/blog/thumbs/');
+    }
+
     public static function getFolder()
     {
         $directory = Yii::getAlias('@web/img/blog/');
@@ -103,14 +108,24 @@ class Blog extends \yii\db\ActiveRecord
         return str_replace('admin/', '', $directory);
     }
 
-    public function getLogo()
+    public function getImage()
     {
         return self::getFolder() . $this->file;
+    }
+
+    public function getThumb()
+    {
+        return self::getFolder() . 'thumbs/' . $this->file;
     }
 
     public function getRelated()
     {
         return self::find()->active()->where(['tag_id' => $this->tag_id])->limit(6)->all();
+    }
+
+    public static function getLatest()
+    {
+        return self::find()->active()->orderBy(['id' => 'DESC'])->limit(4)->all();
     }
 
     /**
@@ -132,9 +147,14 @@ class Blog extends \yii\db\ActiveRecord
             Image::resize(self::getImagefolder() . 'tmp-' . $name, 1024, null)
             ->save(self::getImagefolder() . $name, ['jpeg_quality' => 80]);
 
+            Image::resize(self::getImagefolder() . 'tmp-' . $name, 250, null)
+            ->save(self::getImagethumbfolder() . $name, ['jpeg_quality' => 80]);
+
             unlink(self::getImagefolder() . 'tmp-' . $name);
 
-            return true;
+            if ($this->save()) {
+                return true;
+            }
         }
 
         return false;
@@ -144,8 +164,9 @@ class Blog extends \yii\db\ActiveRecord
     public function deleteImage()
     {
         $image = $this->getImagefolder() . $this->file;
+        $imagethumb = $this->getImagethumbfolder() . $this->file;
 
-        return (unlink($image)) ? true : false;
+        return (unlink($image) && unlink($imagethumb)) ? true : false;
     }
 
     /**

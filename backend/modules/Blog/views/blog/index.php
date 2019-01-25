@@ -52,9 +52,9 @@ $this->params['breadcrumbs'][] = $this->title;
               'format' => 'raw',
               'headerOptions' => ['style' => 'width:100px'],
               'value' => function ($model) {
-                  $check = ($model->status == Blog::STATUS_ACTIVE) ? "checked='checked'" : null;
+                  $check = ($model->featured == Blog::STATUS_ACTIVE) ? "checked='checked'" : null;
                   return "<div class='switchery-xs m0'>
-                    <input id='status-$model->id' type='checkbox' class='switchery switchStatus' $check>
+                    <input id='featured-$model->id' type='checkbox' class='switchery switchStatus' $check>
                   </div>";
               }
           ],
