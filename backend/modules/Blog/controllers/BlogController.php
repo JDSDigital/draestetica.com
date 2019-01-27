@@ -91,7 +91,7 @@ class BlogController extends Controller
     {
         $model = $this->findModel($id);
 
-        $previews[] = $model->image;
+        $previews[] = $model->getThumb();
         $previewsConfig[] = [
           'caption' => $model->file,
           'key' => $model->id,
@@ -139,6 +139,52 @@ class BlogController extends Controller
     public function actionDeleteimage($id){
 
         return $this->findModel($id)->deleteImage();
+    }
+
+    /**
+     * Changes Status.
+     *
+     * @return string
+     */
+    public function actionStatus()
+    {
+        if (Yii::$app->request->isAjax) {
+            $data = Yii::$app->request->post();
+
+            $model = Blog::findOne($data['id']);
+
+            if ($model->status)
+                $model->status = Blog::STATUS_DELETED;
+            else
+                $model->status = Blog::STATUS_ACTIVE;
+
+            $model->save();
+        }
+
+        return null;
+    }
+
+    /**
+     * Changes Featured Status.
+     *
+     * @return string
+     */
+    public function actionFeatured()
+    {
+        if (Yii::$app->request->isAjax) {
+            $data = Yii::$app->request->post();
+
+            $model = Blog::findOne($data['id']);
+
+            if ($model->featured)
+                $model->featured = Blog::STATUS_DELETED;
+            else
+                $model->featured = Blog::STATUS_ACTIVE;
+
+            $model->save();
+        }
+
+        return null;
     }
 
     /**

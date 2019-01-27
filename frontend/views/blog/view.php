@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 $this->title = $article->title;
 $this->params['breadcrumbs'][] = ['label' => 'Blog', 'url' => ['index']];
@@ -112,19 +113,26 @@ $this->params['breadcrumbs'][] = $article->title;
       <div class="col-lg-3 g-brd-left--lg g-brd-secondary-opacity-0_3 g-mb-80 g-hidden-md-down">
           <div class="g-pl-20--lg">
             <div class="js-sticky-block g-sticky-block--lg g-pt-50" data-start-point="#stickyblock-start" data-end-point="#stickyblock-end">
-            <!-- Search -->
-            <div class="g-mb-50">
-              <h3 class="h5 g-color-black g-font-weight-600 mb-4">Buscar</h3>
-              <div class="input-group">
-                <input class="form-control g-brd-secondary-opacity-0_3 g-placeholder-gray-dark-v5 border-right-0 g-rounded-left-50 g-px-15" type="test" placeholder="Escribe aquí...">
-                <span class="input-group-btn">
-                  <button class="btn u-btn-gradient-theme-v1 g-rounded-right-50 g-py-13 g-px-20 border-0">
-                    <i class="icon-magnifier g-pos-rel g-top-1"></i>
-                  </button>
-                </span>
+              <!-- Search -->
+              <?php
+                  $form = ActiveForm::begin([
+                    'id' => 'blog-search',
+                    'action' => ['/blog/index']
+                  ]);
+              ?>
+              <div class="g-mb-50">
+                <h3 class="h5 g-color-black g-font-weight-600 mb-4">Buscar</h3>
+                <div class="input-group">
+                  <input type="text" id="blogsearch-title" class="form-control g-brd-secondary-opacity-0_3 g-placeholder-gray-dark-v5 border-right-0 g-rounded-left-50 g-px-15" name="BlogSearch[title]" placeholder="Escribe aquí...">
+                  <span class="input-group-btn">
+                    <?= Html::submitButton('<i class="icon-magnifier g-pos-rel g-top-1"></i>', [
+                        'class' => 'btn u-btn-gradient-theme-v1 g-rounded-right-50 g-py-13 g-px-20 border-0',
+                    ]) ?>
+                  </span>
+                </div>
               </div>
-            </div>
-            <!-- End Search -->
+              <?php ActiveForm::end(); ?>
+              <!-- End Search -->
 
             <hr class="g-brd-gray-light-v4 g-my-50">
 
@@ -146,7 +154,7 @@ $this->params['breadcrumbs'][] = $article->title;
 
                     <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
                       <li class="list-inline-item">
-                        <?= Yii::$app->formatter->asDate($article->created_at, 'long') ?>
+                        <?= Yii::$app->formatter->asDate($value->created_at, 'long') ?>
                       </li>
                     </ul>
                   </div>
@@ -162,9 +170,15 @@ $this->params['breadcrumbs'][] = $article->title;
             <div class="g-mb-40">
               <h3 class="h5 g-color-black g-font-weight-600 g-mb-30">Temas</h3>
               <ul class="u-list-inline mb-0">
-                <?php foreach ($tags as $tag) : ?>
+                <?php foreach ($tags as $key => $tag) : ?>
                   <li class="list-inline-item g-mb-10">
-                    <a class="u-tags-v1 g-color-gray-dark-v4 g-color-white--hover g-bg-gray-light-v5 bg-theme-gradient-v1--hover g-font-size-12 g-rounded-50 g-py-4 g-px-15" href="#"><?= $tag ?></a>
+                    <?= Html::a($tag, ['blog/index'], [
+                      'class' => 'u-tags-v1 g-color-gray-dark-v4 g-color-white--hover g-bg-gray-light-v5 bg-theme-gradient-v1--hover g-font-size-12 g-rounded-50 g-py-4 g-px-15',
+                      'data-method' => 'POST',
+                      'data-params' => [
+                          'tag_id' => $key
+                      ],
+                    ]) ?>
                   </li>
                 <?php endforeach; ?>
               </ul>

@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\grid\GridView;
 use common\models\Tags;
 
@@ -67,3 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </section>
   </div>
 </div>
+
+<?php
+$this->registerJs('listenerChangeStatus("'.Url::to(["//Blog/tags/status"]).'");');
+?>

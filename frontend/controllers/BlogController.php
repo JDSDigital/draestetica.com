@@ -5,8 +5,9 @@ use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use common\models\Blog;
 use common\models\Tags;
+use common\models\Blog;
+use common\models\search\BlogSearch;
 
 /**
  * Blog controller
@@ -67,12 +68,20 @@ class BlogController extends Controller
      */
     public function actionIndex()
     {
-        $articles = Blog::find()->active()->all();
+        $propertiesSearch = new BlogSearch;
+
+        if (isset(Yii::$app->request->post()['tag_id'])) {
+            $dataProvider = $propertiesSearch->tag(Yii::$app->request->post()['tag_id']);
+        } else {
+            $dataProvider = $propertiesSearch->search(Yii::$app->request->post());
+        }
+
         $tags = Tags::getList();
         $latest = Blog::getLatest();
 
         return $this->render('index', [
-            'articles' => $articles,
+            'propertiesSearch' => $propertiesSearch,
+            'dataProvider' => $dataProvider,
             'tags' => $tags,
             'latest' => $latest,
         ]);
@@ -80,11 +89,16 @@ class BlogController extends Controller
 
     public function actionView($id)
     {
+        $propertiesSearch = new BlogSearch;
+
         $article = $this->findModel($id);
         $tags = Tags::getList();
         $latest = Blog::getLatest();
 
+        $article->updateCounters(['views' => 1]);
+
         return $this->render('view', [
+            'propertiesSearch' => $propertiesSearch,
             'article' => $article,
             'tags' => $tags,
             'latest' => $latest,

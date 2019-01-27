@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\grid\GridView;
 use common\models\Blog;
 
@@ -54,11 +55,16 @@ $this->params['breadcrumbs'][] = $this->title;
               'value' => function ($model) {
                   $check = ($model->featured == Blog::STATUS_ACTIVE) ? "checked='checked'" : null;
                   return "<div class='switchery-xs m0'>
-                    <input id='featured-$model->id' type='checkbox' class='switchery switchStatus' $check>
+                    <input id='featured-$model->id' type='checkbox' class='switchery switchFeatured' $check>
                   </div>";
               }
           ],
-          'tag_id',
+          [
+              'attribute' => 'tag_id',
+              'value' => function ($model) {
+                  return $model->tag->name;
+              },
+           ],
           'title',
           'views',
           [
@@ -80,3 +86,8 @@ $this->params['breadcrumbs'][] = $this->title;
     </section>
   </div>
 </div>
+
+<?php
+$this->registerJs('listenerChangeStatus("'.Url::to(["//Blog/blog/status"]).'");');
+$this->registerJs('listenerChangeFeatured("'.Url::to(["//Blog/blog/featured"]).'");');
+?>

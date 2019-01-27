@@ -110,6 +110,29 @@ class TagsController extends Controller
     }
 
     /**
+     * Changes Status.
+     *
+     * @return string
+     */
+    public function actionStatus()
+    {
+        if (Yii::$app->request->isAjax) {
+            $data = Yii::$app->request->post();
+
+            $model = Tags::findOne($data['id']);
+
+            if ($model->status)
+                $model->status = Tags::STATUS_DELETED;
+            else
+                $model->status = Tags::STATUS_ACTIVE;
+
+            $model->save();
+        }
+
+        return null;
+    }
+
+    /**
      * Finds the Tags model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id

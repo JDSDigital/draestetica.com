@@ -125,7 +125,7 @@ class Blog extends \yii\db\ActiveRecord
 
     public static function getLatest()
     {
-        return self::find()->active()->orderBy(['id' => 'DESC'])->limit(4)->all();
+        return self::find()->active()->orderBy(['created_at' => SORT_DESC])->limit(4)->all();
     }
 
     /**
@@ -154,10 +154,12 @@ class Blog extends \yii\db\ActiveRecord
 
             if ($this->save()) {
                 return true;
+            } else {
+                return false;
             }
         }
 
-        return false;
+        return true;
 
     }
 
