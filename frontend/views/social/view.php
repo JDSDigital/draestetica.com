@@ -188,133 +188,60 @@ $this->params['breadcrumbs'][] = $this->title;
       <!-- End Articles Content -->
 
       <!-- Sidebar -->
-      <div class="g-hidden-xs-down col-lg-3">
+      <div class="col-lg-3 g-brd-left--lg g-brd-secondary-opacity-0_3 g-mb-80 g-hidden-md-down">
+          <div class="g-pl-20--lg">
+            <div class="js-sticky-block g-sticky-block--lg g-pt-50" data-start-point="#stickyblock-start" data-end-point="#stickyblock-end">
+            <!-- Search -->
+            <div class="g-mb-50">
+              <h3 class="h5 g-color-black g-font-weight-600 mb-4">Buscar</h3>
+              <div class="input-group">
+                <input class="form-control g-brd-secondary-opacity-0_3 g-placeholder-gray-dark-v5 border-right-0 g-rounded-left-50 g-px-15" type="test" placeholder="Escribe aquí...">
+                <span class="input-group-btn">
+                  <button class="btn u-btn-gradient-theme-v1 g-rounded-right-50 g-py-13 g-px-20 border-0">
+                    <i class="icon-magnifier g-pos-rel g-top-1"></i>
+                  </button>
+                </span>
+              </div>
+            </div>
+            <!-- End Search -->
 
-        <!-- Recent Posts -->
-        <div class="g-mb-30">
-          <div class="u-heading-v3-1 g-mb-30">
-            <h2 class="h5 u-heading-v3__title g-color-gray-dark-v1 text-uppercase g-brd-secondary-opacity-0_3">Últimas noticias</h2>
+            <hr class="g-brd-gray-light-v4 g-my-50">
+
+            <!-- Search -->
+            <div class="g-mb-50">
+              <h3 class="h5 g-color-black g-font-weight-600 g-mb-30">Instagram</h3>
+              <div class="row">
+                <div class="col-md-12 g-mb-30">
+                  <a class="js-fancybox" data-fancybox-gallery="lightbox-gallery--col2" href="../img-temp/500x450/img3.jpg" title="Lightbox Gallery">
+                    <img class="img-fluid" src="../img-temp/500x450/img3.jpg" alt="Image Description">
+                  </a>
+                </div>
+                <div class="col-md-12 g-mb-30">
+                  <a class="js-fancybox" data-fancybox-gallery="lightbox-gallery--col2" href="../img-temp/500x450/img4.jpg" title="Lightbox Gallery">
+                    <img class="img-fluid" src="../img-temp/500x450/img4.jpg" alt="Image Description">
+                  </a>
+                </div>
+                <div class="col-md-12 g-mb-30">
+                  <a class="js-fancybox" data-fancybox-gallery="lightbox-gallery--col2" href="../img-temp/500x450/img5.jpg" title="Lightbox Gallery">
+                    <img class="img-fluid" src="../img-temp/500x450/img5.jpg" alt="Image Description">
+                  </a>
+                </div>
+                <div class="col-md-12 g-mb-30">
+                  <a class="js-fancybox" data-fancybox-gallery="lightbox-gallery--col2" href="../img-temp/500x450/img6.jpg" title="Lightbox Gallery">
+                    <img class="img-fluid" src="../img-temp/500x450/img6.jpg" alt="Image Description">
+                  </a>
+                </div>
+                <div class="col-md-12 g-mb-30">
+                  <a class="js-fancybox" data-fancybox-gallery="lightbox-gallery--col2" href="../img-temp/500x450/img6.jpg" title="Lightbox Gallery">
+                    <img class="img-fluid" src="../img-temp/500x450/img7.jpg" alt="Image Description">
+                  </a>
+                </div>
+              </div>
+
+            </div>
+            <!-- End Search -->
+
           </div>
-
-          <!-- Article -->
-          <article class="media g-mb-30">
-            <a class="d-flex u-shadow-v25 mr-3" href="#">
-              <img class="g-width-60 g-height-60" src="../img-temp/100x100/img4.jpg" alt="Image Description">
-            </a>
-
-            <div class="media-body">
-              <h3 class="h6">
-                <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#">Best dessert recipes for breakfast which will..</a>
-              </h3>
-
-              <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                <li class="list-inline-item">
-                  July 20, 2017
-                </li>
-              </ul>
-            </div>
-          </article>
-          <!-- End Article -->
-
-          <!-- Article -->
-          <article class="media g-mb-30">
-            <a class="d-flex u-shadow-v25 mr-3" href="#">
-              <img class="g-width-60 g-height-60" src="../img-temp/100x100/img5.jpg" alt="Image Description">
-            </a>
-
-            <div class="media-body">
-              <h3 class="h6">
-                <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#">Stylish things to do, see and purchase..</a>
-              </h3>
-
-              <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                <li class="list-inline-item">
-                  July 16, 2017
-                </li>
-              </ul>
-            </div>
-          </article>
-          <!-- End Article -->
-
-          <!-- Article -->
-          <article class="media g-mb-30">
-            <a class="d-flex u-shadow-v25 mr-3" href="#">
-              <img class="g-width-60 g-height-60" src="../img-temp/100x100/img6.jpg" alt="Image Description">
-            </a>
-
-            <div class="media-body">
-              <h3 class="h6">
-                <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#">Government plans to test new primary school..</a>
-              </h3>
-
-              <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                <li class="list-inline-item">
-                  July 07, 2017
-                </li>
-              </ul>
-            </div>
-          </article>
-          <!-- End Article -->
-
-          <!-- Article -->
-          <article class="media">
-            <a class="d-flex u-shadow-v25 mr-3" href="#">
-              <img class="g-width-60 g-height-60" src="../img-temp/100x100/img7.jpg" alt="Image Description">
-            </a>
-
-            <div class="media-body">
-              <h3 class="h6">
-                <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#">Top 10 Luxury Hotels - 5 Star Best Luxury Hotels</a>
-              </h3>
-
-              <ul class="u-list-inline g-font-size-12 g-color-gray-dark-v4">
-                <li class="list-inline-item">
-                  July 11, 2017
-                </li>
-              </ul>
-            </div>
-          </article>
-          <!-- End Article -->
-        </div>
-        <!-- End Recent Posts -->
-
-        <div id="stickyblock-start" class="js-sticky-block g-sticky-block--lg g-pt-20" data-start-point="#stickyblock-start" data-end-point="#stickyblock-end">
-          <!-- News Feed -->
-          <div class="g-mb-40">
-            <div class="u-heading-v3-1 g-mb-30">
-              <h2 class="h5 u-heading-v3__title g-color-gray-dark-v1 text-uppercase g-brd-secondary-opacity-0_3">Notas de prensa</h2>
-            </div>
-
-            <!-- Article -->
-            <article>
-              <h3 class="h6">
-                <a class="g-color-gray-dark-v1" href="#">Architects plan to stop skyscrapers from blocking out sunlight</a>
-              </h3>
-            </article>
-            <!-- End Article -->
-
-            <hr class="g-brd-gray-light-v4 g-mt-15 g-mb-10">
-
-            <!-- Article -->
-            <article>
-              <h3 class="h6">
-                <a class="g-color-gray-dark-v1" href="#">Cooltex is one of the best technology company of our age and future</a>
-              </h3>
-            </article>
-            <!-- End Article -->
-
-            <hr class="g-brd-gray-light-v4 g-mt-15 g-mb-10">
-
-            <!-- Article -->
-            <article>
-              <h3 class="h6">
-                <a class="g-color-gray-dark-v1" href="#">Some text goes here with plain English and much more other texts go there..</a>
-              </h3>
-            </article>
-            <!-- End Article -->
-          </div>
-          <!-- End News Feed -->
-
         </div>
       </div>
       <!-- End Sidebar -->
