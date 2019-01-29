@@ -91,12 +91,17 @@ class BlogController extends Controller
     {
         $model = $this->findModel($id);
 
-        $previews[] = $model->getThumb();
-        $previewsConfig[] = [
-          'caption' => $model->file,
-          'key' => $model->id,
-          'url' => Url::to(["/Blog/blog/deleteimage?id=" . $model->id]),
-        ];
+        $previews = [];
+        $previewsConfig = [];
+        
+        if ($model->file !== null) {
+            $previews[] = $model->getThumb();
+            $previewsConfig[] = [
+              'caption' => $model->file,
+              'key' => $model->id,
+              'url' => Url::to(["/Blog/blog/deleteimage?id=" . $model->id]),
+            ];
+        }
 
         if ($model->load(Yii::$app->request->post())) {
 

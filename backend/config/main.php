@@ -29,6 +29,10 @@ return [
         'Blog' => [
             'class' => 'backend\modules\Blog\Module',
         ],
+        'Social' => [
+            'class' => 'backend\modules\Social\Module',
+            'defaultRoute' => 'social',
+        ],
     ],
     'components' => [
         'request' => [

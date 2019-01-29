@@ -5,6 +5,8 @@ use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use common\models\Social;
+use common\models\search\SocialSearch;
 
 /**
  * Social controller
@@ -65,11 +67,41 @@ class SocialController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $propertiesSearch = new SocialSearch;
+        $dataProvider = $propertiesSearch->search(Yii::$app->request->post());
+
+        return $this->render('index', [
+            'propertiesSearch' => $propertiesSearch,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
-    public function actionView()
+    public function actionView($id)
     {
-        return $this->render('view');
+        $propertiesSearch = new SocialSearch;
+        $article = $this->findModel($id);
+
+        // $article->updateCounters(['views' => 1]);
+
+        return $this->render('view', [
+            'propertiesSearch' => $propertiesSearch,
+            'article' => $article,
+        ]);
+    }
+
+    /**
+     * Finds the Social model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Social the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = Social::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

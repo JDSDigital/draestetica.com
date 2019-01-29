@@ -132,7 +132,7 @@ class Blog extends \yii\db\ActiveRecord
      * Upload supplied images via UploadedFile
      * @return boolean
      */
-    public function upload()
+    public function upload(): bool
     {
         $uploadedImage = UploadedFile::getInstances($this, 'image');
 
@@ -142,15 +142,9 @@ class Blog extends \yii\db\ActiveRecord
 
             $this->file = $name;
 
-            $uploadedImage[0]->saveAs(self::getImagefolder() . 'tmp-' . $name);
-
-            Image::resize(self::getImagefolder() . 'tmp-' . $name, 1024, null)
-            ->save(self::getImagefolder() . $name, ['jpeg_quality' => 80]);
-
-            Image::resize(self::getImagefolder() . 'tmp-' . $name, 250, null)
-            ->save(self::getImagethumbfolder() . $name, ['jpeg_quality' => 80]);
-
-            unlink(self::getImagefolder() . 'tmp-' . $name);
+            if (!$this->saveImages($uploadedImage[0], $name)) {
+                return false;
+            }
 
             if ($this->save()) {
                 return true;
@@ -163,12 +157,33 @@ class Blog extends \yii\db\ActiveRecord
 
     }
 
-    public function deleteImage()
+    public function saveImages(UploadedFile $uploadedImage, string $name): bool
+    {
+        $uploadedImage->saveAs(self::getImagefolder() . 'tmp-' . $name);
+
+        Image::resize(self::getImagefolder() . 'tmp-' . $name, 1024, null)
+        ->save(self::getImagefolder() . $name, ['jpeg_quality' => 80]);
+
+        Image::resize(self::getImagefolder() . 'tmp-' . $name, 250, null)
+        ->save(self::getImagethumbfolder() . $name, ['jpeg_quality' => 80]);
+
+        unlink(self::getImagefolder() . 'tmp-' . $name);
+
+        return true;
+    }
+
+    public function deleteImage(): bool
     {
         $image = $this->getImagefolder() . $this->file;
         $imagethumb = $this->getImagethumbfolder() . $this->file;
 
-        return (unlink($image) && unlink($imagethumb)) ? true : false;
+        $this->file = null;
+
+        if ($this->save()) {
+            return (unlink($image) && unlink($imagethumb)) ? true : false;
+        }
+
+        return false;
     }
 
     /**

@@ -5,6 +5,8 @@ namespace common\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\imagine\Image;
+use yii\web\UploadedFile;
 use common\models\Social;
 
 /**
@@ -40,10 +42,12 @@ class Images extends \yii\db\ActiveRecord
         ];
     }
 
+    /*
     public function beforeSave($insert)
     {
         return true;
   	}
+    */
 
     public function behaviors()
     {
@@ -72,6 +76,61 @@ class Images extends \yii\db\ActiveRecord
             'cover' => 'Portada',
             'uploaded_at' => 'Subido En',
         ];
+    }
+
+    public static function getImagefolder() : string
+    {
+        return Yii::getAlias('@frontend/web/img/social/');
+    }
+
+    public static function getImagethumbfolder() : string
+    {
+        return Yii::getAlias('@frontend/web/img/social/thumbs/');
+    }
+
+    public static function getFolder() : string
+    {
+        $directory = Yii::getAlias('@web/img/social/');
+
+        return str_replace('admin/', '', $directory);
+    }
+
+    public function getImage() : string
+    {
+        return self::getFolder() . $this->file;
+    }
+
+    public function getThumb() : string
+    {
+        return self::getFolder() . 'thumbs/' . $this->file;
+    }
+
+    public function saveImages(UploadedFile $uploadedImage, string $name)
+    {
+        $uploadedImage->saveAs(self::getImagefolder() . 'tmp-' . $name);
+
+        Image::resize(self::getImagefolder() . 'tmp-' . $name, 1024, null)
+        ->save(self::getImagefolder() . $name, ['jpeg_quality' => 80]);
+
+        Image::resize(self::getImagefolder() . 'tmp-' . $name, null, 300)
+        ->save(self::getImagethumbfolder() . $name, ['jpeg_quality' => 80]);
+
+        unlink(self::getImagefolder() . 'tmp-' . $name);
+
+        return true;
+    }
+
+    public function setCover()
+    {
+        self::updateAll(['cover' => 0], 'article_id = ' . $this->article_id);
+
+        $this->cover = self::STATUS_ACTIVE;
+
+        if (self::update())
+          return true;
+        else
+          return false;
+
     }
 
     /**

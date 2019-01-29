@@ -6,7 +6,6 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\UploadedFile;
-use yii\imagine\Image;
 use common\models\Images;
 
 /**
@@ -42,7 +41,7 @@ class Social extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'summary', 'article'], 'required'],
+            [['title', 'summary'], 'required'],
             [['article'], 'string'],
             [['views', 'featured', 'status', 'created_at', 'updated_at'], 'integer'],
             [['title', 'summary', 'source'], 'string', 'max' => 255],
@@ -90,7 +89,6 @@ class Social extends \yii\db\ActiveRecord
     public function upload()
     {
         if ($this->validate()) {
-            $url = Yii::getAlias('@frontend') . '/web/img/social/';
 
             $uploadedImages = UploadedFile::getInstances($this, 'images');
 
@@ -102,15 +100,9 @@ class Social extends \yii\db\ActiveRecord
                     $image->file = $name;
                     $image->article_id = $this->id;
 
-                    $uploadedImage->saveAs($url . 'tmp-' . $name);
-
-                    Image::resize($url . 'tmp-' . $name, 1024, null)
-                    ->save($url . $name, ['jpeg_quality' => 80]);
-
-                    Image::resize($url . 'tmp-' . $name, null, 300)
-                    ->save($url . 'thumbs/' . $name, ['jpeg_quality' => 80]);
-
-                    unlink($url . 'tmp-' . $name);
+                    if (!$image->saveImages($uploadedImage, $name)) {
+                        return false;
+                    }
 
                     if ($key == 0) {
                         $image->cover = (!$this->cover) ? Images::STATUS_ACTIVE : Images::STATUS_DELETED;
@@ -124,6 +116,11 @@ class Social extends \yii\db\ActiveRecord
         } else {
             return false;
         }
+    }
+
+    public function getRelated()
+    {
+        return self::find()->active()->limit(6)->all();
     }
 
     /**

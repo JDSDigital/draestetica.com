@@ -9,12 +9,19 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     // Setup
-    CKEDITOR.replace('blog-article', {
+    if (document.querySelector('#blog-article') !== null) {
+      CKEDITOR.replace('blog-article', {
         height: 400,
         extraPlugins: 'forms'
-    });
+      });
+    }
 
-
+    if (document.querySelector('#social-article') !== null) {
+      CKEDITOR.replace('social-article', {
+        height: 400,
+        extraPlugins: 'forms'
+      });
+    }
 
     // Readonly editor
     // ------------------------------

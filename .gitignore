@@ -36,4 +36,5 @@ phpunit.phar
 
 /node_modules
 /frontend/web/img/blog
+/frontend/web/img/social
 /frontend/web/img/logos
