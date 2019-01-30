@@ -105,7 +105,7 @@ class Images extends \yii\db\ActiveRecord
         return self::getFolder() . 'thumbs/' . $this->file;
     }
 
-    public function saveImages(UploadedFile $uploadedImage, string $name)
+    public function saveImages(UploadedFile $uploadedImage, string $name): bool
     {
         $uploadedImage->saveAs(self::getImagefolder() . 'tmp-' . $name);
 

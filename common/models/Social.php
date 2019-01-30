@@ -86,16 +86,17 @@ class Social extends \yii\db\ActiveRecord
      * Upload supplied images via UploadedFile
      * @return boolean
      */
-    public function upload()
+    public function upload(): bool
     {
         if ($this->validate()) {
 
             $uploadedImages = UploadedFile::getInstances($this, 'images');
 
             if (count($uploadedImages) > 0) {
+
                 foreach ($uploadedImages as $key => $uploadedImage) {
                     $image = new Images;
-                    $name = $this->id . '-' . ($key + 1) . '-' . $this->updated_at . '.' . $uploadedImage->extension;
+                    $name = $this->id . '-' . ($key + 1) . '-' . time() . '.' . $uploadedImage->extension;
 
                     $image->file = $name;
                     $image->article_id = $this->id;
@@ -110,6 +111,9 @@ class Social extends \yii\db\ActiveRecord
 
                     $image->save();
                 }
+
+                return true;
+
             } else {
                 return true;
             }
@@ -118,9 +122,14 @@ class Social extends \yii\db\ActiveRecord
         }
     }
 
-    public function getRelated()
+    public function getRelated(): array
     {
-        return self::find()->active()->limit(6)->all();
+        return self::find()->active()->orderBy(['created_at' => SORT_DESC])->limit(6)->all();
+    }
+
+    public static function getFooterPosts(): array
+    {
+        return self::find()->active()->orderBy(['created_at' => SORT_DESC])->limit(2)->all();
     }
 
     /**
@@ -128,7 +137,10 @@ class Social extends \yii\db\ActiveRecord
      */
     public function getCover()
     {
-        return $this->hasOne(Images::className(), ['article_id' => 'id'])->andOnCondition(['cover' => Images::STATUS_ACTIVE]);
+        $cover = $this->hasOne(Images::className(), ['article_id' => 'id'])
+            ->andOnCondition(['cover' => Images::STATUS_ACTIVE]);
+
+        return ($cover->one()) ? $cover : $this->hasOne(Images::className(), ['article_id' => 'id']);
     }
 
     /**

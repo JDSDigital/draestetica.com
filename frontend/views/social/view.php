@@ -4,6 +4,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use frontend\assets\NivoAsset;
+
+NivoAsset::register($this);
 
 $this->title = $article->title;
 $this->params['breadcrumbs'][] = ['label' => 'Social', 'url' => ['index']];
@@ -46,9 +49,18 @@ $this->params['breadcrumbs'][] = $this->title;
           </header>
 
           <div class="g-font-size-16 g-line-height-1_8 g-mb-30">
-            <figure class="u-shadow-v25 g-mb-30">
-              <?= Html::img($article->cover->getImage(), ['class' => 'img-fluid w-100', 'alt' => $article->title]) ?>
-            </figure>
+
+              <!-- Product Image Slider -->
+
+        			<div class="slider-wrapper theme-default shop-carousel g-mb-30">
+          				<div id="slider-shop" class="nivoSlider">
+          					<?php foreach ($article->images as $image) : ?>
+          						<?= Html::a(Html::img($image->getImage(), ['data-thumb' => $image->getThumb()]), $image->getImage(), ['data-lightbox-gallery'=>'gallery']) ?>
+          					<?php endforeach; ?>
+          				</div>
+        			</div>
+
+              <!-- End of Product Image Slider -->
 
             <?= $article->article ?>
             <br />

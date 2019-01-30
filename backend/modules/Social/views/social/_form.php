@@ -57,3 +57,5 @@ $btn = "<button type='button' class='kv-file-cover btn btn-sm btn-kv btn-default
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<?php $this->registerJs('listenerCover();') ?>

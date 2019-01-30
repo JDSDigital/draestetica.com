@@ -1,7 +1,19 @@
 $(document).on('ready', function () {
 
+  // initialization of popups
+  $.HSCore.components.HSPopup.init('.js-fancybox');
+
   // initialization of carousel
   $.HSCore.components.HSCarousel.init('.js-carousel');
+
+  if (document.querySelector('#slider-shop') !== null) {
+    document.getElementById("slider-shop") && $("#slider-shop").nivoSlider({
+      effect: "fade",
+      controlNavThumbs: !0,
+      manualAdvance: !0,
+      directionNav: !1
+    })
+  }
 
   // initialization of popovers
   $('[data-toggle="popover"]').popover();
@@ -21,9 +33,6 @@ $(document).on('ready', function () {
       percentPosition: true
     });
   });
-
-  // initialization of popups
-  $.HSCore.components.HSPopup.init('.js-fancybox');
 
 });
 

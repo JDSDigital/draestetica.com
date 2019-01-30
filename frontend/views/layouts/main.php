@@ -9,6 +9,7 @@ use yii\bootstrap\NavBar;
 use frontend\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use common\models\Social;
 
 // Favicon
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'sizes' => '196x196', 'href' => Yii::getAlias('@web') . '/img/favicon/favicon-196x196.png']);
@@ -146,35 +147,26 @@ AppAsset::register($this);
       <!-- Footer Content -->
       <div class="col-lg-4 g-mb-40 g-mb-0--lg">
         <h2 class="h6 g-color-white text-uppercase g-font-weight-700 g-mb-20">Últimos Posts</h2>
-        <article class="media">
-            <?= Html::a(Html::img('@web/img-temp/100x100/img8.jpg', ['class' => 'g-width-80 g-height-80']), ['social/view'], ['class' => 'd-flex g-mt-4 mr-3']) ?>
+        <?php foreach (Social::getFooterPosts() as $key => $article) : ?>
 
-          <div class="media-body align-self-center">
-            <ul class="list-inline g-font-size-12 g-mb-10">
-              <li class="list-inline-item">Junio 09, 2018</li>
-            </ul>
+          <article class="media">
+              <?= Html::a(Html::img($article->cover->thumb, ['class' => 'g-width-80 crop-thumb']), ['social/view'], ['class' => 'd-flex g-mt-4 mr-3']) ?>
 
-            <h3 class="h6 mb-0">
-              <?= Html::a('Top 7 luxury places to visit around Victoria, BC', ['social/view'], ['class' => 'g-color-white-opacity-0_8 g-color-white--hover']) ?>
-            </h3>
-          </div>
-        </article>
+            <div class="media-body align-self-center">
+              <ul class="list-inline g-font-size-12 g-mb-10">
+                <li class="list-inline-item"><?= Yii::$app->formatter->asDate($article->created_at, 'long') ?></li>
+              </ul>
 
-        <hr class="g-brd-white-opacity-0_1 g-mt-15 g-mb-10">
+              <h3 class="h6 mb-0">
+                <?= Html::a($article->title, ['social/view', 'id' => $article->id], ['class' => 'g-color-white-opacity-0_8 g-color-white--hover']) ?>
+              </h3>
+            </div>
+          </article>
 
-        <article class="media">
-            <?= Html::a(Html::img('@web/img-temp/100x100/img9.jpg', ['class' => 'g-width-80 g-height-80']), ['social/view'], ['class' => 'd-flex g-mt-4 mr-3']) ?>
+          <hr class="g-brd-white-opacity-0_1 g-mt-15 g-mb-10">
 
-          <div class="media-body align-self-center">
-            <ul class="list-inline g-font-size-12 g-mb-10">
-              <li class="list-inline-item">Julio 30, 2018</li>
-            </ul>
+        <?php endforeach; ?>
 
-            <h3 class="h6 mb-0">
-              <?= Html::a('Coding week, 10 best premium templates', ['social/view'], ['class' => 'g-color-white-opacity-0_8 g-color-white--hover']) ?>
-            </h3>
-          </div>
-        </article>
       </div>
       <!-- End Footer Content -->
 

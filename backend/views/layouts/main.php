@@ -97,7 +97,7 @@ SweetAlertAsset::register($this);
                                         <?= Html::a('<i class="icon-users"></i> <span>Usuarios</span>', ['//Usuarios']) ?>
                                     </li>
                                     <li class="<?= (Yii::$app->controller->module->id == 'Social') ? 'active' : '' ?>">
-                                        <?= Html::a('<i class="icon-users4"></i> <span>Social</span>', ['//Social']) ?>
+                                        <?= Html::a('<i class="icon-newspaper"></i> <span>Social</span>', ['//Social']) ?>
                                     </li>
                                     <li class="<?= (Yii::$app->controller->module->id == 'Blog') ? 'active' : '' ?>">
                                         <?= Html::a('<i class="icon-reading"></i> <span>Blog</span>') ?>
