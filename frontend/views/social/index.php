@@ -4,6 +4,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\models\Instagram;
 
 $this->title = 'Social';
 $this->params['breadcrumbs'][] = $this->title;
@@ -99,31 +100,21 @@ $this->params['breadcrumbs'][] = $this->title;
           <div class="g-mb-50">
             <h3 class="h5 g-color-black g-font-weight-600 g-mb-30">Instagram</h3>
             <div class="row">
-              <div class="col-md-12 g-mb-30">
-                <a class="js-fancybox" data-fancybox-gallery="lightbox-gallery--col2" href="../img-temp/500x450/img3.jpg" title="Lightbox Gallery">
-                  <img class="img-fluid" src="../img-temp/500x450/img3.jpg" alt="Image Description">
-                </a>
-              </div>
-              <div class="col-md-12 g-mb-30">
-                <a class="js-fancybox" data-fancybox-gallery="lightbox-gallery--col2" href="../img-temp/500x450/img4.jpg" title="Lightbox Gallery">
-                  <img class="img-fluid" src="../img-temp/500x450/img4.jpg" alt="Image Description">
-                </a>
-              </div>
-              <div class="col-md-12 g-mb-30">
-                <a class="js-fancybox" data-fancybox-gallery="lightbox-gallery--col2" href="../img-temp/500x450/img5.jpg" title="Lightbox Gallery">
-                  <img class="img-fluid" src="../img-temp/500x450/img5.jpg" alt="Image Description">
-                </a>
-              </div>
-              <div class="col-md-12 g-mb-30">
-                <a class="js-fancybox" data-fancybox-gallery="lightbox-gallery--col2" href="../img-temp/500x450/img6.jpg" title="Lightbox Gallery">
-                  <img class="img-fluid" src="../img-temp/500x450/img6.jpg" alt="Image Description">
-                </a>
-              </div>
-              <div class="col-md-12 g-mb-30">
-                <a class="js-fancybox" data-fancybox-gallery="lightbox-gallery--col2" href="../img-temp/500x450/img6.jpg" title="Lightbox Gallery">
-                  <img class="img-fluid" src="../img-temp/500x450/img7.jpg" alt="Image Description">
-                </a>
-              </div>
+              <?php foreach (Instagram::getLatestPhotos() as $instagram) : ?>
+                <div class="col-md-12 g-mb-30">
+                    <?=
+                      Html::a(
+                        Html::img($instagram->low_resolution, ['class' => 'img-fluid']),
+                        $instagram->url,
+                        [
+                          'class' => 'js-fancybox',
+                          'data-fancybox-gallery' => 'lightbox-gallery--col2',
+                          'target' => '_blank',
+                        ]
+                      )
+                    ?>
+                </div>
+              <?php endforeach; ?>
             </div>
 
           </div>

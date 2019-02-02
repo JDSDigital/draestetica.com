@@ -42,7 +42,7 @@ $(window).on('load', function () {
   $.HSCore.helpers.HSHamburgers.init('.hamburger');
 
   // initialization of sticky blocks
-  $.HSCore.components.HSStickyBlock.init('.js-sticky-block');
+  // $.HSCore.components.HSStickyBlock.init('.js-sticky-block');
 });
 
 (function ($) {

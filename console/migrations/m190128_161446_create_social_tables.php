@@ -12,6 +12,24 @@ class m190128_161446_create_social_tables extends Migration
      */
     public function safeUp()
     {
+        $this->createTable('xsocial_access_codes', [
+            'id' => $this->primaryKey(),
+            'access_token' => $this->string()->notNull(),
+        ]);
+
+        $this->createTable('xsocial_instagram_images', [
+            'id' => $this->primaryKey(),
+            'url' => $this->string()->notNull(),
+            'thumbnail' => $this->string()->notNull(),
+            'low_resolution' => $this->string()->notNull(),
+            'standard_resolution' => $this->string()->notNull(),
+            'text' => $this->string()->notNull(),
+            'created_time' => $this->integer()->notNull(),
+
+            'created_at' => $this->integer()->notNull()->defaultValue(0),
+            'updated_at' => $this->integer()->notNull()->defaultValue(0),
+        ]);
+
         $this->createTable('xsocial_articles', [
             'id' => $this->primaryKey(),
             'title' => $this->string()->notNull(),
@@ -67,5 +85,7 @@ class m190128_161446_create_social_tables extends Migration
 
         $this->dropTable('xsocial_articles');
         $this->dropTable('xsocial_images');
+        $this->dropTable('xsocial_access_codes');
+        $this->dropTable('xsocial_instagram_images');
     }
 }
