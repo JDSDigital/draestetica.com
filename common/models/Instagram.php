@@ -58,7 +58,10 @@ class Instagram extends \yii\db\ActiveRecord
         ];
     }
 
-    public function savePhoto($photo)
+    /*
+     * Loads and saves image data from an Instagram array
+     */
+    public function savePhoto(array $photo): bool
     {
         $this->url = $photo['link'];
         $this->thumbnail = $photo['images']['thumbnail']['url'];
@@ -72,7 +75,10 @@ class Instagram extends \yii\db\ActiveRecord
         return ($this->save()) ? true : false;
     }
 
-    public static function updateInstagramPhotos()
+    /*
+     * Gets Instagram data, truncates Instagram table and saves last 5 images to database
+     */
+    public static function updateInstagramPhotos(): bool
     {
         $photos = self::getInstagramPhotos();
         if ($photos['meta']['code'] == 200) {
@@ -94,7 +100,10 @@ class Instagram extends \yii\db\ActiveRecord
         }
     }
 
-    public static function getInstagramPhotos()
+    /*
+     * Gets an array from Instagram API with images data
+     */
+    public static function getInstagramPhotos(): array
     {
         $url = self::getApiUrl();
         try {
@@ -113,19 +122,64 @@ class Instagram extends \yii\db\ActiveRecord
         }
     }
 
-    public static function getApiUrl()
+    /*
+     * Returns Instagram API URL with access token
+     */
+    public static function getApiUrl(): string
     {
         $code = AccessCodes::getAccessCode();
 
         return 'https://api.instagram.com/v1/users/self/media/recent/?access_token=' . $code;
     }
 
-    public static function getApiUrlAuth()
+    /*
+     * Gets Instagram access token using an access code
+     */
+    public static function requestAccessToken(string $code): array
+    {
+        try {
+            $curl_connection = curl_init();
+            curl_setopt($curl_connection, CURLOPT_URL, 'https://api.instagram.com/oauth/access_token');
+            curl_setopt($curl_connection, CURLOPT_POST, 1);
+            curl_setopt($curl_connection, CURLOPT_CONNECTTIMEOUT, 30);
+            curl_setopt($curl_connection, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl_connection, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($curl_connection, CURLOPT_POSTFIELDS, self::requestAccessTokenFields($code));
+
+            //Data are stored in $data
+            $data = json_decode(curl_exec($curl_connection), true);
+            curl_close($curl_connection);
+
+            return $data;
+        } catch(Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    /*
+     * Returns a string with necesary data for requesting an access token
+     */
+    public static function requestAccessTokenFields(string $code): string
+    {
+        return 'client_id=' . Yii::$app->params['client_id']
+        . '&client_secret=' . Yii::$app->params['client_secret']
+        . '&grant_type=authorization_code'
+        . '&code=' . $code
+        . '&redirect_uri=' . Yii::$app->params['redirect_uri'];
+    }
+
+    /*
+     * Returns Instagram URL for requesting an access code
+     */
+    public static function getApiAuthUrl(): string
     {
         return 'https://api.instagram.com/oauth/authorize/?client_id=' . Yii::$app->params['client_id'] . '&redirect_uri=' . Yii::$app->params['redirect_uri'] . '&response_type=code';
     }
 
-    public static function getLatestPhotos()
+    /*
+     * Returns latest 5 instagram images for Social sidebar
+     */
+    public static function getLatestPhotos(): array
     {
         return self::find()->orderBy(['created_time' => SORT_DESC])->limit(5)->all();
     }

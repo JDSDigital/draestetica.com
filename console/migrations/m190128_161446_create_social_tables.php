@@ -14,7 +14,7 @@ class m190128_161446_create_social_tables extends Migration
     {
         $this->createTable('xsocial_access_codes', [
             'id' => $this->primaryKey(),
-            'access_token' => $this->string()->notNull(),
+            'access_token' => $this->string()->null(),
         ]);
 
         $this->createTable('xsocial_instagram_images', [
@@ -66,6 +66,10 @@ class m190128_161446_create_social_tables extends Migration
             'id',
             'CASCADE'
         );
+
+        $this->insert('xsocial_access_codes', [
+            'access_token' => null
+        ]);
     }
 
     /**

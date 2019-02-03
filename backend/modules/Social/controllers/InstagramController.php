@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\models\Instagram;
+use common\models\AccessCodes;
 
 /**
  * SocialController implements the CRUD actions for Social model.
@@ -51,9 +52,11 @@ class InstagramController extends Controller
      */
     public function actionUpdate()
     {
-        Instagram::updateInstagramPhotos();
-
-        return $this->redirect('index');
+        if (Instagram::updateInstagramPhotos()) {
+            return $this->redirect('index');
+        } else {
+            return $this->redirect(Instagram::getApiAuthUrl());
+        }
     }
 
     /**
@@ -71,10 +74,20 @@ class InstagramController extends Controller
 
     public function actionAuth()
     {
-        echo '<pre>';
-        print_r(Yii::$app->request->get('code'));
-        echo '</pre>';
-        exit;
+        if (Yii::$app->request->get('code')) {
+            $access_code = Instagram::requestAccessToken(Yii::$app->request->get('code'));
+
+            if ($access_code['access_token']) {
+                $model = AccessCodes::find()->where(['id' => 1])->one();
+                $model->access_token = $access_code['access_token'];
+                $model->save();
+
+                return $this->redirect('update');
+            }
+
+        }
+
+        return $this->redirect('index');
     }
 
     /**
