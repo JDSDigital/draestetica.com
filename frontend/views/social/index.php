@@ -11,7 +11,31 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <!-- Blog Minimal Blocks -->
-<div class="container g-pt-70 g-pb-20">
+<div class="container g-pt-30 g-pb-20">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <!-- Search -->
+      <?php
+          $form = ActiveForm::begin([
+            'id' => 'social-search',
+            'action' => ['/social/index']
+          ]);
+      ?>
+      <div class="g-mb-50">
+        <!-- <h3 class="h5 g-color-black g-font-weight-600 mb-4">Buscar</h3> -->
+        <div class="input-group">
+          <input type="text" id="socialsearch-title" class="form-control g-brd-secondary-opacity-0_3 g-placeholder-gray-dark-v5 border-right-0 g-rounded-left-50 g-px-15" name="SocialSearch[title]" placeholder="Buscar...">
+          <span class="input-group-btn">
+            <?= Html::submitButton('<i class="icon-magnifier g-pos-rel g-top-1"></i>', [
+                'class' => 'btn u-btn-gradient-theme-v1 g-rounded-right-50 g-py-13 g-px-20 border-0',
+            ]) ?>
+          </span>
+        </div>
+      </div>
+      <?php ActiveForm::end(); ?>
+      <!-- End Search -->
+    </div>
+  </div>
   <div class="row justify-content-between">
     <div class="col-lg-9 g-mb-80">
       <div class="g-pr-20--lg">
@@ -72,29 +96,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <!-- Sidebar -->
     <div class="col-lg-3 g-brd-left--lg g-brd-secondary-opacity-0_3 g-mb-80 g-hidden-md-down">
         <div class="g-pl-20--lg">
-          <div class="js-sticky-block g-sticky-block--lg g-pt-50" data-start-point="#stickyblock-start" data-end-point="#stickyblock-end">
-            <!-- Search -->
-            <?php
-                $form = ActiveForm::begin([
-                  'id' => 'social-search',
-                  'action' => ['/social/index']
-                ]);
-            ?>
-            <div class="g-mb-50">
-              <h3 class="h5 g-color-black g-font-weight-600 mb-4">Buscar</h3>
-              <div class="input-group">
-                <input type="text" id="socialsearch-title" class="form-control g-brd-secondary-opacity-0_3 g-placeholder-gray-dark-v5 border-right-0 g-rounded-left-50 g-px-15" name="SocialSearch[title]" placeholder="Escribe aquí...">
-                <span class="input-group-btn">
-                  <?= Html::submitButton('<i class="icon-magnifier g-pos-rel g-top-1"></i>', [
-                      'class' => 'btn u-btn-gradient-theme-v1 g-rounded-right-50 g-py-13 g-px-20 border-0',
-                  ]) ?>
-                </span>
-              </div>
-            </div>
-            <?php ActiveForm::end(); ?>
-            <!-- End Search -->
-
-          <hr class="g-brd-gray-light-v4 g-my-50">
+          <div class="js-sticky-block g-sticky-block--lg" data-start-point="#stickyblock-start" data-end-point="#stickyblock-end">
 
           <!-- Search -->
           <div class="g-mb-50">

@@ -10,6 +10,7 @@ use frontend\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 use common\models\Social;
+use common\models\Instagram;
 
 // Favicon
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'sizes' => '196x196', 'href' => Yii::getAlias('@web') . '/img/favicon/favicon-196x196.png']);
@@ -203,36 +204,13 @@ AppAsset::register($this);
         <h2 class="h6 g-color-white text-uppercase g-font-weight-700 g-mb-20">Últimas fotos</h2>
 
         <ul class="u-list-inline d-flex flex-wrap g-mr-minus-15">
-          <li class="list-inline-item g-mr-10 g-mb-10">
-            <a class="u-block-hover" href="#">
-              <?= Html::img('@web/img-temp/100x100/img10.jpg', ['class' => 'u-block-hover__main--grayscale g-width-80 g-height-80']) ?>
-            </a>
-          </li>
-          <li class="list-inline-item g-mr-10 g-mb-10">
-            <a class="u-block-hover" href="#">
-              <?= Html::img('@web/img-temp/100x100/img12.jpg', ['class' => 'u-block-hover__main--grayscale g-width-80 g-height-80']) ?>
-            </a>
-          </li>
-          <li class="list-inline-item g-mr-10 g-mb-10">
-            <a class="u-block-hover" href="#">
-              <?= Html::img('@web/img-temp/100x100/img13.jpg', ['class' => 'u-block-hover__main--grayscale g-width-80 g-height-80']) ?>
-            </a>
-          </li>
-          <li class="list-inline-item g-mr-10 g-mb-10">
-            <a class="u-block-hover" href="#">
-              <?= Html::img('@web/img-temp/100x100/img14.jpg', ['class' => 'u-block-hover__main--grayscale g-width-80 g-height-80']) ?>
-            </a>
-          </li>
-          <li class="list-inline-item g-mr-10 g-mb-10">
-            <a class="u-block-hover" href="#">
-              <?= Html::img('@web/img-temp/100x100/img15.jpg', ['class' => 'u-block-hover__main--grayscale g-width-80 g-height-80']) ?>
-            </a>
-          </li>
-          <li class="list-inline-item g-mr-10 g-mb-10">
-            <a class="u-block-hover" href="#">
-              <?= Html::img('@web/img-temp/100x100/img16.jpg', ['class' => 'u-block-hover__main--grayscale g-width-80 g-height-80']) ?>
-            </a>
-          </li>
+          <?php foreach(Instagram::getFooterPhotos() as $instagram) : ?>
+            <li class="list-inline-item g-mr-10 g-mb-10">
+              <a class="u-block-hover" href="<?= $instagram->url ?>" target="_blank">
+                <?= Html::img($instagram->thumbnail, ['class' => 'g-width-80 g-height-80']) ?>
+              </a>
+            </li>
+          <?php endforeach; ?>
         </ul>
       </div>
       <!-- End Footer Content -->

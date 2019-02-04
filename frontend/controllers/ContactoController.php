@@ -68,10 +68,10 @@ class ContactoController extends Controller
     {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
+            if ($model->sendEmail()) {
+                Yii::$app->session->setFlash('success', 'Gracias por escribirnos. Te contactaremos lo mas pronto posible.');
             } else {
-                Yii::$app->session->setFlash('error', 'There was an error sending your message.');
+                Yii::$app->session->setFlash('error', 'Ocurrió un error enviando tu mensaje. Por favor intenta mas tarde.');
             }
 
             return $this->refresh();

@@ -36,7 +36,8 @@ class Instagram extends \yii\db\ActiveRecord
         return [
             [['url', 'thumbnail', 'low_resolution', 'standard_resolution', 'text', 'created_time'], 'required'],
             [['created_time', 'created_at', 'updated_at'], 'integer'],
-            [['url', 'thumbnail', 'low_resolution', 'standard_resolution', 'text'], 'string', 'max' => 255],
+            [['url', 'thumbnail', 'low_resolution', 'standard_resolution'], 'string', 'max' => 255],
+            [['text'], 'string'],
         ];
     }
 
@@ -88,7 +89,7 @@ class Instagram extends \yii\db\ActiveRecord
             foreach ($photos['data'] as $photo) {
                 $instagram = new Instagram;
                 $instagram->savePhoto($photo);
-                if ($i == 5) {
+                if ($i == 6) {
                     break;
                 } else {
                   $i++;
@@ -182,5 +183,13 @@ class Instagram extends \yii\db\ActiveRecord
     public static function getLatestPhotos(): array
     {
         return self::find()->orderBy(['created_time' => SORT_DESC])->limit(5)->all();
+    }
+
+    /*
+     * Returns latest 6 instagram images for footer
+     */
+    public static function getFooterPhotos(): array
+    {
+        return self::find()->orderBy(['created_time' => SORT_DESC])->limit(6)->all();
     }
 }
