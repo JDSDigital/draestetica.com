@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 $this->title = $article->title;
@@ -33,12 +34,15 @@ $this->params['breadcrumbs'][] = $article->title;
 
             <ul class="list-inline text-uppercase mb-0">
               <li class="list-inline-item g-mr-10">
-                <a class="btn u-btn-facebook g-font-size-12 rounded g-px-20--sm g-py-10" href="#">
+                <a class="btn u-btn-facebook g-font-size-12 rounded g-px-20--sm g-py-10"
+                  onclick="window.open('http://www.facebook.com/sharer/sharer.php?u=<?= Url::to(['//blog/view', 'id' => $article->id], true) ?>', 'newwindow', 'width=600,height=350'); return false;"
+                  href="http://www.facebook.com/sharer/sharer.php?u=<?= Url::to(['//blog/view', 'id' => $article->id], true) ?>">
                   <i class="fa fa-facebook g-mr-5--sm"></i> <span class="g-hidden-xs-down">Compartir en Facebook</span>
                 </a>
               </li>
               <li class="list-inline-item g-mr-10">
-                <a class="btn u-btn-twitter g-font-size-12 rounded g-px-20--sm g-py-10" href="#">
+                <a class="btn u-btn-twitter  g-color-white g-font-size-12 rounded g-px-20--sm g-py-10"
+                  onclick="window.open('http://twitter.com/share?text=He%20visto%20este%20artículo%20en%20draestetica.com%20->&url=<?= Url::to(['//blog/view', 'id' => $article->id], true) ?>', 'newwindow', 'width=600,height=300'); return false;">
                   <i class="fa fa-twitter g-mr-5--sm"></i> <span class="g-hidden-xs-down">Compartir en Twitter</span>
                 </a>
               </li>
@@ -63,12 +67,15 @@ $this->params['breadcrumbs'][] = $article->title;
           <div class="g-mb-30">
             <ul class="list-inline text-uppercase mb-0">
               <li class="list-inline-item g-mr-10">
-                <a class="btn u-btn-facebook g-font-size-12 rounded g-px-20--sm g-py-10" href="#">
+                <a class="btn u-btn-facebook g-font-size-12 rounded g-px-20--sm g-py-10"
+                  onclick="window.open('http://www.facebook.com/sharer/sharer.php?u=<?= Url::to(['//blog/view', 'id' => $article->id], true) ?>', 'newwindow', 'width=600,height=350'); return false;"
+                  href="http://www.facebook.com/sharer/sharer.php?u=<?= Url::to(['//blog/view', 'id' => $article->id], true) ?>">
                   <i class="fa fa-facebook g-mr-5--sm"></i> <span class="g-hidden-xs-down">Compartir en Facebook</span>
                 </a>
               </li>
               <li class="list-inline-item g-mr-10">
-                <a class="btn u-btn-twitter g-font-size-12 rounded g-px-20--sm g-py-10" href="#">
+                <a class="btn u-btn-twitter  g-color-white g-font-size-12 rounded g-px-20--sm g-py-10"
+                  onclick="window.open('http://twitter.com/share?text=He%20visto%20este%20artículo%20en%20draestetica.com%20->&url=<?= Url::to(['//blog/view', 'id' => $article->id], true) ?>', 'newwindow', 'width=600,height=300'); return false;">
                   <i class="fa fa-twitter g-mr-5--sm"></i> <span class="g-hidden-xs-down">Compartir en Twitter</span>
                 </a>
               </li>

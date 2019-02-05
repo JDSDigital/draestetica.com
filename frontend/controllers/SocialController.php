@@ -81,7 +81,7 @@ class SocialController extends Controller
         $propertiesSearch = new SocialSearch;
         $article = $this->findModel($id);
 
-        // $article->updateCounters(['views' => 1]);
+        $article->updateCounters(['views' => 1]);
 
         return $this->render('view', [
             'propertiesSearch' => $propertiesSearch,

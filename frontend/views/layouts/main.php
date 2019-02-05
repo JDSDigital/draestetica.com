@@ -201,7 +201,7 @@ AppAsset::register($this);
 
       <!-- Footer Content -->
       <div class="col-md-6 col-lg-3">
-        <h2 class="h6 g-color-white text-uppercase g-font-weight-700 g-mb-20">Últimas fotos</h2>
+        <h2 class="h6 g-color-white text-uppercase g-font-weight-700 g-mb-20">Instagram</h2>
 
         <ul class="u-list-inline d-flex flex-wrap g-mr-minus-15">
           <?php foreach(Instagram::getFooterPhotos() as $instagram) : ?>

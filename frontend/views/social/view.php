@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use frontend\assets\NivoAsset;
 use common\models\Instagram;
@@ -15,8 +16,32 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <!-- News Content -->
-<section class="g-pt-50 g-pb-100">
+<section class="g-pt-30 g-pb-100">
   <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <!-- Search -->
+        <?php
+            $form = ActiveForm::begin([
+              'id' => 'social-search',
+              'action' => ['/social/index']
+            ]);
+        ?>
+        <div class="g-mb-50">
+          <h3 class="h5 g-color-black g-font-weight-600 mb-4">Buscar</h3>
+          <div class="input-group">
+            <input type="text" id="socialsearch-title" class="form-control g-brd-secondary-opacity-0_3 g-placeholder-gray-dark-v5 border-right-0 g-rounded-left-50 g-px-15" name="SocialSearch[title]" placeholder="Escribe aquí...">
+            <span class="input-group-btn">
+              <?= Html::submitButton('<i class="icon-magnifier g-pos-rel g-top-1"></i>', [
+                  'class' => 'btn u-btn-gradient-theme-v1 g-rounded-right-50 g-py-13 g-px-20 border-0',
+              ]) ?>
+            </span>
+          </div>
+        </div>
+        <?php ActiveForm::end(); ?>
+        <!-- End Search -->
+      </div>
+    </div>
     <div class="row">
       <!-- Articles Content -->
       <div class="col-lg-9 g-mb-50 g-mb-0--lg">
@@ -37,12 +62,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <ul class="list-inline text-uppercase mb-0">
               <li class="list-inline-item g-mr-10">
-                <a class="btn u-btn-facebook g-font-size-12 rounded g-px-20--sm g-py-10" href="#">
+                <a class="btn u-btn-facebook g-font-size-12 rounded g-px-20--sm g-py-10"
+                  onclick="window.open('http://www.facebook.com/sharer/sharer.php?u=<?= Url::to(['//social/view', 'id' => $article->id], true) ?>', 'newwindow', 'width=600,height=350'); return false;"
+                  href="http://www.facebook.com/sharer/sharer.php?u=<?= Url::to(['//social/view', 'id' => $article->id], true) ?>">
                   <i class="fa fa-facebook g-mr-5--sm"></i> <span class="g-hidden-xs-down">Compartir en Facebook</span>
                 </a>
               </li>
               <li class="list-inline-item g-mr-10">
-                <a class="btn u-btn-twitter g-font-size-12 rounded g-px-20--sm g-py-10" href="#">
+                <a class="btn u-btn-twitter  g-color-white g-font-size-12 rounded g-px-20--sm g-py-10"
+                  onclick="window.open('http://twitter.com/share?text=He%20visto%20este%20artículo%20en%20draestetica.com%20->&url=<?= Url::to(['//social/view', 'id' => $article->id], true) ?>', 'newwindow', 'width=600,height=300'); return false;">
                   <i class="fa fa-twitter g-mr-5--sm"></i> <span class="g-hidden-xs-down">Compartir en Twitter</span>
                 </a>
               </li>
@@ -75,12 +103,15 @@ $this->params['breadcrumbs'][] = $this->title;
           <div class="g-mb-30">
             <ul class="list-inline text-uppercase mb-0">
               <li class="list-inline-item g-mr-10">
-                <a class="btn u-btn-facebook g-font-size-12 rounded g-px-20--sm g-py-10" href="#">
+                <a class="btn u-btn-facebook g-font-size-12 rounded g-px-20--sm g-py-10"
+                  onclick="window.open('http://www.facebook.com/sharer/sharer.php?u=<?= Url::to(['//social/view', 'id' => $article->id], true) ?>', 'newwindow', 'width=600,height=350'); return false;"
+                  href="http://www.facebook.com/sharer/sharer.php?u=<?= Url::to(['//social/view', 'id' => $article->id], true) ?>">
                   <i class="fa fa-facebook g-mr-5--sm"></i> <span class="g-hidden-xs-down">Compartir en Facebook</span>
                 </a>
               </li>
               <li class="list-inline-item g-mr-10">
-                <a class="btn u-btn-twitter g-font-size-12 rounded g-px-20--sm g-py-10" href="#">
+                <a class="btn u-btn-twitter  g-color-white g-font-size-12 rounded g-px-20--sm g-py-10"
+                  onclick="window.open('http://twitter.com/share?text=He%20visto%20este%20artículo%20en%20draestetica.com%20->&url=<?= Url::to(['//social/view', 'id' => $article->id], true) ?>', 'newwindow', 'width=600,height=300'); return false;">
                   <i class="fa fa-twitter g-mr-5--sm"></i> <span class="g-hidden-xs-down">Compartir en Twitter</span>
                 </a>
               </li>
@@ -125,29 +156,6 @@ $this->params['breadcrumbs'][] = $this->title;
       <div class="col-lg-3 g-brd-left--lg g-brd-secondary-opacity-0_3 g-mb-80 g-hidden-md-down">
           <div class="g-pl-20--lg">
             <div class="js-sticky-block g-sticky-block--lg g-pt-50" data-start-point="#stickyblock-start" data-end-point="#stickyblock-end">
-              <!-- Search -->
-              <?php
-                  $form = ActiveForm::begin([
-                    'id' => 'social-search',
-                    'action' => ['/social/index']
-                  ]);
-              ?>
-              <div class="g-mb-50">
-                <h3 class="h5 g-color-black g-font-weight-600 mb-4">Buscar</h3>
-                <div class="input-group">
-                  <input type="text" id="socialsearch-title" class="form-control g-brd-secondary-opacity-0_3 g-placeholder-gray-dark-v5 border-right-0 g-rounded-left-50 g-px-15" name="SocialSearch[title]" placeholder="Escribe aquí...">
-                  <span class="input-group-btn">
-                    <?= Html::submitButton('<i class="icon-magnifier g-pos-rel g-top-1"></i>', [
-                        'class' => 'btn u-btn-gradient-theme-v1 g-rounded-right-50 g-py-13 g-px-20 border-0',
-                    ]) ?>
-                  </span>
-                </div>
-              </div>
-              <?php ActiveForm::end(); ?>
-              <!-- End Search -->
-
-            <hr class="g-brd-gray-light-v4 g-my-50">
-
             <!-- Search -->
             <div class="g-mb-50">
               <h3 class="h5 g-color-black g-font-weight-600 g-mb-30">Instagram</h3>
