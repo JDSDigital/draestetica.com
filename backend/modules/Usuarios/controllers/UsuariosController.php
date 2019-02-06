@@ -3,6 +3,7 @@
 namespace backend\modules\Usuarios\controllers;
 
 use Yii;
+use yii\helpers\Url;
 use common\models\User;
 use common\models\search\UsersSearch;
 use yii\web\Controller;
@@ -66,8 +67,12 @@ class UsuariosController extends Controller
     {
         $model = new User();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+
+            if ($model->save() && $model->upload()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
         }
 
         return $this->render('create', [
@@ -84,15 +89,33 @@ class UsuariosController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+      $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
+      $previews = [];
+      $previewsConfig = [];
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+      if ($model->file !== null) {
+          $previews[] = $model->getThumb();
+          $previewsConfig[] = [
+            'caption' => $model->file,
+            'key' => $model->id,
+            'url' => Url::to(["/Usuarios/usuarios/deleteimage?id=" . $model->id]),
+          ];
+      }
+
+      if ($model->load(Yii::$app->request->post())) {
+
+          if ($model->upload() && $model->save()) {
+              return $this->redirect(['view', 'id' => $model->id]);
+          }
+
+      }
+
+      return $this->render('update', [
+          'model' => $model,
+          'previews' => $previews,
+          'previewsConfig' => $previewsConfig,
+      ]);
     }
 
     /**
@@ -102,11 +125,48 @@ class UsuariosController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
+     public function actionDelete($id)
+     {
+         $model = $this->findModel($id);
 
-        return $this->redirect(['index']);
+         if ($this->actionDeleteimage($id)) {
+             $model->delete();
+         }
+
+         return $this->redirect(['index']);
+     }
+
+     /**
+      * Deletes a single image
+      * @param $id
+      * @return bool
+      */
+     public function actionDeleteimage($id){
+
+         return $this->findModel($id)->deleteImage();
+     }
+
+    /**
+     * Changes Status.
+     *
+     * @return string
+     */
+    public function actionStatus()
+    {
+        if (Yii::$app->request->isAjax) {
+            $data = Yii::$app->request->post();
+
+            $model = User::findOne($data['id']);
+
+            if ($model->status)
+                $model->status = User::STATUS_DELETED;
+            else
+                $model->status = User::STATUS_ACTIVE;
+
+            $model->save();
+        }
+
+        return null;
     }
 
     /**

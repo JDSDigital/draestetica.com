@@ -12,6 +12,12 @@ class m190116_125018_create_partners_table extends Migration
      */
     public function safeUp()
     {
+        $tableOptions = null;
+        if ($this->db->driverName === 'mysql') {
+            // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
+            $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
+        }
+
         $this->createTable('xpartners_logos', [
             'id' => $this->primaryKey(),
             'name' => $this->string()->notNull(),
@@ -22,7 +28,7 @@ class m190116_125018_create_partners_table extends Migration
             'status' => $this->smallInteger()->notNull()->defaultValue(1),
             'created_at' => $this->integer()->notNull()->defaultValue(0),
             'updated_at' => $this->integer()->notNull()->defaultValue(0),
-        ]);
+        ], $tableOptions);
 
         /*$this->batchInsert('xpartners_logos', ['name', 'description', 'url', 'file'], [
           ['Geknology', 'Descripción para Geknology', 'https://www.geknology.com', 'geknology.png'],

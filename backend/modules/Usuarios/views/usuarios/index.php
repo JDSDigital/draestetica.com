@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\grid\GridView;
 use common\models\User;
 
@@ -48,6 +49,8 @@ $this->params['breadcrumbs'][] = $this->title;
                   </div>";
               }
           ],
+          'name',
+          'profession',
           'email:email',
           [
               'attribute' => 'created_at',
@@ -68,3 +71,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </section>
   </div>
 </div>
+
+<?php
+$this->registerJs('listenerChangeStatus("'.Url::to(["//Usuarios/usuarios/status"]).'");');
+?>

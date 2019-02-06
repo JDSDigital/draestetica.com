@@ -24,8 +24,6 @@ CKEditorAsset::register($this);
 
     <?= $form->field($model, 'article')->textarea(['rows' => 6, 'cols' => 4]) ?>
 
-    <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'source')->textInput(['maxlength' => true]) ?>
 
     <div class="row">

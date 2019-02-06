@@ -6,6 +6,8 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use yii\web\UploadedFile;
+use yii\imagine\Image;
 
 /**
  * User model
@@ -26,6 +28,7 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
 
+    public $image;
     public $password;
     public $repassword;
 
@@ -87,7 +90,7 @@ class User extends ActiveRecord implements IdentityInterface
       			[['email'], 'required'],
             [['email'], 'email'],
       			[['email'], 'unique'],
-      			[['email', 'password', 'repassword', 'password_reset_token'], 'string', 'max' => 255],
+      			[['name', 'profession', 'email', 'password', 'repassword', 'password_reset_token'], 'string', 'max' => 255],
 
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
@@ -249,5 +252,90 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    public static function getImagefolder()
+    {
+        return Yii::getAlias('@frontend/web/img/users/');
+    }
+
+    public static function getImagethumbfolder()
+    {
+        return Yii::getAlias('@frontend/web/img/users/thumbs/');
+    }
+
+    public static function getFolder()
+    {
+        $directory = Yii::getAlias('@web/img/users/');
+
+        return str_replace('admin/', '', $directory);
+    }
+
+    public function getImage()
+    {
+        return self::getFolder() . $this->file;
+    }
+
+    public function getThumb()
+    {
+        return self::getFolder() . 'thumbs/' . $this->file;
+    }
+
+    /**
+     * Upload supplied images via UploadedFile
+     * @return boolean
+     */
+    public function upload(): bool
+    {
+        $uploadedImage = UploadedFile::getInstances($this, 'image');
+
+        if (count($uploadedImage) > 0) {
+
+            $name = $this->id . '_' .strtolower(str_replace(' ', '-', $this->email)) . '.' . $uploadedImage[0]->extension;
+
+            $this->file = $name;
+
+            if (!$this->saveImages($uploadedImage[0], $name)) {
+                return false;
+            }
+
+            if ($this->save()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+
+    public function saveImages(UploadedFile $uploadedImage, string $name): bool
+    {
+        $uploadedImage->saveAs(self::getImagefolder() . 'tmp-' . $name);
+
+        Image::resize(self::getImagefolder() . 'tmp-' . $name, 800, null)
+        ->save(self::getImagefolder() . $name, ['jpeg_quality' => 80]);
+
+        Image::resize(self::getImagefolder() . 'tmp-' . $name, 300, null)
+        ->save(self::getImagethumbfolder() . $name, ['jpeg_quality' => 80]);
+
+        unlink(self::getImagefolder() . 'tmp-' . $name);
+
+        return true;
+    }
+
+    public function deleteImage(): bool
+    {
+        $image = $this->getImagefolder() . $this->file;
+        $imagethumb = $this->getImagethumbfolder() . $this->file;
+
+        $this->file = null;
+
+        if ($this->save()) {
+            return (unlink($image) && unlink($imagethumb)) ? true : false;
+        }
+
+        return false;
     }
 }

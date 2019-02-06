@@ -6,6 +6,7 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use common\models\Tags;
+use common\models\User;
 use yii\web\UploadedFile;
 use yii\imagine\Image;
 
@@ -56,16 +57,33 @@ class Blog extends \yii\db\ActiveRecord
         ];
     }
 
+    public function beforeSave($insert)
+    {
+        if (!parent::beforeSave($insert)) {
+            return false;
+        }
+
+        if ($insert) {
+            $this->author_id = Yii::$app->user->identity->id;
+        }
+
+        if (substr( $this->source, 0, 4 ) != "http") {
+            $this->source = 'https://' . $this->source;
+        }
+
+        return true;
+  	}
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['tag_id', 'views', 'featured', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['tag_id', 'author_id', 'views', 'featured', 'status', 'created_at', 'updated_at'], 'integer'],
             [['title', 'summary'], 'required'],
             [['article'], 'string'],
-            [['title', 'summary', 'file', 'author', 'source'], 'string', 'max' => 255],
+            [['title', 'summary', 'file', 'source'], 'string', 'max' => 255],
         ];
     }
 
@@ -77,11 +95,11 @@ class Blog extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'tag_id' => 'Tag',
+            'author_id' => 'Autor',
             'title' => 'Título',
             'summary' => 'Resumen',
             'article' => 'Artículo',
             'file' => 'Imágen',
-            'author' => 'Autor',
             'source' => 'Fuente',
             'views' => 'Vistas',
             'featured' => 'Destacado',
@@ -192,6 +210,14 @@ class Blog extends \yii\db\ActiveRecord
     public function getTag()
     {
         return $this->hasOne(Tags::className(), ['id' => 'tag_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAuthor()
+    {
+        return $this->hasOne(User::className(), ['id' => 'author_id']);
     }
 
     /**

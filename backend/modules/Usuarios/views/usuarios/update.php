@@ -17,6 +17,8 @@ $this->params['breadcrumbs'][] = 'Modificar';
 
       <?= $this->render('_form', [
         'model' => $model,
+        'previews' => $previews,
+        'previewsConfig' => $previewsConfig,
       ]) ?>
 
     </section>

@@ -12,10 +12,16 @@ class m190128_161446_create_social_tables extends Migration
      */
     public function safeUp()
     {
+        $tableOptions = null;
+        if ($this->db->driverName === 'mysql') {
+            // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
+            $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
+        }
+
         $this->createTable('xsocial_access_codes', [
             'id' => $this->primaryKey(),
             'access_token' => $this->string()->null(),
-        ]);
+        ], $tableOptions);
 
         $this->createTable('xsocial_instagram_images', [
             'id' => $this->primaryKey(),
@@ -28,7 +34,7 @@ class m190128_161446_create_social_tables extends Migration
 
             'created_at' => $this->integer()->notNull()->defaultValue(0),
             'updated_at' => $this->integer()->notNull()->defaultValue(0),
-        ]);
+        ], $tableOptions);
 
         $this->createTable('xsocial_articles', [
             'id' => $this->primaryKey(),
@@ -42,7 +48,7 @@ class m190128_161446_create_social_tables extends Migration
             'status' => $this->smallInteger()->notNull()->defaultValue(1),
             'created_at' => $this->integer()->notNull()->defaultValue(0),
             'updated_at' => $this->integer()->notNull()->defaultValue(0),
-        ]);
+        ], $tableOptions);
 
         $this->createTable('xsocial_images', [
             'id' => $this->primaryKey(),
@@ -50,7 +56,7 @@ class m190128_161446_create_social_tables extends Migration
             'file' => $this->string()->null(),
             'cover' => $this->smallInteger()->notNull()->defaultValue(0),
             'uploaded_at' => $this->integer()->notNull()->defaultValue(0),
-        ]);
+        ], $tableOptions);
 
         $this->createIndex(
             'idx-xsocial_images-article_id',
@@ -67,9 +73,9 @@ class m190128_161446_create_social_tables extends Migration
             'CASCADE'
         );
 
-        $this->insert('xsocial_access_codes', [
-            'access_token' => null
-        ]);
+        // $this->insert('xsocial_access_codes', [
+        //     'access_token' => null
+        // ]);
     }
 
     /**

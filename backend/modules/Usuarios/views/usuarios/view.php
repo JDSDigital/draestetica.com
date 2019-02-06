@@ -26,6 +26,12 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
       </header>
 
+      <div class="row">
+        <div class="col-lg-4">
+          <?= Html::img($model->getThumb(), ['class' => 'img-responsive p20']) ?>
+        </div>
+      </div>
+
       <?= DetailView::widget([
           'model' => $model,
           'attributes' => [
@@ -35,6 +41,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     return ($model->status == User::STATUS_ACTIVE) ? 'Activo' : 'Inactivo';
                 },
               ],
+              'name',
+              'profession',
               'email:email',
               [
                 'attribute' => 'created_at',

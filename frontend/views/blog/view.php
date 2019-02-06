@@ -56,8 +56,25 @@ $this->params['breadcrumbs'][] = $article->title;
 
             <?= $article->article ?>
             <br />
-            <?= ($article->author) ? '<p>Autor: ' . $article->author . '</p>' : '' ?>
-            <?= ($article->source) ? '<p>Fuente: ' . $article->source . '</p>' : '' ?>
+            <div class="row">
+              <div class="col-lg-12 vertical-align">
+                <figure class="display-inline">
+                  <?= ($article->author->file) ?
+                  Html::img($article->author->getThumb(), ['class' => 'author-image g-mr-10']) : ''
+                  ?>
+                </figure>
+                <div class="display-inline">
+                  <p class="g-mb-0">
+                    <?= 'Autor: ' . $article->author->name . ' - ' . $article->author->profession ?>
+                  </p>
+                  <p class="g-mb-0">
+                    <?= ($article->source) ?
+                     'Fuente: <a href="' . Url::to($article->source, 'http') . '" target="_blank">' . $article->source  . '</a>': ''
+                    ?>
+                  </p>
+                </div>
+              </div>
+            </div>
 
           </div>
 

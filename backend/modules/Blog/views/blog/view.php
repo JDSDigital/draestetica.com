@@ -60,7 +60,12 @@ $this->params['breadcrumbs'][] = $this->title;
                   'format' => 'html',
               ],
               'file',
-              'author',
+              [
+                'attribute' => 'author_id',
+                'value' => function ($model) {
+                    return $model->author->name;
+                },
+              ],
               'source',
               'views',
               [
