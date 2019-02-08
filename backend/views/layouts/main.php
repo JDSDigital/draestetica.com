@@ -111,6 +111,9 @@ SweetAlertAsset::register($this);
                                         <?= Html::a('<i class="icon-reading"></i> <span>Blog</span>') ?>
                                         <ul>
                                             <li>
+                                                <?= Html::a('<i class="icon-user"></i> <span>Autores</span>', ['//Blog/autores'], ['class' => (Yii::$app->controller->id == 'autores') ? 'active' : '']) ?>
+                                            </li>
+                                            <li>
                                                 <?= Html::a('<i class="icon-price-tags"></i> <span>Tags</span>', ['//Blog/tags'], ['class' => (Yii::$app->controller->id == 'tags') ? 'active' : '']) ?>
                                             </li>
                                             <li>

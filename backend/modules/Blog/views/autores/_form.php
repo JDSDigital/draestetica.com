@@ -2,38 +2,25 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use common\models\Tags;
-use common\models\Authors;
 use kartik\widgets\FileInput;
-use backend\assets\CKEditorAsset;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Blog */
+/* @var $model common\models\Authors */
 /* @var $form yii\widgets\ActiveForm */
-CKEditorAsset::register($this);
 ?>
 
-<div class="blog-form">
+<div class="authors-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
     <div class="row">
       <div class="col-lg-6">
-        <?= $form->field($model, 'tag_id')->dropdownList(Tags::getList()) ?>
+        <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
       </div>
       <div class="col-lg-6">
-        <?= $form->field($model, 'author_id')->dropdownList(Authors::getList()) ?>
+        <?= $form->field($model, 'profession')->textInput(['maxlength' => true]) ?>
       </div>
     </div>
-
-
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'summary')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'article')->textarea(['rows' => 6, 'cols' => 4]) ?>
-
-    <?= $form->field($model, 'source')->textInput(['maxlength' => true]) ?>
 
     <div class="row">
       <div class="col-md-12">

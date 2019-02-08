@@ -29,7 +29,8 @@ class m130524_201442_init extends Migration
         ], $tableOptions);
 
         // $this->insert('{{%xsystem_users}}', [
-        //     // 'username'      => 'admin',
+        //     'name'      => 'Daniel Sosa',
+        //     'profession'      => 'Programador',
         //     'auth_key'      => '6-Oj7UlbBzGErKAjXidC-QNhtATWbctw',
         //     'password_hash' => '$2y$13$GbyLKMHbbu/dWxnafz9znudqQUKdcwpqhlePxhD1xoJloE2./EqBC',
         //     'email'         => 'jdsosa@gmail.com',

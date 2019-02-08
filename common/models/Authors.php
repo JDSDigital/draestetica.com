@@ -4,30 +4,25 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 use yii\db\ActiveRecord;
-use common\models\Tags;
-use common\models\Authors;
 use yii\web\UploadedFile;
 use yii\imagine\Image;
 
 /**
- * This is the model class for table "xblog_articles".
+ * This is the model class for table "xblog_authors".
  *
  * @property int $id
- * @property int $tag_id
- * @property string $title
- * @property string $summary
- * @property string $article
+ * @property string $name
+ * @property string $profession
  * @property string $file
- * @property string $author
- * @property string $source
- * @property int $views
- * @property int $featured
  * @property int $status
  * @property int $created_at
  * @property int $updated_at
+ *
+ * @property Blog[] $articles
  */
-class Blog extends \yii\db\ActiveRecord
+class Authors extends \yii\db\ActiveRecord
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 1;
@@ -39,7 +34,19 @@ class Blog extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'xblog_articles';
+        return 'xblog_authors';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
+        return [
+            [['name', 'profession'], 'required'],
+            [['status', 'created_at', 'updated_at'], 'integer'],
+            [['name', 'profession', 'file'], 'string', 'max' => 255],
+        ];
     }
 
     public function behaviors()
@@ -57,32 +64,6 @@ class Blog extends \yii\db\ActiveRecord
         ];
     }
 
-    public function beforeSave($insert)
-    {
-        if (!parent::beforeSave($insert)) {
-            return false;
-        }
-
-        if (substr( $this->source, 0, 4 ) != "http") {
-            $this->source = 'https://' . $this->source;
-        }
-
-        return true;
-  	}
-
-    /**
-     * {@inheritdoc}
-     */
-    public function rules()
-    {
-        return [
-            [['tag_id', 'author_id', 'views', 'featured', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['title', 'summary'], 'required'],
-            [['article'], 'string'],
-            [['title', 'summary', 'file', 'source'], 'string', 'max' => 255],
-        ];
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -90,34 +71,28 @@ class Blog extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'tag_id' => 'Tag',
-            'author_id' => 'Autor',
-            'title' => 'Título',
-            'summary' => 'Resumen',
-            'article' => 'Artículo',
-            'file' => 'Imágen',
-            'source' => 'Fuente',
-            'views' => 'Vistas',
-            'featured' => 'Destacado',
+            'name' => 'Nombre',
+            'profession' => 'Profesión',
+            'file' => 'Archivo',
             'status' => 'Estado',
             'created_at' => 'Creado En',
-            'updated_at' => 'Modificado En',
+            'updated_at' => 'Actualizado En',
         ];
     }
 
     public static function getImagefolder()
     {
-        return Yii::getAlias('@frontend/web/img/blog/');
+        return Yii::getAlias('@frontend/web/img/authors/');
     }
 
     public static function getImagethumbfolder()
     {
-        return Yii::getAlias('@frontend/web/img/blog/thumbs/');
+        return Yii::getAlias('@frontend/web/img/authors/thumbs/');
     }
 
     public static function getFolder()
     {
-        $directory = Yii::getAlias('@web/img/blog/');
+        $directory = Yii::getAlias('@web/img/authors/');
 
         return str_replace('admin/', '', $directory);
     }
@@ -132,16 +107,6 @@ class Blog extends \yii\db\ActiveRecord
         return self::getFolder() . 'thumbs/' . $this->file;
     }
 
-    public function getRelated()
-    {
-        return self::find()->active()->where(['tag_id' => $this->tag_id])->limit(6)->all();
-    }
-
-    public static function getLatest()
-    {
-        return self::find()->active()->orderBy(['created_at' => SORT_DESC])->limit(4)->all();
-    }
-
     /**
      * Upload supplied images via UploadedFile
      * @return boolean
@@ -152,7 +117,7 @@ class Blog extends \yii\db\ActiveRecord
 
         if (count($uploadedImage) > 0) {
 
-            $name = $this->id . '_' .strtolower(str_replace(' ', '-', $this->title)) . '.' . $uploadedImage[0]->extension;
+            $name = $this->id . '_' .strtolower(str_replace(' ', '-', $this->name)) . '.' . $uploadedImage[0]->extension;
 
             $this->file = $name;
 
@@ -175,10 +140,10 @@ class Blog extends \yii\db\ActiveRecord
     {
         $uploadedImage->saveAs(self::getImagefolder() . 'tmp-' . $name);
 
-        Image::resize(self::getImagefolder() . 'tmp-' . $name, 1024, null)
+        Image::resize(self::getImagefolder() . 'tmp-' . $name, 800, null)
         ->save(self::getImagefolder() . $name, ['jpeg_quality' => 80]);
 
-        Image::resize(self::getImagefolder() . 'tmp-' . $name, 250, null)
+        Image::resize(self::getImagefolder() . 'tmp-' . $name, 300, null)
         ->save(self::getImagethumbfolder() . $name, ['jpeg_quality' => 80]);
 
         unlink(self::getImagefolder() . 'tmp-' . $name);
@@ -200,28 +165,27 @@ class Blog extends \yii\db\ActiveRecord
         return false;
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getTag()
+    public static function getList()
     {
-        return $this->hasOne(Tags::className(), ['id' => 'tag_id']);
+        $authors = self::find()->active()->select(['id', 'name'])->asArray()->all();
+
+        return ArrayHelper::map($authors, 'id', 'name');
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAuthor()
+    public function getArticles()
     {
-        return $this->hasOne(Authors::className(), ['id' => 'author_id']);
+        return $this->hasMany(Blog::className(), ['author_id' => 'id']);
     }
 
     /**
      * {@inheritdoc}
-     * @return BlogQuery the active query used by this AR class.
+     * @return AuthorsQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new BlogQuery(get_called_class());
+        return new AuthorsQuery(get_called_class());
     }
 }
