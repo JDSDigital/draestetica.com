@@ -24756,9 +24756,9 @@ a:hover {
 }
 
 .author-image {
-  width: 75px;
+  width: 150px;
   height: auto;
-  box-shadow: 3px 3px 5px #333;
+  box-shadow: 3px 3px 5px #777;
 }
 
 .display-inline {

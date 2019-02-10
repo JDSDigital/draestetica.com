@@ -67,6 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
               ],
               'source',
+              'instagram',
               'views',
               [
                 'attribute' => 'created_at',

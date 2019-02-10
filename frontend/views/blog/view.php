@@ -67,11 +67,12 @@ $this->params['breadcrumbs'][] = $article->title;
                   <p class="g-mb-0">
                     <?= 'Autor: ' . $article->author->name . ' - ' . $article->author->profession ?>
                   </p>
-                  <p class="g-mb-0">
-                    <?= ($article->source) ?
-                     'Fuente: <a href="' . Url::to($article->source, 'http') . '" target="_blank">' . $article->source  . '</a>': ''
-                    ?>
-                  </p>
+                  <?= ($article->source) ?
+                   '<p class="g-mb-0">Fuente: <a href="' . Url::to($article->source, 'http') . '" target="_blank">' . $article->source  . '</a></p>': ''
+                  ?>
+                  <?= ($article->instagram) ?
+                   '<p class="g-mb-0">Instagram: <a href="' . Url::to($article->instagram, 'http') . '" target="_blank">' . $article->getInstagramName()  . '</a></p>': ''
+                  ?>
                 </div>
               </div>
             </div>

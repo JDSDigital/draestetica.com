@@ -47,6 +47,7 @@ class m190123_151641_create_blog_table extends Migration
             'article' => $this->text()->notNull(),
             'file' => $this->string()->null(),
             'source' => $this->string()->null(),
+            'instagram' => $this->string()->null(),
 
             'views' => $this->integer()->notNull()->defaultValue(0),
             'featured' => $this->smallInteger()->notNull()->defaultValue(0),

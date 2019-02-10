@@ -21,6 +21,7 @@ use yii\imagine\Image;
  * @property string $file
  * @property string $author
  * @property string $source
+ * @property string $instagram
  * @property int $views
  * @property int $featured
  * @property int $status
@@ -63,8 +64,12 @@ class Blog extends \yii\db\ActiveRecord
             return false;
         }
 
-        if (substr( $this->source, 0, 4 ) != "http") {
+        if ($this->source != null && $this->source != '' && substr( $this->source, 0, 4 ) != "http") {
             $this->source = 'https://' . $this->source;
+        }
+
+        if ($this->instagram != null && $this->instagram != '' && substr( $this->instagram, 0, 4 ) != "http") {
+            $this->instagram = 'https://' . $this->instagram;
         }
 
         return true;
@@ -79,7 +84,7 @@ class Blog extends \yii\db\ActiveRecord
             [['tag_id', 'author_id', 'views', 'featured', 'status', 'created_at', 'updated_at'], 'integer'],
             [['title', 'summary'], 'required'],
             [['article'], 'string'],
-            [['title', 'summary', 'file', 'source'], 'string', 'max' => 255],
+            [['title', 'summary', 'file', 'source', 'instagram'], 'string', 'max' => 255],
         ];
     }
 
@@ -97,6 +102,7 @@ class Blog extends \yii\db\ActiveRecord
             'article' => 'Artículo',
             'file' => 'Imágen',
             'source' => 'Fuente',
+            'instagram' => 'Instagram',
             'views' => 'Vistas',
             'featured' => 'Destacado',
             'status' => 'Estado',
@@ -198,6 +204,14 @@ class Blog extends \yii\db\ActiveRecord
         }
 
         return false;
+    }
+
+    public function getInstagramName()
+    {
+        $instagram = trim($this->instagram, "/");
+        $parts = explode("/", $instagram);
+
+        return '@' . $parts[count($parts) - 1];
     }
 
     /**
