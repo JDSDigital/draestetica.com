@@ -16,24 +16,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-lg-6 g-mb-50">
       <!-- Heading -->
       <h2 class="h1 g-color-black g-font-weight-700">¿Cómo podemos ayudarte?</h2>
-      <!-- <p class="g-font-size-18 mb-0">Morbi a suscipit ipsum. Suspendisse mollis libero ante. Pellentesque finibus convallis nulla vel placerat.</p> -->
       <!-- End Heading -->
     </div>
-    <div class="col-lg-3 align-self-center ml-auto g-mb-50">
-      <div class="media">
-        <div class="d-flex align-self-center">
-          <span class="u-icon-v2 u-icon-size--sm g-color-white bg-theme-gradient-v1 rounded-circle mr-3">
-              <i class="g-font-size-16 icon-communication-033 u-line-icon-pro"></i>
-            </span>
-        </div>
-        <div class="media-body align-self-center">
-          <h3 class="h6 g-color-black g-font-weight-700 text-uppercase mb-0">Teléfono</h3>
-          <p class="mb-0">+569 4534 0966</p>
-        </div>
-      </div>
-    </div>
 
-    <div class="col-lg-3 align-self-center ml-auto g-mb-50">
+    <div class="col-lg-6 align-self-center ml-auto g-mb-50">
       <div class="media">
         <div class="d-flex align-self-center">
           <span class="u-icon-v2 u-icon-size--sm g-color-white bg-theme-gradient-v1 rounded-circle mr-3">

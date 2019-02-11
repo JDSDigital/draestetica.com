@@ -12,6 +12,12 @@ use common\widgets\Alert;
 use common\models\Social;
 use common\models\Instagram;
 
+// Meta tags
+$this->registerMetaTag(['name' => 'author', 'content' => 'geknology.com']);
+$this->registerMetaTag(['name' => 'description', 'content' => 'Una mezcla perfecta entre salud y belleza.']);
+$this->registerMetaTag(['name' => 'keywords', 'content' => 'estetica, medicina, clinica']);
+$this->registerMetaTag(['rel' => 'canonical', 'href' => 'https://www.draestetica.com']);
+
 // Favicon
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'sizes' => '196x196', 'href' => Yii::getAlias('@web') . '/img/favicon/favicon-196x196.png']);
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'sizes' => '96x96', 'href' => Yii::getAlias('@web') . '/img/favicon/favicon-96x96.png']);
