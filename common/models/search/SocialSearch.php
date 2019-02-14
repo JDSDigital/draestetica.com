@@ -2,6 +2,7 @@
 
 namespace common\models\search;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Social;
@@ -41,6 +42,10 @@ class SocialSearch extends Social
     public function search($params)
     {
         $query = Social::find();
+
+        if (Yii::$app->id == 'app-frontend') {
+            $query->active()->orderBy(['created_at' => SORT_DESC]);
+        }
 
         // add conditions that should always apply here
 
