@@ -23,4 +23,11 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
 
+    if (document.querySelector('#clinicservices-description') !== null) {
+      CKEDITOR.replace('clinicservices-description', {
+        height: 400,
+        extraPlugins: 'forms'
+      });
+    }
+
 });

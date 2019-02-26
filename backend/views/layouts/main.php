@@ -121,6 +121,14 @@ SweetAlertAsset::register($this);
                                             </li>
                                         </ul>
                                     </li>
+                                    <li class="<?= (Yii::$app->controller->module->id == 'Clinic') ? 'active' : '' ?>">
+                                        <?= Html::a('<i class="icon-building"></i> <span>Clinic</span>') ?>
+                                        <ul>
+                                            <li>
+                                                <?= Html::a('<i class="icon-gear"></i> <span>Servicios</span>', ['//Clinic/servicios'], ['class' => (Yii::$app->controller->id == 'servicios') ? 'active' : '']) ?>
+                                            </li>
+                                        </ul>
+                                    </li>
                                     <li class="<?= (Yii::$app->controller->module->id == 'Partners') ? 'active' : '' ?>">
                                         <?= Html::a('<i class="icon-store"></i> <span>Partners</span>', ['//Partners']) ?>
                                     </li>

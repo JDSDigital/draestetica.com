@@ -33,6 +33,10 @@ return [
             'class' => 'backend\modules\Social\Module',
             'defaultRoute' => 'social',
         ],
+        'Clinic' => [
+            'class' => 'backend\modules\Clinic\Module',
+            // 'defaultRoute' => 'servicios',
+        ],
     ],
     'components' => [
         'request' => [
