@@ -66,8 +66,12 @@ class ServiciosController extends Controller
     {
         $model = new ClinicServices();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+
+            if ($model->save() && $model->upload()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
         }
 
         return $this->render('create', [
@@ -86,12 +90,30 @@ class ServiciosController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $previews = [];
+        $previewsConfig = [];
+
+        if ($model->file !== null) {
+            $previews[] = $model->getThumb();
+            $previewsConfig[] = [
+              'caption' => $model->file,
+              'key' => $model->id,
+              'url' => Url::to(["/Clinic/servicios/deleteimage?id=" . $model->id]),
+            ];
+        }
+
+        if ($model->load(Yii::$app->request->post())) {
+
+            if ($model->upload() && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
         }
 
         return $this->render('update', [
             'model' => $model,
+            'previews' => $previews,
+            'previewsConfig' => $previewsConfig,
         ]);
     }
 
@@ -104,9 +126,46 @@ class ServiciosController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+
+        if ($this->actionDeleteimage($id)) {
+            $model->delete();
+        }
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * Deletes a single image
+     * @param $id
+     * @return bool
+     */
+    public function actionDeleteimage($id){
+
+        return $this->findModel($id)->deleteImage();
+    }
+
+    /**
+     * Changes Status.
+     *
+     * @return string
+     */
+    public function actionStatus()
+    {
+        if (Yii::$app->request->isAjax) {
+            $data = Yii::$app->request->post();
+
+            $model = ClinicServices::findOne($data['id']);
+
+            if ($model->status)
+                $model->status = ClinicServices::STATUS_DELETED;
+            else
+                $model->status = ClinicServices::STATUS_ACTIVE;
+
+            $model->save();
+        }
+
+        return null;
     }
 
     /**

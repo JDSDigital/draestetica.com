@@ -43,7 +43,7 @@ class m190226_141307_create_clinic_tables extends Migration
             'name' => $this->string()->notNull(),
             'summary' => $this->string()->notNull(),
             'description' => $this->string()->notNull(),
-            'file' => $this->string()->notNull(),
+            'file' => $this->string()->null(),
 
             'status' => $this->smallInteger()->notNull()->defaultValue(1),
             'created_at' => $this->integer()->notNull()->defaultValue(0),

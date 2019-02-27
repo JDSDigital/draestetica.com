@@ -2,6 +2,7 @@
 
 namespace common\models\search;
 
+use yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\ClinicServices;
@@ -41,6 +42,10 @@ class ClinicServicesSearch extends ClinicServices
     public function search($params)
     {
         $query = ClinicServices::find();
+
+        // if (Yii::$app->id == 'app-frontend') {
+            $query->active()->orderBy(['category_id' => SORT_ASC, 'subcategory_id' => SORT_ASC]);
+        // }
 
         // add conditions that should always apply here
 

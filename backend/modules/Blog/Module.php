@@ -22,12 +22,12 @@ class Module extends \yii\base\Module
         parent::init();
 
         // custom initialization code goes here
-        $blogFolder = Yii::getAlias('@frontend').'\web\img\blog';
-        $thumbsFolder = $blogFolder . '\thumbs';
-
-        if (!file_exists($blogFolder)) {
-          mkdir($blogFolder, 0755);
-          mkdir($thumbsFolder, 0755);
-        }
+        // $blogFolder = Yii::getAlias('@frontend').'\web\img\blog';
+        // $thumbsFolder = $blogFolder . '\thumbs';
+        //
+        // if (!file_exists($blogFolder)) {
+        //   mkdir($blogFolder, 0755);
+        //   mkdir($thumbsFolder, 0755);
+        // }
     }
 }

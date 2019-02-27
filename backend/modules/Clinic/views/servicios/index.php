@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\GridView;
+use common\models\ClinicServices;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\search\ClinicServicesSearch */
