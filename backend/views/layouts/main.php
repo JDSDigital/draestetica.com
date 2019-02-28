@@ -122,10 +122,10 @@ SweetAlertAsset::register($this);
                                         </ul>
                                     </li>
                                     <li class="<?= (Yii::$app->controller->module->id == 'Clinic') ? 'active' : '' ?>">
-                                        <?= Html::a('<i class="icon-building"></i> <span>Clinic</span>') ?>
+                                        <?= Html::a('<i class="icon-aid-kit"></i> <span>Clinic</span>') ?>
                                         <ul>
                                             <li>
-                                                <?= Html::a('<i class="icon-gear"></i> <span>Servicios</span>', ['//Clinic/servicios'], ['class' => (Yii::$app->controller->id == 'servicios') ? 'active' : '']) ?>
+                                                <?= Html::a('<i class="icon-list"></i> <span>Servicios</span>', ['//Clinic/servicios'], ['class' => (Yii::$app->controller->id == 'servicios') ? 'active' : '']) ?>
                                             </li>
                                         </ul>
                                     </li>

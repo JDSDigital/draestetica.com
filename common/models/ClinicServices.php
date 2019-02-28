@@ -151,7 +151,7 @@ class ClinicServices extends \yii\db\ActiveRecord
         Image::resize(self::getImagefolder() . 'tmp-' . $name, 1024, null)
         ->save(self::getImagefolder() . $name, ['jpeg_quality' => 80]);
 
-        Image::resize(self::getImagefolder() . 'tmp-' . $name, 250, null)
+        Image::resize(self::getImagefolder() . 'tmp-' . $name, 300, null)
         ->save(self::getImagethumbfolder() . $name, ['jpeg_quality' => 80]);
 
         unlink(self::getImagefolder() . 'tmp-' . $name);

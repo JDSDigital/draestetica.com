@@ -6,6 +6,8 @@ use yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\ClinicServices;
+use common\models\ClinicServicesCategories;
+use common\models\ClinicServicesSubcategories;
 
 /**
  * ClinicServicesSearch represents the model behind the search form of `common\models\ClinicServices`.
@@ -43,9 +45,9 @@ class ClinicServicesSearch extends ClinicServices
     {
         $query = ClinicServices::find();
 
-        // if (Yii::$app->id == 'app-frontend') {
+        if (Yii::$app->id == 'app-frontend') {
             $query->active()->orderBy(['category_id' => SORT_ASC, 'subcategory_id' => SORT_ASC]);
-        // }
+        }
 
         // add conditions that should always apply here
 
@@ -77,5 +79,24 @@ class ClinicServicesSearch extends ClinicServices
             ->andFilterWhere(['like', 'file', $this->file]);
 
         return $dataProvider;
+    }
+
+    public function frontendServices(array $response = []): array
+    {
+        $categories = ClinicServicesCategories::find()->active()->select(['id', 'name'])->all();
+        $subcategories = ClinicServicesSubcategories::find()->active()->select(['id', 'name'])->all();
+
+        foreach ($categories as $category) {
+            foreach ($subcategories as $subcategory) {
+                $services = ClinicServices::find()
+                ->where(['category_id' => $category->id])
+                ->andWhere(['subcategory_id' => $subcategory->id])
+                ->active()
+                ->all();
+                $response[$category->name . ' ' . $subcategory->name] = $services;
+            }
+        }
+
+        return $response;
     }
 }

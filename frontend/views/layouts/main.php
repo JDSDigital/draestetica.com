@@ -111,6 +111,9 @@ AppAsset::register($this);
                     <?= Html::a('Partners', ['partners/index'], ['class' => (Yii::$app->controller->id == 'partners') ? 'nav-link active' : 'nav-link']) ?>
                   </li>
                   <li class="nav-item g-my-5">
+                    <?= Html::a('Clinic', ['clinic/index'], ['class' => (Yii::$app->controller->id == 'clinic') ? 'nav-link active' : 'nav-link']) ?>
+                  </li>
+                  <li class="nav-item g-my-5">
                     <?= Html::a('Contacto', ['contacto/index'], ['class' => (Yii::$app->controller->id == 'contacto') ? 'nav-link active' : 'nav-link']) ?>
                   </li>
                 </ul>
@@ -198,6 +201,10 @@ AppAsset::register($this);
           <li class="d-flex align-items-baseline g-mb-12">
             <i class="fa fa-angle-double-right g-mr-8"></i>
             <?= Html::a('Partners', ['partners/index'], ['class' => 'g-color-white-opacity-0_8 g-color-white--hover']) ?>
+          </li>
+          <li class="d-flex align-items-baseline g-mb-12">
+            <i class="fa fa-angle-double-right g-mr-8"></i>
+            <?= Html::a('Clinic', ['clinic/index'], ['class' => 'g-color-white-opacity-0_8 g-color-white--hover']) ?>
           </li>
           <li class="d-flex align-items-baseline g-mb-12">
             <i class="fa fa-angle-double-right g-mr-8"></i>

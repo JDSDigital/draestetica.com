@@ -131,6 +131,11 @@ a:hover {
     object-fit: cover;
     position: relative;
 
+    &-clinic {
+        @extend .crop;
+        height: 200px;
+    }
+
     &-related {
         @extend .crop;
         height: 150px;
