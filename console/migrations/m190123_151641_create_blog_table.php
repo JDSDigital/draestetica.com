@@ -74,7 +74,7 @@ class m190123_151641_create_blog_table extends Migration
             'tag_id',
             'xblog_tags',
             'id',
-            'CASCADE'
+            'SET NULL'
         );
 
         $this->addForeignKey(
@@ -83,7 +83,7 @@ class m190123_151641_create_blog_table extends Migration
             'author_id',
             'xblog_authors',
             'id',
-            'CASCADE'
+            'SET NULL'
         );
     }
 

@@ -93,7 +93,10 @@ class ClinicServicesSearch extends ClinicServices
                 ->andWhere(['subcategory_id' => $subcategory->id])
                 ->active()
                 ->all();
-                $response[$category->name . ' ' . $subcategory->name] = $services;
+
+                if (!empty($services)) {
+                  $response[$category->name][$subcategory->name] = $services;
+                }
             }
         }
 
