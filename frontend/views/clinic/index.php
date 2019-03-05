@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
               </div>
             </div>
             <?php foreach ($services as $service) : ?>
-              <div class="col-lg-3">
+              <div class="col-lg-4">
                 <article class="u-shadow-v11 service-container mb-4">
                   <?= Html::a(Html::img($service->getThumb(), ['class' => 'img-fluid w-100 g-rounded-top-5 crop-clinic']), ['clinic/view', 'id' => $service->id]) ?>
                   <div class="g-bg-white g-pa-30 g-rounded-bottom-5">
