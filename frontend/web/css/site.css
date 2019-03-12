@@ -122,3 +122,13 @@ a.desc:after {
 .alert.fade {
   opacity: 1;
 }
+
+.new-link::after {
+  margin: -10px 5px;
+  background-image: url('../img/inline/liston.png');
+  background-size: 34px 34px;
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  content:"";
+}

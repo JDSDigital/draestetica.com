@@ -9,6 +9,7 @@ var minifyCss = require('gulp-clean-css');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var babel = require("gulp-babel");
 
 // Lint task
 gulp.task('lint', function() {
@@ -43,6 +44,17 @@ gulp.task('frontend', function() {
             suffix: ".min"
         }))
         .pipe(gulp.dest('frontend/web/css'));
+});
+
+gulp.task('react', function() {
+    return gulp
+        .src('frontend/react/*.jsx')
+        .pipe(babel({
+            presets: ["@babel/react"]
+        }))
+        // .pipe(concat('all.js'))
+        // .pipe(uglify())
+        .pipe(gulp.dest('frontend/web/js/clinic'));
 });
 
 gulp.task('default', function () {

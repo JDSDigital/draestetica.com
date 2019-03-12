@@ -84,6 +84,11 @@ class ClinicController extends Controller
         ]);
     }
 
+    public function actionBook()
+    {
+        return $this->render('book');
+    }
+
     /**
      * Finds the ClinicServices model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

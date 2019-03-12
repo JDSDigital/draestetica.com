@@ -102,7 +102,7 @@ AppAsset::register($this);
                     <?= Html::a('Inicio', ['site/index'], ['class' => (Yii::$app->controller->id == 'site') ? 'nav-link active' : 'nav-link']) ?>
                   </li>
                   <li class="nav-item g-my-5">
-                    <?= Html::a('Clinic', ['clinic/index'], ['class' => (Yii::$app->controller->id == 'clinic') ? 'nav-link active' : 'nav-link']) ?>
+                    <?= Html::a('Clinic', ['clinic/index'], ['class' => (Yii::$app->controller->id == 'clinic') ? 'nav-link new-link active' : 'new-link nav-link']) ?>
                   </li>
                   <li class="nav-item g-my-5">
                     <?= Html::a('Social', ['social/index'], ['class' => (Yii::$app->controller->id == 'social') ? 'nav-link active' : 'nav-link']) ?>
