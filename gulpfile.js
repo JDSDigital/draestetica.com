@@ -11,6 +11,12 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var babel = require("gulp-babel");
 
+// JSX files
+var sourceJsx = [
+  'frontend/react/components/*.jsx',
+  'frontend/react/*.jsx',
+];
+
 // Lint task
 gulp.task('lint', function() {
     return gulp
@@ -48,16 +54,21 @@ gulp.task('frontend', function() {
 
 gulp.task('react', function() {
     return gulp
-        .src('frontend/react/*.jsx')
+        .src(sourceJsx)
         .pipe(babel({
-            presets: ["@babel/react"]
+            presets: ["@babel/react", '@babel/preset-env']
         }))
-        // .pipe(concat('all.js'))
-        // .pipe(uglify())
+        .pipe(concat('all.js'))
+        .pipe(gulp.dest('frontend/web/js/clinic'))
+        .pipe(rename({
+            suffix: ".min"
+        }))
+        .pipe(uglify())
         .pipe(gulp.dest('frontend/web/js/clinic'));
 });
 
 gulp.task('default', function () {
-  gulp.watch('frontend/scss/**/*.scss', gulp.parallel('frontend'));
-  gulp.watch('backend/less/_main_full/*.less', gulp.parallel('backend'));
+  gulp.watch('frontend/react/**/*.jsx', gulp.parallel('react'));
+  // gulp.watch('frontend/scss/**/*.scss', gulp.parallel('frontend'));
+  // gulp.watch('backend/less/_main_full/*.less', gulp.parallel('backend'));
 });

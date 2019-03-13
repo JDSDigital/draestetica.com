@@ -19,7 +19,7 @@ class ReactAsset extends AssetBundle
     public $jsOptions = ['crossorigin' => true];
     public $depends = [
       'frontend\assets\AppAsset',
-      'frontend\assets\ReactComponentsAsset',
+      // 'frontend\assets\ReactComponentsAsset',
     ];
 }
 ?>

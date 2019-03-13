@@ -12,4 +12,4 @@ class Clinic extends React.Component {
   }
 }
 
-export default Clinic;
+// export default Clinic;

@@ -3,9 +3,9 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
-use frontend\assets\ReactAsset;
+use frontend\assets\ClinicAsset;
 
-ReactAsset::register($this);
+ClinicAsset::register($this);
 
 $this->title = 'Dra. Estética';
 ?>
