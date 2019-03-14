@@ -11,6 +11,9 @@ class ClinicAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
+    public $css = [
+      YII_ENV_DEV ? 'css/clinic.css' : 'css/clinic.min.css',
+    ];
     public $js = [
       YII_ENV_DEV ? 'js/clinic/all.js' : 'js/clinic/all.min.js',
     ];

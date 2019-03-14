@@ -7,7 +7,8 @@ use frontend\assets\ClinicAsset;
 
 ClinicAsset::register($this);
 
-$this->title = 'Dra. Estética';
+$this->title = 'Calendario';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="container">

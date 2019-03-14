@@ -18,31 +18,113 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var Clinic =
+var Calendar =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(Clinic, _React$Component);
+  _inherits(Calendar, _React$Component);
 
-  function Clinic() {
-    _classCallCheck(this, Clinic);
+  function Calendar(prop) {
+    var _this;
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Clinic).apply(this, arguments));
+    _classCallCheck(this, Calendar);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Calendar).call(this, prop));
+    _this.state = {
+      days: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
+      months: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+      date: new Date(),
+      initialWeekDay: 0,
+      initialDay: 0,
+      finalDay: 0
+    };
+    return _this;
   }
 
-  _createClass(Clinic, [{
+  _createClass(Calendar, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.setState({
+        initialWeekDay: this.state.date.getDay(),
+        initialDay: this.state.date.getDate(),
+        finalDay: this.daysInMonth(this.state.date.getMonth(), this.state.date.getFullYear())
+      });
+    }
+  }, {
+    key: "renderDays",
+    value: function renderDays() {
+      var _this2 = this;
+
+      return this.state.days.map(function (day) {
+        return React.createElement("div", {
+          key: "weekday-".concat(day),
+          className: "calendar-day"
+        }, _this2.capitalizeFirstLetter(day));
+      });
+    }
+  }, {
+    key: "renderDate",
+    value: function renderDate() {
+      var _this$state = this.state,
+          date = _this$state.date,
+          initialWeekDay = _this$state.initialWeekDay,
+          initialDay = _this$state.initialDay,
+          finalDay = _this$state.finalDay;
+      var calendar = [];
+
+      for (var i = 0; i <= initialWeekDay; i++) {
+        calendar.push(React.createElement("div", {
+          key: "blank-".concat(i),
+          className: "calendar-day calendar-day-blank"
+        }, " "));
+      }
+
+      for (var _i = 1; _i <= finalDay; _i++) {
+        if (_i < initialDay) {
+          calendar.push(React.createElement("div", {
+            key: "day-".concat(_i),
+            className: "calendar-day calendar-day-disabled"
+          }, _i));
+        } else {
+          calendar.push(React.createElement("div", {
+            key: "day-".concat(_i),
+            className: "calendar-day calendar-day-available"
+          }, _i));
+        }
+      }
+
+      return calendar;
+    }
+  }, {
+    key: "renderMonth",
+    value: function renderMonth() {
+      return this.capitalizeFirstLetter(this.state.months[this.state.date.getMonth()]);
+    }
+  }, {
+    key: "daysInMonth",
+    value: function daysInMonth(month, year) {
+      return 32 - new Date(year, month, 32).getDate();
+    }
+  }, {
+    key: "capitalizeFirstLetter",
+    value: function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement("div", {
-        className: "row"
+        className: "calendar"
       }, React.createElement("div", {
-        className: "col-lg-12"
-      }, React.createElement("h1", null, "React")));
+        className: "row text-center"
+      }, React.createElement("h2", null, this.renderMonth())), React.createElement("div", {
+        className: "row"
+      }, this.renderDays(), this.renderDate()));
     }
   }]);
 
-  return Clinic;
+  return Calendar;
 }(React.Component); // export default Clinic;
 "use strict";
 
 // import Clinic from './components/Clinic.js';
-ReactDOM.render(React.createElement(Clinic, null), document.getElementById('app-root'));
+ReactDOM.render(React.createElement(Calendar, null), document.getElementById('app-root'));
