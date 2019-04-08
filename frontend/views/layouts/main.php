@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use frontend\widgets\Breadcrumbs;
@@ -139,7 +140,7 @@ AppAsset::register($this);
 </div>
 
 <!-- Footer -->
-<footer class="bg-theme-gradient-v1 g-color-white g-py-60">
+<footer class="bg-theme-gradient-v1 g-color-white g-pt-60 g-pb-20">
   <div class="container">
     <div class="row">
 
@@ -231,6 +232,15 @@ AppAsset::register($this);
       <!-- End Footer Content -->
     </div>
   </div>
+  <div class="footer-copyright g-pt-20">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<p>Copyright © <?= date('Y') ?> <?= Html::a('draestetica.com',['//site/index'], ['class' => 'g-color-white-opacity-0_8 g-color-white--hover']) ?> / Diseño y desarrollo por <?= Html::a('Geknology', Url::to('http://www.geknology.com/'), ['class' => 'g-color-white-opacity-0_8 g-color-white--hover']) ?></p>
+				</div>
+			</div>
+		</div>
+	</div>
 </footer>
 <!-- End Footer -->
 
