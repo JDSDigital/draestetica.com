@@ -235,8 +235,8 @@ AppAsset::register($this);
   <div class="footer-copyright g-pt-20">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-12">
-					<p>Copyright © <?= date('Y') ?> <?= Html::a('draestetica.com',['//site/index'], ['class' => 'g-color-white-opacity-0_8 g-color-white--hover']) ?> / Diseño y desarrollo por <?= Html::a('Geknology', Url::to('http://www.geknology.com/'), ['class' => 'g-color-white-opacity-0_8 g-color-white--hover']) ?></p>
+				<div class="col-sm-12 text-center">
+					<p>Copyright © <?= date('Y') ?> <?= Html::a('draestetica.com',['//site/index'], ['class' => 'g-color-white-opacity-0_8 g-color-white--hover']) ?> / Diseño y desarrollo por <?= Html::a('Geknology', Url::to('http://www.geknology.com/'), ['class' => 'g-color-white-opacity-0_8 g-color-white--hover', 'target' => '_blank']) ?></p>
 				</div>
 			</div>
 		</div>
