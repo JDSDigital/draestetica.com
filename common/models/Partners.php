@@ -4,7 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
-use yii\db\ActiveRecord;
+use yii\db\BaseActiveRecord;
 use yii\web\UploadedFile;
 use yii\imagine\Image;
 
@@ -44,21 +44,6 @@ class Partners extends \yii\db\ActiveRecord
         return true;
   	}
 
-    public function behaviors()
-    {
-        return [
-            [
-                'class' => TimestampBehavior::className(),
-                'attributes' => [
-                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
-                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
-                ],
-                // if you're using datetime instead of UNIX timestamp:
-                // 'value' => new Expression('NOW()'),
-            ],
-        ];
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -66,8 +51,23 @@ class Partners extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'description', 'url', 'file'], 'required'],
-            [['status', 'created_at', 'updated_at'], 'integer'],
+            [['status'], 'integer'],
             [['name', 'description', 'url', 'file'], 'string', 'max' => 255],
+        ];
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    BaseActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    BaseActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+                ],
+                // if you're using datetime instead of UNIX timestamp:
+                // 'value' => new Expression('NOW()'),
+            ],
         ];
     }
 

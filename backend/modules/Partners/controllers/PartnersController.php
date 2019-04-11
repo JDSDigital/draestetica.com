@@ -69,6 +69,9 @@ class PartnersController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
 
+            $model->touch('created_at');
+            $model->touch('updated_at');
+
             if ($model->upload() && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
@@ -100,7 +103,10 @@ class PartnersController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
 
-            if ($model->upload() && $model->save()) {
+            $model->upload();
+            $model->touch('updated_at');
+
+            if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 
