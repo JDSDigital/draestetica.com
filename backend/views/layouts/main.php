@@ -90,48 +90,60 @@ SweetAlertAsset::register($this);
                                     <li class="navigation-header">
                                         <span>Main</span> <i class="icon-menu" title="Main pages"></i>
                                     </li>
-                                    <li class="<?= (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') ? 'active' : '' ?>">
-                                        <?= Html::a('<i class="icon-home4"></i> <span>Dashboard</span>', ['//site/index']) ?>
-                                    </li>
-                                    <li class="<?= (Yii::$app->controller->module->id == 'Usuarios') ? 'active' : '' ?>">
-                                        <?= Html::a('<i class="icon-users"></i> <span>Usuarios</span>', ['//Usuarios']) ?>
-                                    </li>
-                                    <li class="<?= (Yii::$app->controller->module->id == 'Social') ? 'active' : '' ?>">
-                                        <?= Html::a('<i class="icon-newspaper"></i> <span>Social</span>') ?>
-                                        <ul>
-                                            <li>
-                                                <?= Html::a('<i class="icon-instagram"></i> <span>Instagram</span>', ['//Social/instagram'], ['class' => (Yii::$app->controller->id == 'instagram') ? 'active' : '']) ?>
-                                            </li>
-                                            <li>
-                                                <?= Html::a('<i class="icon-newspaper"></i> <span>Social</span>', ['//Social/social'], ['class' => (Yii::$app->controller->id == 'social') ? 'active' : '']) ?>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="<?= (Yii::$app->controller->module->id == 'Blog') ? 'active' : '' ?>">
-                                        <?= Html::a('<i class="icon-reading"></i> <span>Blog</span>') ?>
-                                        <ul>
-                                            <li>
-                                                <?= Html::a('<i class="icon-user"></i> <span>Autores</span>', ['//Blog/autores'], ['class' => (Yii::$app->controller->id == 'autores') ? 'active' : '']) ?>
-                                            </li>
-                                            <li>
-                                                <?= Html::a('<i class="icon-price-tags"></i> <span>Tags</span>', ['//Blog/tags'], ['class' => (Yii::$app->controller->id == 'tags') ? 'active' : '']) ?>
-                                            </li>
-                                            <li>
-                                                <?= Html::a('<i class="icon-magazine"></i> <span>Blog</span>', ['//Blog/blog'], ['class' => (Yii::$app->controller->id == 'blog') ? 'active' : '']) ?>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="<?= (Yii::$app->controller->module->id == 'Clinic') ? 'active' : '' ?>">
-                                        <?= Html::a('<i class="icon-aid-kit"></i> <span>Clinic</span>') ?>
-                                        <ul>
-                                            <li>
-                                                <?= Html::a('<i class="icon-list"></i> <span>Servicios</span>', ['//Clinic/servicios'], ['class' => (Yii::$app->controller->id == 'servicios') ? 'active' : '']) ?>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="<?= (Yii::$app->controller->module->id == 'Partners') ? 'active' : '' ?>">
-                                        <?= Html::a('<i class="icon-store"></i> <span>Partners</span>', ['//Partners']) ?>
-                                    </li>
+                                    <?php if (Yii::$app->user->can('seeDashboard')) : ?>
+                                        <li class="<?= (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') ? 'active' : '' ?>">
+                                            <?= Html::a('<i class="icon-home4"></i> <span>Dashboard</span>', ['//site/index']) ?>
+                                        </li>
+                                    <?php endif; ?>
+                                    <?php if (Yii::$app->user->can('seeUsers')) : ?>
+                                        <li class="<?= (Yii::$app->controller->module->id == 'Usuarios') ? 'active' : '' ?>">
+                                            <?= Html::a('<i class="icon-users"></i> <span>Usuarios</span>', ['//Usuarios']) ?>
+                                        </li>
+                                    <?php endif; ?>
+                                    <?php if (Yii::$app->user->can('seeSocial')) : ?>
+                                        <li class="<?= (Yii::$app->controller->module->id == 'Social') ? 'active' : '' ?>">
+                                            <?= Html::a('<i class="icon-newspaper"></i> <span>Social</span>') ?>
+                                            <ul>
+                                                <li>
+                                                    <?= Html::a('<i class="icon-instagram"></i> <span>Instagram</span>', ['//Social/instagram'], ['class' => (Yii::$app->controller->id == 'instagram') ? 'active' : '']) ?>
+                                                </li>
+                                                <li>
+                                                    <?= Html::a('<i class="icon-newspaper"></i> <span>Social</span>', ['//Social/social'], ['class' => (Yii::$app->controller->id == 'social') ? 'active' : '']) ?>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    <?php endif; ?>
+                                    <?php if (Yii::$app->user->can('seeBlog')) : ?>
+                                        <li class="<?= (Yii::$app->controller->module->id == 'Blog') ? 'active' : '' ?>">
+                                            <?= Html::a('<i class="icon-reading"></i> <span>Blog</span>') ?>
+                                            <ul>
+                                                <li>
+                                                    <?= Html::a('<i class="icon-user"></i> <span>Autores</span>', ['//Blog/autores'], ['class' => (Yii::$app->controller->id == 'autores') ? 'active' : '']) ?>
+                                                </li>
+                                                <li>
+                                                    <?= Html::a('<i class="icon-price-tags"></i> <span>Tags</span>', ['//Blog/tags'], ['class' => (Yii::$app->controller->id == 'tags') ? 'active' : '']) ?>
+                                                </li>
+                                                <li>
+                                                    <?= Html::a('<i class="icon-magazine"></i> <span>Blog</span>', ['//Blog/blog'], ['class' => (Yii::$app->controller->id == 'blog') ? 'active' : '']) ?>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    <?php endif; ?>
+                                    <?php if (Yii::$app->user->can('seeClinic')) : ?>
+                                        <li class="<?= (Yii::$app->controller->module->id == 'Clinic') ? 'active' : '' ?>">
+                                            <?= Html::a('<i class="icon-aid-kit"></i> <span>Clinic</span>') ?>
+                                            <ul>
+                                                <li>
+                                                    <?= Html::a('<i class="icon-list"></i> <span>Servicios</span>', ['//Clinic/servicios'], ['class' => (Yii::$app->controller->id == 'servicios') ? 'active' : '']) ?>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    <?php endif; ?>
+                                    <?php if (Yii::$app->user->can('seePartners')) : ?>
+                                        <li class="<?= (Yii::$app->controller->module->id == 'Partners') ? 'active' : '' ?>">
+                                            <?= Html::a('<i class="icon-store"></i> <span>Partners</span>', ['//Partners']) ?>
+                                        </li>
+                                    <?php endif; ?>
                                     <!-- /Main -->
                                 </ul>
                             </div>
