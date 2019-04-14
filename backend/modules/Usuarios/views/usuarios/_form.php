@@ -1,5 +1,6 @@
 <?php
 
+use common\models\User;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\widgets\FileInput;
@@ -23,6 +24,9 @@ use kartik\widgets\FileInput;
     <div class="row">
       <div class="col-md-6">
         <?= $form->field($model, 'email')->textInput() ?>
+      </div>
+      <div class="col-md-6">
+        <?= $form->field($model, 'role_dropdown')->dropdownList(User::getRoles(), ['value' => $model->role]) ?>
       </div>
     </div>
     <div class="row">

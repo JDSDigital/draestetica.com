@@ -29,6 +29,7 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_ACTIVE = 10;
 
     public $image;
+    public $role_dropdown;
     public $password;
     public $repassword;
 
@@ -43,7 +44,6 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function beforeSave($insert)
     {
-    		// Verifico si se ha cambiado el password
     		if ($this->password != '') {
       			$this->password_hash = Yii::$app->security->generatePasswordHash($this->password);
       			$this->auth_key = Yii::$app->security->generateRandomString();
@@ -54,6 +54,8 @@ class User extends ActiveRecord implements IdentityInterface
         }
 
         $this->updated_at = date('U');
+
+        $this->updateRole();
 
         return true;
   	}
@@ -90,7 +92,7 @@ class User extends ActiveRecord implements IdentityInterface
       			[['email'], 'required'],
             [['email'], 'email'],
       			[['email'], 'unique'],
-      			[['name', 'profession', 'email', 'password', 'repassword', 'password_reset_token'], 'string', 'max' => 255],
+      			[['name', 'profession', 'email', 'password', 'repassword', 'password_reset_token', 'role_dropdown'], 'string', 'max' => 255],
 
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
@@ -109,9 +111,30 @@ class User extends ActiveRecord implements IdentityInterface
         'profession' => 'Profesión',
         'status' => 'Estado',
         'email' => 'Correo',
+        'role' => 'Rol',
+        'role_dropdown' => 'Rol',
         'created_at' => 'Creado En',
         'updated_at' => 'Actualizado En',
       ];
+    }
+
+    public function updateRole(): bool
+    {
+        if ($this->role_dropdown != $this->role) {
+            $auth = Yii::$app->authManager;
+            $oldRole = $auth->getRole($this->role);
+            $newRole = $auth->getRole($this->role_dropdown);
+
+            if ($oldRole) {
+                $auth->revoke($oldRole, $this->getId());
+            }
+
+            $auth->assign($newRole, $this->getId());
+
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -339,5 +362,33 @@ class User extends ActiveRecord implements IdentityInterface
         }
 
         return false;
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAuthAssignment()
+    {
+        return $this->hasOne(AuthAssignment::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRole()
+    {
+        return ($this->authAssignment) ? $this->authAssignment->item_name : 'No asignado';
+    }
+
+    public static function getRoles()
+    {
+        $response = [];
+        $roles = AuthItem::find()->roles()->select(['name'])->asArray()->all();
+
+        foreach ($roles as $role) {
+            $response[$role['name']] = ucfirst($role['name']);
+        }
+
+        return $response;
     }
 }

@@ -41,6 +41,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     return ($model->status == User::STATUS_ACTIVE) ? 'Activo' : 'Inactivo';
                 },
               ],
+              [
+                'attribute' => 'role',
+                'value' => function ($model) {
+                    return ucfirst($model->role);
+                },
+              ],
               'name',
               'profession',
               'email:email',

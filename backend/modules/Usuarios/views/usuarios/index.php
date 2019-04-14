@@ -53,6 +53,12 @@ $this->params['breadcrumbs'][] = $this->title;
           'profession',
           'email:email',
           [
+              'attribute' => 'role',
+              'value' => function ($model) {
+                  return ucfirst($model->role);
+              },
+           ],
+          [
               'attribute' => 'created_at',
               'value' => function ($model) {
                   return date('d-m-Y', $model->created_at);
