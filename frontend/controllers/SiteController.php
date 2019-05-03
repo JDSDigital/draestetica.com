@@ -7,7 +7,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use common\models\LoginForm;
+use frontend\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -80,7 +80,6 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-     /*
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
@@ -98,21 +97,18 @@ class SiteController extends Controller
             ]);
         }
     }
-    */
 
     /**
      * Logs out the current user.
      *
      * @return mixed
      */
-     /*
     public function actionLogout()
     {
         Yii::$app->user->logout();
 
         return $this->goHome();
     }
-    */
 
     /**
      * Displays about page.
@@ -131,7 +127,6 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-     /*
     public function actionSignup()
     {
         $model = new SignupForm();
@@ -139,6 +134,9 @@ class SiteController extends Controller
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
                     return $this->goHome();
+                } else {
+                    print_r($user);
+                    exit;
                 }
             }
         }
@@ -147,7 +145,6 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
-    */
 
     /**
      * Requests password reset.

@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m190416_114518_create_patients_tables
+ * Class m190416_114518_create_clients_tables
  */
-class m190416_114518_create_patients_tables extends Migration
+class m190416_114518_create_clients_tables extends Migration
 {
     /**
      * {@inheritdoc}
@@ -18,22 +18,25 @@ class m190416_114518_create_patients_tables extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('{{%xclinic_patients}}', [
+        $this->createTable('{{%xclinic_clients}}', [
             'id' => $this->primaryKey(),
             'name' => $this->string()->notNull(),
             'lastname' => $this->string()->notNull(),
             'email' => $this->string()->notNull()->unique(),
             'rut' => $this->integer()->notNull()->unique(),
             'birthday' => $this->date()->notNull(),
+            'auth_key' => $this->string(32)->notNull(),
+            'password_hash' => $this->string()->notNull(),
+            'password_reset_token' => $this->string()->unique(),
 
             'status' => $this->smallInteger()->notNull()->defaultValue(1),
             'created_at' => $this->integer()->notNull()->defaultValue(0),
             'updated_at' => $this->integer()->notNull()->defaultValue(0),
         ], $tableOptions);
 
-        $this->createTable('{{%xclinic_patients_notes}}', [
+        $this->createTable('{{%xclinic_clients_notes}}', [
             'id' => $this->primaryKey(),
-            'patient_id' => $this->integer()->null(),
+            'client_id' => $this->integer()->null(),
             'note' => $this->text()->notNull(),
 
             'created_at' => $this->integer()->notNull()->defaultValue(0),
@@ -41,16 +44,16 @@ class m190416_114518_create_patients_tables extends Migration
         ], $tableOptions);
 
         $this->createIndex(
-            'idx-xclinic_patients_notes-patient_id',
-            'xclinic_patients_notes',
-            'patient_id'
+            'idx-xclinic_clients_notes-client_id',
+            'xclinic_clients_notes',
+            'client_id'
         );
 
         $this->addForeignKey(
-            'fk-xclinic_patients_notes-patient_id',
-            'xclinic_patients_notes',
-            'patient_id',
-            'xclinic_patients',
+            'fk-xclinic_clients_notes-client_id',
+            'xclinic_clients_notes',
+            'client_id',
+            'xclinic_clients',
             'id',
             'CASCADE'
         );
@@ -62,16 +65,16 @@ class m190416_114518_create_patients_tables extends Migration
     public function safeDown()
     {
         $this->dropForeignKey(
-            'fk-xclinic_patients_notes-patient_id',
-            'xclinic_patients_notes'
+            'fk-xclinic_clients_notes-client_id',
+            'xclinic_clients_notes'
         );
 
         $this->dropIndex(
-            'idx-xclinic_patients_notes-patient_id',
-            'xclinic_patients_notes'
+            'idx-xclinic_clients_notes-client_id',
+            'xclinic_clients_notes'
         );
 
-        $this->dropTable('{{%xclinic_patients_notes}}');
-        $this->dropTable('{{%xclinic_patients}}');
+        $this->dropTable('{{%xclinic_clients_notes}}');
+        $this->dropTable('{{%xclinic_clients}}');
     }
 }

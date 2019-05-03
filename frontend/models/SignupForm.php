@@ -1,17 +1,22 @@
 <?php
 namespace frontend\models;
 
+use Yii;
 use yii\base\Model;
-use common\models\User;
+use common\models\Clients;
 
 /**
  * Signup form
  */
 class SignupForm extends Model
 {
-    public $username;
+    public $name;
+    public $lastname;
     public $email;
+    public $rut;
+    public $birthday;
     public $password;
+    public $repassword;
 
 
     /**
@@ -20,26 +25,59 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            ['username', 'trim'],
-            ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
-            ['username', 'string', 'min' => 2, 'max' => 255],
-
+            ['name', 'trim'],
+            ['name', 'required'],
+            ['name', 'string', 'max' => 255],
+            
+            ['lastname', 'trim'],
+            ['lastname', 'required'],
+            ['lastname', 'string', 'max' => 255],
+            
             ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+            ['email', 'unique', 'targetClass' => '\common\models\Clients', 'message' => 'Esta dirección de correo ya se encuentra registrada.'],
 
-            ['password', 'required'],
+            ['rut', 'trim'],
+            ['rut', 'required'],
+            ['rut', 'string', 'max' => 255],
+            
+            ['birthday', 'trim'],
+            ['birthday', 'required'],
+            ['birthday', 'string', 'max' => 255],
+
+            [['password', 'repassword'], 'required', 'on' => ['create']],
             ['password', 'string', 'min' => 6],
+            [
+                'repassword',
+                'compare',
+                'compareAttribute' => 'password',
+                'message' => Yii::t('app', 'Las contraseñas deben coincidir.'),
+            ],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'name' => 'Nombre',
+            'lastname' => 'Apellido',
+            'email' => 'Correo',
+            'rut' => 'RUT',
+            'birthday' => 'Fecha de nacimiento',
+            'password' => 'Contraseña',
+            'repassword' => 'Repetir contraseña',
         ];
     }
 
     /**
      * Signs user up.
      *
-     * @return User|null the saved model or null if saving fails
+     * @return Clients|null the saved model or null if saving fails
      */
     public function signup()
     {
@@ -47,12 +85,15 @@ class SignupForm extends Model
             return null;
         }
         
-        $user = new User();
-        $user->username = $this->username;
-        $user->email = $this->email;
-        $user->setPassword($this->password);
-        $user->generateAuthKey();
+        $client = new Clients();
+        $client->name = $this->name;
+        $client->lastname = $this->lastname;
+        $client->email = $this->email;
+        $client->rut = $this->rut;
+        $client->birthday = $this->birthday;
+        $client->setPassword($this->password);
+        $client->generateAuthKey();
         
-        return $user->save() ? $user : null;
+        return $client->save() ? $client : null;
     }
 }
