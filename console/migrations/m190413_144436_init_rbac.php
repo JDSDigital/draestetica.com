@@ -39,6 +39,11 @@ class m190413_144436_init_rbac extends Migration
         $seeClinic->description = 'See the clinic module';
         $auth->add($seeClinic);
 
+        // add "seeClients" permission
+        $seeClients = $auth->createPermission('seeClients');
+        $seeClients->description = 'See the clients module';
+        $auth->add($seeClients);
+
         // add "seePartners" permission
         $seePartners = $auth->createPermission('seePartners');
         $seePartners->description = 'See the partners module';
@@ -52,12 +57,14 @@ class m190413_144436_init_rbac extends Migration
         $auth->addChild($admin, $seeSocial);
         $auth->addChild($admin, $seeBlog);
         $auth->addChild($admin, $seeClinic);
+        $auth->addChild($admin, $seeClients);
         $auth->addChild($admin, $seePartners);
 
         // add "doctor" role and give this role permissions
         $doctor = $auth->createRole('doctor');
         $auth->add($doctor);
         $auth->addChild($doctor, $seeDashboard);
+        $auth->addChild($doctor, $seeClients);
 
         $auth->assign($admin, 1);
         $auth->assign($doctor, 2);

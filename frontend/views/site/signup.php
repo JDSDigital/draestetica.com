@@ -6,6 +6,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use kartik\date\DatePicker;
 
 $this->title = 'Crear Usuario';
 $this->params['breadcrumbs'][] = $this->title;
@@ -21,7 +22,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'lastname') ?>
                 <?= $form->field($model, 'email') ?>
                 <?= $form->field($model, 'rut') ?>
-                <?= $form->field($model, 'birthday') ?>
+                <?= $form->field($model, 'birthday')->widget(DatePicker::classname(), [
+                    'language' => 'es',
+                    'options' => ['placeholder' => 'YYYY-MM-DD'],
+                    'value' => '2000/01/01',
+                    'removeButton' => false,
+                    'pluginOptions' => [
+                        'autoclose' => true,
+                        'format' => 'yyyy-mm-dd'
+                    ]
+                ]); ?>
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
                 <?= $form->field($model, 'repassword')->passwordInput() ?>

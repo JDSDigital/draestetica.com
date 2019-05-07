@@ -139,6 +139,16 @@ SweetAlertAsset::register($this);
                                             </ul>
                                         </li>
                                     <?php endif; ?>
+                                    <?php if (Yii::$app->user->can('seeClients')) : ?>
+                                        <li class="<?= (Yii::$app->controller->module->id == 'Clients') ? 'active' : '' ?>">
+                                            <?= Html::a('<i class="icon-users"></i> <span>Clientes</span>') ?>
+                                            <ul>
+                                                <li>
+                                                    <?= Html::a('<i class="icon-list"></i> <span>Clientes</span>', ['//Clientes/clientes'], ['class' => (Yii::$app->controller->id == 'clientes') ? 'active' : '']) ?>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    <?php endif; ?>
                                     <?php if (Yii::$app->user->can('seePartners')) : ?>
                                         <li class="<?= (Yii::$app->controller->module->id == 'Partners') ? 'active' : '' ?>">
                                             <?= Html::a('<i class="icon-store"></i> <span>Partners</span>', ['//Partners']) ?>

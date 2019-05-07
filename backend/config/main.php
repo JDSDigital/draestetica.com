@@ -37,6 +37,9 @@ return [
             'class' => 'backend\modules\Clinic\Module',
             // 'defaultRoute' => 'servicios',
         ],
+        'Clientes' => [
+            'class' => 'backend\modules\Clientes\Module',
+        ],
     ],
     'components' => [
         'request' => [
