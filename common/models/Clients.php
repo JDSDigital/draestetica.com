@@ -59,12 +59,6 @@ class Clients extends ActiveRecord implements IdentityInterface
         return [
             [
                 'class' => TimestampBehavior::className(),
-                'attributes' => [
-                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
-                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
-                ],
-                // if you're using datetime instead of UNIX timestamp:
-                // 'value' => new Expression('NOW()'),
             ],
         ];
     }
@@ -83,7 +77,7 @@ class Clients extends ActiveRecord implements IdentityInterface
               'message' => Yii::t('app', 'Las contraseñas deben coincidir.'),
             ],
             [['name', 'lastname', 'email', 'rut', 'birthday'], 'required'],
-            [['rut', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['rut', 'status'], 'integer'],
             [['birthday'], 'safe'],
             [['name', 'lastname', 'email', 'password', 'repassword', 'password_reset_token',], 'string', 'max' => 255],
             [['email'], 'unique'],

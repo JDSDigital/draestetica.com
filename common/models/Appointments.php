@@ -4,20 +4,21 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
-use yii\db\ActiveRecord;
-use yii\helpers\ArrayHelper;
-use common\models\Blog;
+use yii\db\BaseActiveRecord;
 
 /**
- * This is the model class for table "xblog_tags".
+ * This is the model class for table "xclinic_appointments".
  *
  * @property int $id
- * @property string $name
+ * @property int $client_id
+ * @property int $date
  * @property int $status
  * @property int $created_at
  * @property int $updated_at
+ *
+ * @property Clients $client
  */
-class Tags extends \yii\db\ActiveRecord
+class Appointments extends \yii\db\ActiveRecord
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 1;
@@ -27,7 +28,7 @@ class Tags extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'xblog_tags';
+        return 'xclinic_appointments';
     }
 
     public function behaviors()
@@ -45,9 +46,8 @@ class Tags extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
-            [['status'], 'integer'],
-            [['name'], 'string', 'max' => 255],
+            [['client_id', 'date', 'status'], 'integer'],
+            [['client_id'], 'exist', 'skipOnError' => true, 'targetClass' => Clients::className(), 'targetAttribute' => ['client_id' => 'id']],
         ];
     }
 
@@ -58,34 +58,28 @@ class Tags extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Nombre',
-            'status' => 'Estado',
-            'created_at' => 'Creado En',
-            'updated_at' => 'Modificado En',
+            'client_id' => 'Client ID',
+            'date' => 'Date',
+            'status' => 'Status',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
-    }
-
-    public static function getList()
-    {
-        $tags = self::find()->active()->select(['id', 'name'])->asArray()->all();
-
-        return ArrayHelper::map($tags, 'id', 'name');
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getArticles()
+    public function getClient()
     {
-        return $this->hasMany(Blog::className(), ['tag_id' => 'id']);
+        return $this->hasOne(Clients::className(), ['id' => 'client_id']);
     }
 
     /**
      * {@inheritdoc}
-     * @return TagsQuery the active query used by this AR class.
+     * @return AppointmentsQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new TagsQuery(get_called_class());
+        return new AppointmentsQuery(get_called_class());
     }
 }

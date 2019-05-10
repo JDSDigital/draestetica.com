@@ -14,6 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container">
   <div id="root"></div>
   <script>
+    window.userId = <?= Yii::$app->user->identity->id ?>;
     ! function(l) {
       function e(e) {
         for (var r, t, n = e[0], o = e[1], u = e[2], f = 0, i = []; f < n.length; f++) t = n[f], p[t] && i.push(p[t][0]), p[t] = 0;

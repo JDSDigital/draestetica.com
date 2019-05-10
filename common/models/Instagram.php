@@ -35,7 +35,7 @@ class Instagram extends \yii\db\ActiveRecord
     {
         return [
             [['url', 'thumbnail', 'low_resolution', 'standard_resolution', 'text', 'created_time'], 'required'],
-            [['created_time', 'created_at', 'updated_at'], 'integer'],
+            [['created_time'], 'integer'],
             [['url', 'thumbnail', 'low_resolution', 'standard_resolution'], 'string', 'max' => 255],
             [['text'], 'string'],
         ];

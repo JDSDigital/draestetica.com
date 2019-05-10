@@ -41,6 +41,12 @@ class Partners extends \yii\db\ActiveRecord
             $this->url = 'https://' . $this->url;
         }
 
+        if ($this->created_at == null) {
+            $this->created_at = date('U');
+        }
+
+        $this->updated_at = date('U');
+
         return true;
   	}
 
@@ -61,12 +67,6 @@ class Partners extends \yii\db\ActiveRecord
         return [
             [
                 'class' => TimestampBehavior::className(),
-                'attributes' => [
-                    BaseActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
-                    BaseActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
-                ],
-                // if you're using datetime instead of UNIX timestamp:
-                // 'value' => new Expression('NOW()'),
             ],
         ];
     }

@@ -33,7 +33,7 @@ class ClinicServicesCategories extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['status', 'created_at', 'updated_at'], 'integer'],
+            [['status'], 'integer'],
             [['name'], 'string', 'max' => 255],
         ];
     }

@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "xclinic_clients_notes".
@@ -25,13 +26,22 @@ class ClientsNotes extends \yii\db\ActiveRecord
         return 'xclinic_clients_notes';
     }
 
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+            ],
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['client_id', 'created_at', 'updated_at'], 'integer'],
+            [['client_id'], 'integer'],
             [['note'], 'required'],
             [['note'], 'string'],
             [['client_id'], 'exist', 'skipOnError' => true, 'targetClass' => Clients::className(), 'targetAttribute' => ['client_id' => 'id']],
