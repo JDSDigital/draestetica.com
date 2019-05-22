@@ -18,14 +18,17 @@ class PanelController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index', 'update'],
+                // 'only' => ['index', 'update'],
                 'rules' => [
                     [
-                        'actions' => ['index', 'update'],
+                        // 'actions' => ['index', 'update'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                 ],
+                'denyCallback' => function ($rule, $action) {
+                    return $this->redirect(['//site/login']);
+                }
             ],
         ];
     }

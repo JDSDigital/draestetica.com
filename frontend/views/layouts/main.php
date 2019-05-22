@@ -99,25 +99,11 @@ AppAsset::register($this);
               <!-- Navigation -->
               <div class="collapse navbar-collapse align-items-center flex-sm-row w-100 g-mt-20 g-mt-0--lg g-mb-40" id="navBar">
                 <ul class="navbar-nav ml-auto text-uppercase g-font-weight-600 u-sub-menu-v1">
-                  <?php if (Yii::$app->user->isGuest) : ?>
-                    <li class="nav-item g-my-5">
-                      <?= Html::a('Login', ['site/login'], ['class' => (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'login') ? 'nav-link active' : 'nav-link']) ?>
-                    </li>
-                    <li class="nav-item g-my-5">
-                      <?= Html::a('Registrarse', ['site/signup'], ['class' => (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'signup') ? 'nav-link active' : 'nav-link']) ?>
-                    </li>
-                  <?php else : ?>
-                    <li class="nav-item g-my-5">
-                      <?= Html::beginForm(['/site/logout'], 'post')
-                        . Html::submitButton(
-                          'Logout (' . Yii::$app->user->identity->email . ')',
-                          ['class' => 'btn btn-link logout nav-link']
-                          )
-                          . Html::endForm(); ?>
-                    </li>
-                  <?php endif; ?>
                   <li class="nav-item g-my-5">
                     <?= Html::a('Inicio', ['site/index'], ['class' => (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index') ? 'nav-link active' : 'nav-link']) ?>
+                  </li>
+                  <li class="nav-item g-my-5">
+                    <?= Html::a('Área de Clientes', ['//clientes/panel/index'], ['class' => (Yii::$app->controller->id == 'panel') ? 'nav-link active' : 'nav-link']) ?>
                   </li>
                   <li class="nav-item g-my-5">
                     <?= Html::a('Clinic', ['clinic/index'], ['class' => (Yii::$app->controller->id == 'clinic') ? 'nav-link new-link active' : 'new-link nav-link']) ?>

@@ -38,6 +38,17 @@ use yii\helpers\Html;
         <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> Opciones</span>
         </a>
         <!-- End Settings -->
+
+        <!-- Logout -->
+        <a href="page-profile-settings-1.html" class="list-group-item list-group-item-action justify-content-between">
+        <?= Html::beginForm(['/site/logout'], 'post')
+            . Html::submitButton(
+                '<span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> Salir</span>',
+                ['class' => 'btn-link logout nav-link g-px-0 g-py-0']
+                )
+                . Html::endForm(); ?>
+        </a>
+        <!-- End Logout -->
     </div>
     <!-- End Sidebar Navigation -->
 
