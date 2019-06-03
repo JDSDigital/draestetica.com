@@ -11,12 +11,14 @@ use yii\db\BaseActiveRecord;
  *
  * @property int $id
  * @property int $client_id
+ * @property int $service_id
  * @property int $date
  * @property int $status
  * @property int $created_at
  * @property int $updated_at
  *
  * @property Clients $client
+ * @property ClinicServices $service
  */
 class Appointments extends \yii\db\ActiveRecord
 {
@@ -46,8 +48,10 @@ class Appointments extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['client_id', 'date', 'status'], 'integer'],
+            [['client_id', 'service_id', 'status'], 'integer'],
+            [['date'], 'safe'],
             [['client_id'], 'exist', 'skipOnError' => true, 'targetClass' => Clients::className(), 'targetAttribute' => ['client_id' => 'id']],
+            [['service_id'], 'exist', 'skipOnError' => true, 'targetClass' => ClinicServices::className(), 'targetAttribute' => ['service_id' => 'id']],
         ];
     }
 
@@ -59,6 +63,7 @@ class Appointments extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'client_id' => 'Client ID',
+            'client_id' => 'Service ID',
             'date' => 'Date',
             'status' => 'Status',
             'created_at' => 'Created At',
@@ -75,11 +80,33 @@ class Appointments extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getService()
+    {
+        return $this->hasOne(ClinicServices::className(), ['id' => 'service_id']);
+    }
+
+    /**
      * {@inheritdoc}
      * @return AppointmentsQuery the active query used by this AR class.
      */
     public static function find()
     {
         return new AppointmentsQuery(get_called_class());
+    }
+
+    public static function getBookedHoursByDate(string $date): array
+    {
+        $bookedHours = [];
+        $appointments = self::find()
+            ->byDay($date)
+            ->all();
+
+        foreach ($appointments as $key => $value) {
+            array_push($bookedHours, substr($value, 11, 2));
+        }
+
+        return $bookedHours;
     }
 }

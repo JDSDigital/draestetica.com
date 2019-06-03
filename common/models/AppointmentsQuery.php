@@ -19,6 +19,13 @@ class AppointmentsQuery extends \yii\db\ActiveQuery
         return $this->andWhere(['between', 'date', $startDate, $finalDate]);
     }
 
+    public function byDay(string $date): array
+    {
+        $month = substr($date, 0, 10);
+        return $this->andWhere(['like', 'date', $month])
+            ->orderBy(['date' => SORT_ASC]);
+    }
+
     /**
      * {@inheritdoc}
      * @return Appointments[]|array

@@ -27,7 +27,7 @@ class PanelController extends Controller
                     ],
                 ],
                 'denyCallback' => function ($rule, $action) {
-                    return $this->redirect(['//site/login']);
+                    return $this->redirect(['//site/signup']);
                 }
             ],
         ];

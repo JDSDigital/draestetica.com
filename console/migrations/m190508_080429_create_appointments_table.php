@@ -20,8 +20,9 @@ class m190508_080429_create_appointments_table extends Migration
 
         $this->createTable('{{%xclinic_appointments}}', [
             'id' => $this->primaryKey(),
-            'client_id' => $this->integer()->null(),
-            'date' => $this->integer()->notNull()->defaultValue(0),
+            'client_id' => $this->integer()->notNull(),
+            'service_id' => $this->integer()->notNull(),
+            'date' => $this->dateTime()->notNull(),
 
             'status' => $this->smallInteger()->notNull()->defaultValue(1),
             'created_at' => $this->integer()->notNull()->defaultValue(0),
@@ -34,11 +35,26 @@ class m190508_080429_create_appointments_table extends Migration
             'client_id'
         );
 
+        $this->createIndex(
+            'idx-xclinic_appointments-service_id',
+            'xclinic_appointments',
+            'service_id'
+        );
+
         $this->addForeignKey(
             'fk-xclinic_appointments-client_id',
             'xclinic_appointments',
             'client_id',
             'xclinic_clients',
+            'id',
+            'CASCADE'
+        );
+
+        $this->addForeignKey(
+            'fk-xclinic_appointments-service_id',
+            'xclinic_appointments',
+            'service_id',
+            'xclinic_services',
             'id',
             'CASCADE'
         );
@@ -50,7 +66,17 @@ class m190508_080429_create_appointments_table extends Migration
     public function safeDown()
     {
         $this->dropForeignKey(
+            'fk-xclinic_appointments-service_id',
+            'xclinic_appointments'
+        );
+
+        $this->dropForeignKey(
             'fk-xclinic_appointments-client_id',
+            'xclinic_appointments'
+        );
+
+        $this->dropIndex(
+            'idx-xclinic_appointments-service_id',
             'xclinic_appointments'
         );
 
