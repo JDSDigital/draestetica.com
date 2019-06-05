@@ -24,93 +24,52 @@ class CalendarController extends \yii\rest\ActiveController
         ];
     }
 
-    /* public function actionAvailabledays()
-    {
-        // Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        return [0, 1, 1, 1, 1, 1, 0];
-    }
-
-    public function actionAppointmentsbymonth()
-    {
-        $request = Yii::$app->request;
-
-        if ($request->isPost) {
-            return Appointments::find()
-                ->byDateRange(
-                    $request->post('startDate'), 
-                    $request->post('finalDate')
-                )->all();
-        }
-        
-        return null;
-    }
-
-    public function actionSaveappointment()
-    {
-        $request = Yii::$app->request;
-
-        if ($request->isPost) { 
-            $appointment = new Appointments;
-            $appointment->client_id = $request->post('userId');
-            $appointment->date = $request->post('dateTime');
-            $appointment->status = Appointments::STATUS_ACTIVE;
-
-            return ($appointment->save()) ? true : false;
-        }
-        
-        return null;
-    } */
-
     /**
-     * lo que actualmente tienes como availableDays, es un array que indica los días en que se trabaja: [0,1,1,1,1,1,0]
+     * Returns an array with the days that the clinic is open for business
      */
-    public function actionWorkingDays(): array
+    public function actionWorkingdays(): array
     {
         $request = Yii::$app->request;
 
         if ($request->isPost) {
-            return [0, 1, 1, 1, 1, 1, 0];
+            return Appointments::WORKING_DAYS;
         }
         
         return null;
     }
 
     /**
-     * array de los días de un mes que están llenos (lo que tu llamas unavailable day)
+     * Returns an array of the days that are already full of appointments
      */
-    public function actionBookedDays(): array
+    public function actionBookeddays(): array
     {
         $request = Yii::$app->request;
 
         if ($request->isPost) {
-            return Appointments::find()
-                ->byDateRange(
-                    $request->post('startDate'), 
-                    $request->post('finalDate')
-                )->all();
+            return Appointments::getBookedDays($request->post('date'));
         }
         
         return null;
     }
 
     /**
-     * array de las horas en las que un servicio se presta [8,9,10,11,12,14,15,16]
+     * Returns an array with the hours that the clinic is open for business
      */
-    public function actionWorkingHours(): array
+    public function actionWorkinghours(): array
     {
         $request = Yii::$app->request;
 
         if ($request->isPost) {
-            return [8, 9, 10, 11, 12, 14, 15, 16];
+            return Appointments::WORKING_HOURS;
         }
         
         return null;
     }
 
     /**
-     * array de las horas de un determinado día que ya están tomadas: [10,16]
+     * Returns an array of the hours of a day that are already booked
      */
-    public function actionBookedHours(): array
+    public function actionBookedhours(): array
     {
         $request = Yii::$app->request;
 
@@ -122,9 +81,9 @@ class CalendarController extends \yii\rest\ActiveController
     }
 
     /**
-     * guarda la fecha de la cita
+     * Saves a new appointment
      */
-    public function actionCreateAppointment(): bool
+    public function actionCreateappointment(): bool
     {
         $request = Yii::$app->request;
 
@@ -132,7 +91,7 @@ class CalendarController extends \yii\rest\ActiveController
             $appointment = new Appointments;
             $appointment->client_id = $request->post('userId');
             $appointment->service_id = $request->post('serviceId');
-            $appointment->date = $request->post('dateTime');
+            $appointment->date = str_replace('T', ' ',  $request->post('date'));
             $appointment->status = Appointments::STATUS_ACTIVE;
 
             return ($appointment->save()) ? true : false;

@@ -25,6 +25,9 @@ class Appointments extends \yii\db\ActiveRecord
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 1;
 
+    const WORKING_DAYS = [0, 1, 1, 1, 1, 1, 0];
+    const WORKING_HOURS = [8, 9, 10, 11, 12, 14, 15, 16];
+
     /**
      * {@inheritdoc}
      */
@@ -101,12 +104,32 @@ class Appointments extends \yii\db\ActiveRecord
         $bookedHours = [];
         $appointments = self::find()
             ->byDay($date)
+            ->select('date')
             ->all();
 
-        foreach ($appointments as $key => $value) {
-            array_push($bookedHours, substr($value, 11, 2));
+        foreach ($appointments as $appointment) {
+            array_push($bookedHours, substr($appointment->date, 11, 2));
         }
 
         return $bookedHours;
+    }
+
+    public static function getBookedDays(string $date): array
+    {
+        $bookedDays = [];
+        $appointments = self::find()
+            ->byMonth($date)
+            ->select('date')
+            ->all();
+
+        foreach ($appointments as $appointment) {
+            array_push($bookedDays, substr($appointment->date, 8, 2));
+        }
+
+        $bookedDays = array_filter(array_count_values($bookedDays), function($day) {
+            return $day >= count(self::WORKING_HOURS);
+        });
+
+        return array_keys($bookedDays);
     }
 }

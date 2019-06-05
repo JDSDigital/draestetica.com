@@ -14,15 +14,20 @@ class AppointmentsQuery extends \yii\db\ActiveQuery
         return $this->andWhere('[[status]]=1');
     }
 
-    public function byDateRange($startDate, $finalDate)
+    public function byDateRange($startDate, $finalDate): self
     {
         return $this->andWhere(['between', 'date', $startDate, $finalDate]);
     }
 
-    public function byDay(string $date): array
+    public function byMonth(string $date): self
     {
-        $month = substr($date, 0, 10);
-        return $this->andWhere(['like', 'date', $month])
+        return $this->andWhere(['like', 'date', substr($date, 0, 7)])
+            ->orderBy(['date' => SORT_ASC]);
+    }
+
+    public function byDay(string $date): self
+    {
+        return $this->andWhere(['like', 'date', substr($date, 0, 10)])
             ->orderBy(['date' => SORT_ASC]);
     }
 

@@ -22,7 +22,7 @@ class m190508_080429_create_appointments_table extends Migration
             'id' => $this->primaryKey(),
             'client_id' => $this->integer()->notNull(),
             'service_id' => $this->integer()->notNull(),
-            'date' => $this->dateTime()->notNull(),
+            'date' => $this->dateTime()->notNull()->unique(),
 
             'status' => $this->smallInteger()->notNull()->defaultValue(1),
             'created_at' => $this->integer()->notNull()->defaultValue(0),
