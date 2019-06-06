@@ -4,6 +4,7 @@ namespace frontend\modules\clientes\controllers;
 
 use Yii;
 use common\models\Clients;
+use common\models\search\ClinicServicesSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -27,7 +28,7 @@ class PanelController extends Controller
                     ],
                 ],
                 'denyCallback' => function ($rule, $action) {
-                    return $this->redirect(['//site/signup']);
+                    return $this->redirect(['//site/login']);
                 }
             ],
         ];
@@ -45,6 +46,21 @@ class PanelController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
+    }
+
+    public function actionCitas()
+    {
+        $clinicServicesSearch = new ClinicServicesSearch;
+        $models = $clinicServicesSearch->frontendServices();
+
+        return $this->render('services', [
+            'models' => $models,
+        ]);
+    }
+
+    public function actionAgendar()
+    {
+        return $this->render('book');
     }
     
     /**

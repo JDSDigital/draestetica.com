@@ -10,16 +10,38 @@ use yii\web\Response;
 
 class CalendarController extends \yii\rest\ActiveController
 {
-    public $modelClass = 'common\models\User';
+    public $modelClass = 'common\models\Clients';
 
     public function behaviors()
     {
         return [
-            [
+            'content' => [
                 'class' => ContentNegotiator::className(),
                 'formats' => [
                     'application/json' => Response::FORMAT_JSON,
                 ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'verbs' => ['POST']
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => [
+                            'workingdays', 
+                            'workinghours', 
+                            'bookeddays', 
+                            'bookedhours', 
+                            'createappointment'
+                        ],
+                    ],
+                ],
+                // 'denyCallback' => function ($rule, $action) {
+                //     return $this->redirect(['//site/login']);
+                // }
             ],
         ];
     }
@@ -35,7 +57,7 @@ class CalendarController extends \yii\rest\ActiveController
             return Appointments::WORKING_DAYS;
         }
         
-        return null;
+        return [];
     }
 
     /**
@@ -49,7 +71,7 @@ class CalendarController extends \yii\rest\ActiveController
             return Appointments::getBookedDays($request->post('date'));
         }
         
-        return null;
+        return [];
     }
 
     /**
@@ -63,7 +85,7 @@ class CalendarController extends \yii\rest\ActiveController
             return Appointments::WORKING_HOURS;
         }
         
-        return null;
+        return [];
     }
 
     /**
@@ -77,7 +99,7 @@ class CalendarController extends \yii\rest\ActiveController
             return Appointments::getBookedHoursByDate($request->post('date'));
         }
         
-        return null;
+        return [];
     }
 
     /**
@@ -97,10 +119,7 @@ class CalendarController extends \yii\rest\ActiveController
             return ($appointment->save()) ? true : false;
         }
         
-        return null;
-        // return date("Y-m-d H:i:s");
-        // $date = new DateTime('2000-01-01');
-        // echo $date->format('Y-m-d H:i:s');
+        return false;
     }
 
 }
