@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <section class="g-mb-100">
-    <div class="container-fluid">
+    <div class="">
         <div class="row">
             <?= $this->render('_sidebar'); ?>
             

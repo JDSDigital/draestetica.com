@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Área de clientes', 'url' => ['ind
 $this->params['breadcrumbs'][] = 'Actualizar cliente';
 ?>
 <section class="g-mb-100">
-    <div class="container-fluid">
+    <div class="">
         <div class="row">
             <?= $this->render('_sidebar'); ?>
             

@@ -6,90 +6,138 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use kartik\date\DatePicker;
 use frontend\assets\DatePickerAsset;
 
 DatePickerAsset::register($this);
 
-$this->title = 'Crear Usuario';
+$this->title = 'Registro';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="container">
-    <h1><?= Html::encode($this->title) ?></h1>
+<section class="clearfix">
+      <div class="row no-gutters align-items-center">
+        <div class="col-lg-6">
+          <!-- Promo Block - Slider -->
+            <?= Html::img('@web/img/bg/login.jpg', ['class' => 'img-fluid']) ?>
+          <!-- End Promo Block - Slider -->
+        </div>
 
-    <?php $form = ActiveForm::begin([
-        'id' => 'form-signup',
-        'options' => ['class' => 'g-brd-around g-brd-gray-light-v4 g-pa-30 g-mb-30']
-    ]); ?>
-    <!-- Select Single Date -->
-  <div class="form-group g-mb-30">
-    <label class="g-mb-10">Select single date</label>
-    <div class="input-group g-brd-primary--focus">
-      <input id="datepickerDefault" class="form-control form-control-md u-datepicker-v1 g-brd-right-none rounded-0" type="text">
-      <div class="input-group-addon d-flex align-items-center g-bg-white g-color-gray-dark-v5 rounded-0">
-        <i class="icon-calendar"></i>
-      </div>
-    </div>
-  </div>
-  <!-- End Select Single Date -->
-        <div class="row">
-            <div class="col-lg-4">
+        <div class="col-lg-6">
+          <div class="g-pa-50 g-pb-0 g-mx-70--xl">
+            <!-- Form -->
+            <?php $form = ActiveForm::begin([
+                'id' => 'form-signup',
+                // 'options' => ['class' => 'g-py-15']
+            ]); ?>
+              <h2 class="h3 g-color-black mb-4"><?= $this->title ?></h2>
+
+              <div class="mb-4">
                 <?= $form->field($model, 'name', [
-                        'template' => '{label}'
-                        .'<div class="input-group g-brd-primary--focus">'
-                        .'<div class="input-group-addon d-flex align-items-center g-bg-white g-color-gray-light-v1 rounded-0">'
-                        .'<i class="icon-user-follow"></i>'
-                        .'</div>'
-                        .'{input}'
-                        .'</div>'
-                    ])->textInput([
-                    'autofocus' => true,
-                    'class' => 'form-control form-control-md border-left-0 rounded-0',
+                    'template' => '<div class="input-group g-brd-primary--focus">'
+                    .'<span class="input-group-addon g-width-45 g-brd-gray-light-v4 g-color-primary">'
+                        .'<i class="icon-finance-067 u-line-icon-pro"></i>'
+                      .'</span>'
+                      .'{input}'
+                  .'</div>'
+                ])->textInput([
+                    'class' => 'form-control g-color-black g-brd-left-none g-bg-white g-brd-gray-light-v4 g-pl-0 g-pr-15 g-py-15',
+                    'placeholder' => 'Nombre',
                 ]) ?>
-            </div>
-            <div class="col-lg-4">
-                <?= $form->field($model, 'lastname') ?>
-            </div>
+              </div>
+
+              <div class="mb-4">
+                <?= $form->field($model, 'lastname', [
+                    'template' => '<div class="input-group g-brd-primary--focus">'
+                    .'<span class="input-group-addon g-width-45 g-brd-gray-light-v4 g-color-primary">'
+                        .'<i class="icon-finance-067 u-line-icon-pro"></i>'
+                      .'</span>'
+                      .'{input}'
+                  .'</div>'
+                ])->textInput([
+                    'class' => 'form-control g-color-black g-brd-left-none g-bg-white g-brd-gray-light-v4 g-pl-0 g-pr-15 g-py-15',
+                    'placeholder' => 'Apellido',
+                ]) ?>
+              </div>
+
+              <div class="mb-4">
+                <?= $form->field($model, 'email', [
+                    'template' => '<div class="input-group g-brd-primary--focus">'
+                    .'<span class="input-group-addon g-width-45 g-brd-gray-light-v4 g-color-primary">'
+                        .'<i class="icon-finance-067 u-line-icon-pro"></i>'
+                      .'</span>'
+                      .'{input}'
+                  .'</div>'
+                ])->textInput([
+                    'class' => 'form-control g-color-black g-brd-left-none g-bg-white g-brd-gray-light-v4 g-pl-0 g-pr-15 g-py-15',
+                    'placeholder' => 'Correo',
+                ]) ?>
+              </div>
+
+              <div class="mb-4">
+                <?= $form->field($model, 'rut', [
+                    'template' => '<div class="input-group g-brd-primary--focus">'
+                    .'<span class="input-group-addon g-width-45 g-brd-gray-light-v4 g-color-primary">'
+                        .'<i class="icon-finance-067 u-line-icon-pro"></i>'
+                      .'</span>'
+                      .'{input}'
+                  .'</div>'
+                ])->textInput([
+                    'class' => 'form-control g-color-black g-brd-left-none g-bg-white g-brd-gray-light-v4 g-pl-0 g-pr-15 g-py-15',
+                    'placeholder' => 'RUT',
+                ]) ?>
+              </div>
+
+              <div class="mb-4">
+                <?= $form->field($model, 'birthday', [
+                    'template' => '<div class="input-group g-brd-primary--focus">'
+                    .'<span class="input-group-addon g-width-45 g-brd-gray-light-v4 g-color-primary">'
+                        .'<i class="icon-calendar u-line-icon-pro"></i>'
+                      .'</span>'
+                      .'{input}'
+                  .'</div>'
+                ])->textInput([
+                    'class' => 'form-control g-color-black g-brd-left-none g-bg-white g-brd-gray-light-v4 g-pl-0 g-pr-15 g-py-15',
+                    'placeholder' => 'YYYY-MM-DD Fecha de Nacimiento',
+                    'data-mask' => '9999-99-99',
+                    'value' => ''
+                ]) ?>
+              </div>
+
+              <div class="mb-4">
+                <?= $form->field($model, 'password', [
+                    'template' => '<div class="input-group g-brd-primary--focus">'
+                        .'<span class="input-group-addon g-width-45 g-brd-gray-light-v4 g-color-primary">'
+                        .'<i class="icon-media-094 u-line-icon-pro"></i>'
+                        .'</span>'
+                    .'{input}'
+                    .'</div>'
+                ])->passwordInput([
+                    'class' => 'form-control g-color-black g-brd-left-none g-bg-white g-brd-gray-light-v4 g-pl-0 g-pr-15 g-py-15',
+                    'placeholder' => 'Contraseña'
+                ]) ?>
+              </div>
+
+              <div class="mb-4">
+                <?= $form->field($model, 'repassword', [
+                    'template' => '<div class="input-group g-brd-primary--focus">'
+                        .'<span class="input-group-addon g-width-45 g-brd-gray-light-v4 g-color-primary">'
+                        .'<i class="icon-media-094 u-line-icon-pro"></i>'
+                        .'</span>'
+                    .'{input}'
+                    .'</div>'
+                ])->passwordInput([
+                    'class' => 'form-control g-color-black g-brd-left-none g-bg-white g-brd-gray-light-v4 g-pl-0 g-pr-15 g-py-15',
+                    'placeholder' => 'Repetir Contraseña'
+                ]) ?>
+              </div>
+
+              <div class="g-mb-20">
+                <?= Html::submitButton('Registrarse', ['class' => 'btn btn-md btn-block u-btn-primary rounded text-uppercase g-py-13', 'name' => 'login-button']) ?>
+              </div>
+
+              <?php ActiveForm::end(); ?>
+            <!-- End Form -->
+          </div>
         </div>
-
-        <div class="row">
-            <div class="col-lg-4">
-                <?= $form->field($model, 'email') ?>
-            </div>
-            <div class="col-lg-4">
-                <?= $form->field($model, 'rut') ?>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-4">
-                <?= $form->field($model, 'birthday')->widget(DatePicker::classname(), [
-                    'language' => 'es',
-                    'options' => ['placeholder' => 'YYYY-MM-DD'],
-                    'value' => '2000/01/01',
-                    'removeButton' => false,
-                    'pluginOptions' => [
-                        'autoclose' => true,
-                        'format' => 'yyyy-mm-dd'
-                    ]
-                ]); ?>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
-                <?= $form->field($model, 'password')->passwordInput() ?>
-            </div>
-            <div class="col-lg-4">
-                <?= $form->field($model, 'repassword')->passwordInput() ?>
-            </div>
-        </div>
-
-
-
-                <div class="form-group">
-                    <?= Html::submitButton('Crear usuario', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
-                </div>
-
-            
-    <?php ActiveForm::end(); ?>
-</div>
+      </div>
+    </section>
+    <!-- End Login -->

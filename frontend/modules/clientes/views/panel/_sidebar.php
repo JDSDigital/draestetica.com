@@ -13,8 +13,8 @@ use yii\helpers\Html;
         <?= Html::a('<span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> Dashboard</span>',
             ['index'],
             ['class' => (Yii::$app->controller->action->id == 'index') 
-                ? 'list-group-item justify-content-between active' 
-                : 'list-group-item justify-content-between '
+                ? 'list-group-item list-group-item-action justify-content-between active' 
+                : 'list-group-item list-group-item-action justify-content-between '
             ]) ?>
         <!-- End Dashboard -->
 

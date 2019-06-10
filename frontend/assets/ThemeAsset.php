@@ -28,6 +28,7 @@ class ThemeAsset extends AssetBundle
       'vendor/malihu-scrollbar/jquery.mCustomScrollbar.min.css',
       'vendor/slick-carousel/slick/slick.css',
       'vendor/fancybox/jquery.fancybox.css',
+      'vendor/jquery-ui/themes/base/jquery-ui.min.css',
 
       YII_ENV_DEV ? 'css/unify-core.css' : 'css/unify-core.min.css',
       YII_ENV_DEV ? 'css/unify-components.css' : 'css/unify-components.min.css',
@@ -51,7 +52,8 @@ class ThemeAsset extends AssetBundle
         'vendor/malihu-scrollbar/jquery.mCustomScrollbar.concat.min.js',
         'vendor/slick-carousel/slick/slick.js',
         'vendor/fancybox/jquery.fancybox.min.js',
-
+        'vendor/jquery.maskedinput/src/jquery.maskedinput.js',
+        
         'js/hs.core.js',
 
         'js/components/hs.header-side.js',
@@ -63,6 +65,7 @@ class ThemeAsset extends AssetBundle
         'js/components/hs.carousel.js',
 
         'js/components/hs.sticky-block.js',
+        'js/components/hs.masked-input.js',
 
         'js/custom.js',
     ];

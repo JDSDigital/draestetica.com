@@ -1,5 +1,8 @@
 $(document).on('ready', function () {
 
+  // initialization of forms
+  $.HSCore.components.HSMaskedInput.init('[data-mask]');
+
   // initialization of popups
   $.HSCore.components.HSPopup.init('.js-fancybox');
 

@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
       <div class="row no-gutters align-items-center">
         <div class="col-lg-6">
           <!-- Promo Block - Slider -->
-            <?= Html::img('@web/img-temp/900x900/img1.jpg', ['class' => 'img-fluid']) ?>
+            <?= Html::img('@web/img/bg/login.jpg', ['class' => 'img-fluid']) ?>
           <!-- End Promo Block - Slider -->
         </div>
 
@@ -57,10 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
               </div>
 
               <div class="row justify-content-between mb-4">
-                <div class="col align-self-center">
-                    <?= $form->field($model, 'rememberMe')->checkbox() ?>
-                </div>
-                <div class="col align-self-center text-right">
+                <div class="col align-self-center text-center">
                   <?= Html::a('¿Olvidaste tu contraseña?', 
                     ['//site/request-password-reset'], 
                     ['class' => 'g-color-gray-dark-v4 g-color-primary--hover'])
