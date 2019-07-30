@@ -26,7 +26,7 @@ class Appointments extends \yii\db\ActiveRecord
     const STATUS_ACTIVE = 1;
 
     const WORKING_DAYS = [0, 1, 1, 1, 1, 1, 0];
-    const WORKING_HOURS = [8, 9, 10, 11, 12, 14, 15, 16];
+    const WORKING_HOURS = ['08', '09', '10', '11', '12', '14', '15', '16'];
 
     /**
      * {@inheritdoc}
@@ -66,7 +66,7 @@ class Appointments extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'client_id' => 'Client ID',
-            'client_id' => 'Service ID',
+            'service_id' => 'Service ID',
             'date' => 'Date',
             'status' => 'Status',
             'created_at' => 'Created At',
@@ -99,12 +99,13 @@ class Appointments extends \yii\db\ActiveRecord
         return new AppointmentsQuery(get_called_class());
     }
 
-    public static function getBookedHoursByDate(string $date): array
+    public static function getBookedHoursByDate(string $service_id, string $date): array
     {
         $bookedHours = [];
         $appointments = self::find()
+            ->select(['service_id', 'date'])
             ->byDay($date)
-            ->select('date')
+            ->byService($service_id)
             ->all();
 
         foreach ($appointments as $appointment) {
@@ -114,16 +115,17 @@ class Appointments extends \yii\db\ActiveRecord
         return $bookedHours;
     }
 
-    public static function getBookedDays(string $date): array
+    public static function getBookedDays(string $service_id, string $date): array
     {
         $bookedDays = [];
         $appointments = self::find()
+            ->select(['service_id', 'date'])
             ->byMonth($date)
-            ->select('date')
+            ->byService($service_id)
             ->all();
 
         foreach ($appointments as $appointment) {
-            array_push($bookedDays, substr($appointment->date, 8, 2));
+            array_push($bookedDays, self::getDay($appointment->date));
         }
 
         $bookedDays = array_filter(array_count_values($bookedDays), function($day) {
@@ -132,4 +134,10 @@ class Appointments extends \yii\db\ActiveRecord
 
         return array_keys($bookedDays);
     }
+
+    private static function getDay(string $date): int
+    {
+        return (substr($date, 8, 1 == 0)) ? (int)substr($date, 9, 1) : (int)substr($date, 8, 2);
+    }
+
 }

@@ -68,7 +68,7 @@ class CalendarController extends \yii\rest\ActiveController
         $request = Yii::$app->request;
 
         if ($request->isPost) {
-            return Appointments::getBookedDays($request->post('date'));
+            return Appointments::getBookedDays($request->post('service_id'), $request->post('date'));
         }
         
         return [];
@@ -96,7 +96,7 @@ class CalendarController extends \yii\rest\ActiveController
         $request = Yii::$app->request;
 
         if ($request->isPost) {
-            return Appointments::getBookedHoursByDate($request->post('date'));
+            return Appointments::getBookedHoursByDate($request->post('service_id'), $request->post('date'));
         }
         
         return [];
@@ -108,12 +108,12 @@ class CalendarController extends \yii\rest\ActiveController
     public function actionCreateappointment(): bool
     {
         $request = Yii::$app->request;
-
+        
         if ($request->isPost) { 
             $appointment = new Appointments;
-            $appointment->client_id = $request->post('userId');
-            $appointment->service_id = $request->post('serviceId');
-            $appointment->date = str_replace('T', ' ',  $request->post('date'));
+            $appointment->client_id = $request->post('user_id');
+            $appointment->service_id = $request->post('service_id');
+            $appointment->date = substr(str_replace('T', ' ',  $request->post('date')), 0, 18);
             $appointment->status = Appointments::STATUS_ACTIVE;
 
             return ($appointment->save()) ? true : false;

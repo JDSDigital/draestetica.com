@@ -1,6 +1,7 @@
 <?php
 
 namespace common\models;
+use DateTime;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
@@ -240,6 +241,30 @@ class Clients extends ActiveRecord implements IdentityInterface
     public function getClientsNotes()
     {
         return $this->hasMany(ClientsNotes::className(), ['client_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAppointments()
+    {
+        $date = new DateTime();
+        
+        return $this->hasMany(Appointments::className(), ['client_id' => 'id'])
+            ->andOnCondition(['>=', 'date', $date->format('Y-m-d H:i:s')])
+            ->orderBy(['date' => SORT_ASC]);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getOldAppointments()
+    {
+        $date = new DateTime();
+        
+        return $this->hasMany(Appointments::className(), ['client_id' => 'id'])
+            ->andOnCondition(['<', 'date', $date->format('Y-m-d H:i:s')])
+            ->orderBy(['date' => SORT_DESC]);
     }
 
     /**

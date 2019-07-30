@@ -57,7 +57,8 @@ class ClinicServices extends \yii\db\ActiveRecord
         return [
             [['category_id', 'subcategory_id', 'status'], 'integer'],
             [['name', 'summary'], 'required'],
-            [['name', 'summary', 'description', 'file'], 'string', 'max' => 255],
+            [['name', 'summary', 'file'], 'string', 'max' => 255],
+            [['description'], 'string'],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => ClinicServicesCategories::className(), 'targetAttribute' => ['category_id' => 'id']],
             [['subcategory_id'], 'exist', 'skipOnError' => true, 'targetClass' => ClinicServicesSubcategories::className(), 'targetAttribute' => ['subcategory_id' => 'id']],
         ];

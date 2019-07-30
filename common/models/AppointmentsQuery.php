@@ -31,6 +31,11 @@ class AppointmentsQuery extends \yii\db\ActiveQuery
             ->orderBy(['date' => SORT_ASC]);
     }
 
+    public function byService(string $service): self
+    {
+        return $this->andWhere(['service_id' => $service]);
+    }
+
     /**
      * {@inheritdoc}
      * @return Appointments[]|array

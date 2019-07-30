@@ -7,6 +7,8 @@ use yii\helpers\Html;
 <!-- Profile Sidebar -->
 <div class="col-lg-3 g-mb-50 g-mb-0--lg">
 
+    <h5 class="g-font-weight-600 g-ml-20"><?= Yii::$app->user->identity->name . ' ' . Yii::$app->user->identity->lastname ?></h5>
+
     <!-- Sidebar Navigation -->
     <div class="list-group list-group-border-0 g-mb-40">
         <!-- Dashboard -->
