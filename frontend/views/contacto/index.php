@@ -13,13 +13,14 @@ $this->params['breadcrumbs'][] = $this->title;
 <!-- Contact Form -->
 <section class="container g-py-70">
   <div class="row g-mb-20">
-    <div class="col-lg-6 g-mb-50">
+    <div class="col-lg-12 g-mb-20">
       <!-- Heading -->
       <h2 class="h1 g-color-black g-font-weight-700">¿Cómo podemos ayudarte?</h2>
       <!-- End Heading -->
     </div>
 
-    <div class="col-lg-6 align-self-center ml-auto g-mb-50">
+    <div class="col-lg-3 align-self-center ml-auto g-mb-20">
+
       <div class="media">
         <div class="d-flex align-self-center">
           <span class="u-icon-v2 u-icon-size--sm g-color-white bg-theme-gradient-v1 rounded-circle mr-3">
@@ -29,6 +30,36 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="media-body align-self-center">
           <h3 class="h6 g-color-black g-font-weight-700 text-uppercase mb-0">Correo</h3>
           <p class="mb-0">contacto@draestetica.com</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-3 align-self-center ml-auto g-mb-20">
+
+      <div class="media">
+        <div class="d-flex align-self-center">
+          <span class="u-icon-v2 u-icon-size--sm g-color-white bg-theme-gradient-v1 rounded-circle mr-3">
+              <i class="g-font-size-16 icon-communication-033 u-line-icon-pro"></i>
+            </span>
+        </div>
+        <div class="media-body align-self-center">
+          <h3 class="h6 g-color-black g-font-weight-700 text-uppercase mb-0">Teléfono</h3>
+          <p class="mb-0">+56 2 2218 0207</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-6 align-self-center ml-auto g-mb-20">
+
+      <div class="media">
+        <div class="d-flex align-self-center">
+          <span class="u-icon-v2 u-icon-size--sm g-color-white bg-theme-gradient-v1 rounded-circle mr-3">
+              <i class="g-font-size-16 icon-hotel-restaurant-235 u-line-icon-pro"></i>
+            </span>
+        </div>
+        <div class="media-body align-self-center">
+          <h3 class="h6 g-color-black g-font-weight-700 text-uppercase mb-0">Dirección</h3>
+          <p class="mb-0">Av. Presidente Kennedy 5600, Of. 506, Vitacura.</p>
         </div>
       </div>
     </div>

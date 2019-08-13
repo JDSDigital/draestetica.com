@@ -83,90 +83,78 @@ class ClinicServices extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function getImagefolder()
-    {
-        return Yii::getAlias('@frontend/web/img/clinic/services/');
-    }
-
-    public static function getImagethumbfolder()
-    {
-        return Yii::getAlias('@frontend/web/img/clinic/services/thumbs/');
-    }
-
-    public static function getFolder()
-    {
-        $directory = Yii::getAlias('@web/img/clinic/services/');
-
-        return str_replace('admin/', '', $directory);
-    }
-
-    public function getImage()
-    {
-        return self::getFolder() . $this->file;
-    }
-
-    public function getThumb()
-    {
-        return self::getFolder() . 'thumbs/' . $this->file;
-    }
-
     /**
      * Upload supplied images via UploadedFile
      * @return boolean
      */
     public function upload(): bool
     {
-        $uploadedImage = UploadedFile::getInstances($this, 'image');
+        if ($this->validate()) {
 
-        if (count($uploadedImage) > 0) {
+            $uploadedImages = UploadedFile::getInstances($this, 'images');
 
-            $name = $this->id . '_' .strtolower(str_replace(' ', '-', $this->name)) . '.' . $uploadedImage[0]->extension;
+            if (count($uploadedImages) > 0) {
 
-            $this->file = $name;
+                foreach ($uploadedImages as $key => $uploadedImage) {
+                    $image = new ClinicServicesImages;
+                    $name = $this->id . '-' . ($key + 1) . '-' . time() . '.' . $uploadedImage->extension;
 
-            if (!$this->saveImages($uploadedImage[0], $name)) {
-                return false;
-            }
+                    $image->file = $name;
+                    $image->service_id = $this->id;
 
-            if ($this->save()) {
+                    if (!$image->saveImages($uploadedImage, $name)) {
+                        return false;
+                    }
+
+                    if ($key == 0) {
+                        $image->cover = (!$this->cover) ? ClinicServicesImages::STATUS_ACTIVE : ClinicServicesImages::STATUS_DELETED;
+                    }
+
+                    $image->save();
+                }
+
                 return true;
+
             } else {
-                return false;
+                return true;
             }
+        } else {
+            return false;
         }
-
-        return true;
-
     }
 
-    public function saveImages(UploadedFile $uploadedImage, string $name): bool
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCover()
     {
-        $uploadedImage->saveAs(self::getImagefolder() . 'tmp-' . $name);
+        $cover = $this->hasOne(ClinicServicesImages::className(), ['service_id' => 'id'])
+            ->andOnCondition(['cover' => ClinicServicesImages::STATUS_ACTIVE]);
 
-        Image::resize(self::getImagefolder() . 'tmp-' . $name, 1024, null)
-        ->save(self::getImagefolder() . $name, ['jpeg_quality' => 80]);
-
-        Image::resize(self::getImagefolder() . 'tmp-' . $name, 300, null)
-        ->save(self::getImagethumbfolder() . $name, ['jpeg_quality' => 80]);
-
-        unlink(self::getImagefolder() . 'tmp-' . $name);
-
-        return true;
+        return ($cover->one()) ? $cover : $this->hasOne(ClinicServicesImages::className(), ['service_id' => 'id']);
     }
 
-    public function deleteImage(): bool
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getImages()
     {
-        $image = $this->getImagefolder() . $this->file;
-        $imagethumb = $this->getImagethumbfolder() . $this->file;
-
-        $this->file = null;
-
-        if ($this->save()) {
-            return (unlink($image) && unlink($imagethumb)) ? true : false;
-        }
-
-        return false;
+        return $this->hasMany(ClinicServicesImages::className(), ['service_id' => 'id']);
     }
+
+    // public function deleteImage(): bool
+    // {
+    //     $image = $this->getImagefolder() . $this->file;
+    //     $imagethumb = $this->getImagethumbfolder() . $this->file;
+
+    //     $this->file = null;
+
+    //     if ($this->save()) {
+    //         return (unlink($image) && unlink($imagethumb)) ? true : false;
+    //     }
+
+    //     return false;
+    // }
 
     /**
      * @return \yii\db\ActiveQuery

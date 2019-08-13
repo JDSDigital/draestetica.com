@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
       <div class="row">
         <div class="col-lg-4">
-          <?= Html::img($model->getThumb(), ['class' => 'img-responsive p20']) ?>
+          <?= Html::img($model->cover->getThumb(), ['class' => 'img-responsive p20']) ?>
         </div>
       </div>
 

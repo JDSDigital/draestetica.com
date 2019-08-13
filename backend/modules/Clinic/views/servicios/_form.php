@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use common\models\ClinicServicesCategories;
 use common\models\ClinicServicesSubcategories;
@@ -11,6 +12,8 @@ use backend\assets\CKEditorAsset;
 /* @var $model common\models\ClinicServices */
 /* @var $form yii\widgets\ActiveForm */
 CKEditorAsset::register($this);
+$cover = Url::to(['//Clinic/servicios/cover?id=']);
+$btn = "<button type='button' class='kv-file-cover btn btn-sm btn-kv btn-default btn-outline-secondary' title='Portada' data-url='$cover{key}' data-key='{key}'><i class='glyphicon glyphicon-star'></i></button>";
 ?>
 
 <div class="clinic-services-form">
@@ -34,23 +37,27 @@ CKEditorAsset::register($this);
 
     <div class="row">
       <div class="col-md-12">
-        <?= $form->field($model, 'image')->widget(FileInput::classname(), [
-          'language' => 'es',
-          'pluginOptions' => [
-            'previewFileType' => 'image',
-            'showCancel' => false,
-            'showUpload' => false,
-            'showDelete' => true,
-            'allowedFileTypes' => ['image'],
-            'allowedFileExtensions' => ['jpg', 'png'],
-            'maxFileSize' => 2800,
-            'maxFileCount' => 9,
-            'overwriteInitial' => false,
-            'initialPreview' => isset($previews) ? $previews : false,
-            'initialPreviewAsData' => true,
-            'initialPreviewShowDelete' => true,
-            'initialPreviewConfig' => isset($previewsConfig) ? $previewsConfig : false,
-          ]
+        <?= $form->field($model, 'images[]')->widget(FileInput::classname(), [
+            'language' => 'es',
+            'options' => [
+              'multiple' => true,
+            ],
+            'pluginOptions' => [
+              'previewFileType' => 'image',
+              'showCancel' => false,
+              'showUpload' => false,
+              'showDelete' => true,
+              'allowedFileTypes' => ['image'],
+              'allowedFileExtensions' => ['jpg', 'png'],
+              'maxFileSize' => 2800,
+              'maxFileCount' => 9,
+              'overwriteInitial' => false,
+              'initialPreview' => isset($previews) ? $previews : false,
+              'initialPreviewAsData' => true,
+              'initialPreviewShowDelete' => true,
+              'initialPreviewConfig' => isset($previewsConfig) ? $previewsConfig : false,
+              'otherActionButtons' => $btn,
+            ]
         ]); ?>
       </div>
     </div>
@@ -62,3 +69,5 @@ CKEditorAsset::register($this);
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<?php $this->registerJs('listenerCover();') ?>

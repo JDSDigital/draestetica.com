@@ -50,6 +50,14 @@ class m190226_141307_create_clinic_tables extends Migration
             'updated_at' => $this->integer()->notNull()->defaultValue(0),
         ], $tableOptions);
 
+        $this->createTable('xclinic_services_images', [
+            'id' => $this->primaryKey(),
+            'service_id' => $this->integer()->null(),
+            'file' => $this->string()->null(),
+            'cover' => $this->smallInteger()->notNull()->defaultValue(0),
+            'uploaded_at' => $this->integer()->notNull()->defaultValue(0),
+        ], $tableOptions);
+
         $this->createIndex(
             'idx-xclinic_services-category_id',
             'xclinic_services',
@@ -60,6 +68,21 @@ class m190226_141307_create_clinic_tables extends Migration
             'idx-xclinic_services-subcategory_id',
             'xclinic_services',
             'subcategory_id'
+        );
+
+        $this->createIndex(
+            'idx-xclinic_services_images-service_id',
+            'xclinic_services_images',
+            'service_id'
+        );
+
+        $this->addForeignKey(
+            'fk-xclinic_services_images-service_id',
+            'xclinic_services_images',
+            'service_id',
+            'xclinic_services',
+            'id',
+            'CASCADE'
         );
 
         $this->addForeignKey(
@@ -106,6 +129,16 @@ class m190226_141307_create_clinic_tables extends Migration
             'xclinic_services'
         );
 
+        $this->dropForeignKey(
+            'fk-xclinic_services_images-service_id',
+            'xclinic_services_images'
+        );
+
+        $this->dropIndex(
+            'idx-xclinic_services_images-service_id',
+            'xclinic_services_images'
+        );
+
         $this->dropIndex(
             'idx-xclinic_services-subcategory_id',
             'xclinic_services'
@@ -119,5 +152,6 @@ class m190226_141307_create_clinic_tables extends Migration
         $this->dropTable('xclinic_services');
         $this->dropTable('xclinic_services_subcategories');
         $this->dropTable('xclinic_services_categories');
+        $this->dropTable('xclinic_services_images');
     }
 }

@@ -7,18 +7,18 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\imagine\Image;
 use yii\web\UploadedFile;
-use common\models\Social;
+use common\models\ClinicServices;
 
 /**
- * This is the model class for table "xsocial_images".
+ * This is the model class for table "xclinic_services_images".
  *
  * @property int $id
- * @property int $article_id
+ * @property int $service_id
  * @property string $file
  * @property int $cover
  * @property int $uploaded_at
  */
-class Images extends \yii\db\ActiveRecord
+class ClinicServicesImages extends \yii\db\ActiveRecord
 {
     const STATUS_ACTIVE = 1;
     const STATUS_DELETED = 0;
@@ -28,7 +28,7 @@ class Images extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'xsocial_images';
+        return 'xclinic_services_images';
     }
 
     /**
@@ -37,7 +37,7 @@ class Images extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['article_id', 'cover', 'uploaded_at'], 'integer'],
+            [['service_id', 'cover', 'uploaded_at'], 'integer'],
             [['file'], 'string', 'max' => 255],
         ];
     }
@@ -65,36 +65,36 @@ class Images extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'article_id' => 'Artículo',
+            'service_id' => 'Servicio',
             'file' => 'Imágen',
             'cover' => 'Portada',
             'uploaded_at' => 'Subido En',
         ];
     }
 
-    public static function getImagefolder() : string
+    public static function getImagefolder()
     {
-        return Yii::getAlias('@frontend/web/img/social/');
+        return Yii::getAlias('@frontend/web/img/clinic/services/');
     }
 
-    public static function getImagethumbfolder() : string
+    public static function getImagethumbfolder()
     {
-        return Yii::getAlias('@frontend/web/img/social/thumbs/');
+        return Yii::getAlias('@frontend/web/img/clinic/services/thumbs/');
     }
 
-    public static function getFolder() : string
+    public static function getFolder()
     {
-        $directory = Yii::getAlias('@web/img/social/');
+        $directory = Yii::getAlias('@web/img/clinic/services/');
 
         return str_replace('admin/', '', $directory);
     }
 
-    public function getImage() : string
+    public function getImage()
     {
         return self::getFolder() . $this->file;
     }
 
-    public function getThumb() : string
+    public function getThumb()
     {
         return self::getFolder() . 'thumbs/' . $this->file;
     }
@@ -116,7 +116,7 @@ class Images extends \yii\db\ActiveRecord
 
     public function setCover()
     {
-        self::updateAll(['cover' => 0], 'article_id = ' . $this->article_id);
+        self::updateAll(['cover' => 0], 'service_id = ' . $this->service_id);
 
         $this->cover = self::STATUS_ACTIVE;
 
@@ -130,17 +130,8 @@ class Images extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSocial()
+    public function getService()
     {
-        return $this->hasOne(Social::className(), ['id' => 'article_id']);
-    }
-
-    /**
-     * {@inheritdoc}
-     * @return ImagesQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new ImagesQuery(get_called_class());
+        return $this->hasOne(Service::className(), ['id' => 'service_id']);
     }
 }
